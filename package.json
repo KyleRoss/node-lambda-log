@@ -1,0 +1,37 @@
+{
+  "name": "lambda-log",
+  "version": "1.0.0",
+  "description": "Basic logging mechanism for Node 6.10+ Lambda Functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KyleRoss/node-lambda-log.git"
+  },
+  "keywords": [
+    "lambda",
+    "aws",
+    "log",
+    "logger",
+    "wrap",
+    "wrapper",
+    "node6.10",
+    "error",
+    "warn",
+    "info"
+  ],
+  "author": "Kyle Ross",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KyleRoss/node-lambda-log/issues"
+  },
+  "homepage": "https://github.com/KyleRoss/node-lambda-log#readme",
+  "engines": {
+    "node": ">= 6.10.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  }
+}
