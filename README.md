@@ -1,4 +1,6 @@
 # lambda-log
+[![npm](https://img.shields.io/npm/v/lambda-log.svg?style=flat-square)](https://www.npmjs.com/package/lambda-log) [![](https://img.shields.io/github/issues-raw/KyleRoss/node-lambda-log.svg?style=flat-square)](https://github.com/KyleRoss/node-lambda-log/issues) [![npm](https://img.shields.io/npm/dt/lambda-log.svg?style=flat-square)](https://www.npmjs.com/package/lambda-log) [![npm](https://img.shields.io/npm/dm/lambda-log.svg?style=flat-square)](https://www.npmjs.com/package/lambda-log) [![npm](https://img.shields.io/npm/l/lambda-log.svg?style=flat-square)](https://www.npmjs.com/package/lambda-log)
+
 Basic logging mechanism for **Node 6.10+** Lambda Functions which properly formats various logs into JSON format for easier reading through Cloudwatch Logs. The module includes functionality to include custom metadata and tags for each log, allowing increased filtering capabilities within Cloudwatch.
 
 **Why another lambda logger?**  
