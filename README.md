@@ -50,6 +50,15 @@ exports.handler = function(event, context, callback) {
         //=> { msg: 'something is missing, but it is OK', event:..., _tags: ['log', 'warn', ...] }
     }
     
+    // Debug messages are not generated or displayed unless enabled in the config
+    log.debug('some debug message');
+    //=> false
+    
+    // Enable debug messages
+    log.config.debug = true;
+    log.debug('some debug message again');
+    //=> { msg: 'some debug message again', event:..., _tags: ['log', 'debug', ...] }
+    
     someAsyncTask(function(err, results) {
         if(err) {
             log.error(err);
@@ -74,17 +83,18 @@ Configuration object for LambdaLog. These options can be changed at any time.
 
 * meta _(object)_ - Global metadata to be included in all logs. (Default: `{}`)
 * tags _(Array)_ - Global tags to be included in all logs. (Default: `[]`)
+* debug _(Boolean)_ - Enables `lambdalog.debug()`. (Default: `false`)
 * dev _(Boolean)_ - Enable development mode which pretty-prints JSON to the console. (Default: `false`)
 * silent _(Boolean)_ - Disables logging to `console` but messages and events are still generated. (Default: `false`)
 
 ### lambdalog.log(level, msg[, meta={}])
 Generates JSON log message based on the provided parameters and the global configuration. Once the JSON message is created, it is properly logged to the `console` and emitted through an event. If and `Error` or `Error`-like object is provided for `msg`, it will parse out the message and include the stacktrace in the metadata. 
 
-| Argument | Type   | Required? | Description                                                                 |
-|----------|--------|-----------|-----------------------------------------------------------------------------|
-| `level`  | String | Yes       | Log level to create log for. Must be either `info`, `warn` or `error`.      |
-| `msg`    | Any    | Yes       | Message to log. Can be of any type, but string or `Error` is recommended.   |
-| `meta`   | Object | No        | Optional metadata object to include into the log JSON.                      |
+| Argument | Type   | Required? | Description                                                                     |
+|----------|--------|-----------|---------------------------------------------------------------------------------|
+| `level`  | String | Yes       | Log level to create log for. Must be either `info`, `debug`, `warn` or `error`. |
+| `msg`    | Any    | Yes       | Message to log. Can be of any type, but string or `Error` is recommended.       |
+| `meta`   | Object | No        | Optional metadata object to include into the log JSON.                          |
 
 **Example:**
 ```js
@@ -95,7 +105,7 @@ log.log('info', 'This is a test info message', { someKey: 'with some optional me
 ```
 
 **Throws:** `Error` if improper log level is provided.  
-**Returns:** {Object} The generated log message.
+**Returns:** {Object|Boolean} The generated log message or `false` if `level="debug"` and `config.debug=false`.
 
 ### lambdalog.info(msg[, meta={}])
 Shorthand method for calling `lambdalog.log('info')`.
@@ -153,6 +163,30 @@ log.error(err);
 ```
 
 **Returns:** {Object} The generated log message.
+
+### lambdalog.debug(msg[, meta={}])
+_(Since v1.1.0)_ Shorthand method for calling `lambdalog.log('debug')`. By default, debug messages are not generated, displayed or emitted. To enable this functionality, you must set `config.debug` to `true`.
+
+| Argument | Type   | Required? | Description                                                                 |
+|----------|--------|-----------|-----------------------------------------------------------------------------|
+| `msg`    | Any    | Yes       | Message to log. Can be of any type, but string or `Error` is recommended.   |
+| `meta`   | Object | No        | Optional metadata object to include into the log JSON.                      |
+
+**Example:**
+```js
+const log = require('lambda-log');
+
+// This log will return false and not display any message since config.debug is false by default
+log.debug('This is a test debug message');
+//=> false
+
+// But if we enable config.debug, it will act the same as the other log methods:
+log.config.debug = true;
+log.debug('This is a test debug message');
+//=> { msg: "This is a test debug message" ... }
+```
+
+**Returns:** {Object|Boolean} The generated log message or `false` if `config.debug` is not enabled.
 
 ### lambdalog.LambdaLog([meta={}, tags=[]])
 Provides access to uninstantiated LambdaLog class. If you want to customize the logger or build a wrapper around LambdaLog, you have access to the class via `lambdalog.LambaLog`.
