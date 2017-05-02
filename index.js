@@ -1,6 +1,6 @@
 /**
  * @module lambda-log
- * @version 1.0.0
+ * @version 1.1.0
  * @description Basic logging mechanism for Lambda Functions
  * @requires Node 6.10+
  * @author Kyle Ross
@@ -36,15 +36,17 @@ class LambdaLog extends EventEmitter {
             meta,
             // Global tags array to include with every log
             tags,
+            // Enable debugging mode (log.debug messages)
+            debug: false,
             // Enable development mode which pretty-prints the log object to the console
             dev: false,
             // Disables logging to the console (used for testing)
             silent: false
         };
         
-        ['info', 'warn', 'error'].forEach((lvl) => {
+        ['info', 'warn', 'error', 'debug'].forEach((lvl) => {
             /**
-             * Shorthand log methods for `info`, `warn` and `error`
+             * Shorthand log methods for `info`, `debug`, `warn` and `error`
              * @param  {Any}    msg  Message to log. Can be any type, but string or `Error` reccommended.
              * @param  {Object} meta Optional meta data to attach to the log.
              * @return {Object}      The compiled log object that was logged to the console.
@@ -53,6 +55,7 @@ class LambdaLog extends EventEmitter {
              * const log = require('lambda-log');
              * 
              * log.info('Test info log');
+             * log.debug('Test debug log');
              * log.warn('Test warn log');
              * log.error('Test error log');
              */
@@ -64,15 +67,17 @@ class LambdaLog extends EventEmitter {
     
     /**
      * Creates log message based on the provided parameters
-     * @param  {String} level Log level (`info`, `warn` or `error`)
+     * @param  {String} level Log level (`info`, `debug`, `warn` or `error`)
      * @param  {Any}    msg   Message to log. Can be any type, but string or `Error` reccommended.
      * @param  {Object} meta  Optional meta data to attach to the log.
      * @return {Object}       The compiled log object that was logged to the console.
      */
     log(level, msg, meta={}) {
-        if(['info', 'warn', 'error'].indexOf(level) === -1) {
+        if(['info', 'warn', 'error', 'debug'].indexOf(level) === -1) {
             throw new Error(`"${level}" is not a valid log level`);
         }
+        
+        if(level === 'debug' && !this.config.debug) return false;
         
         let tags = ['log', level].concat(this.config.tags),
             errorMeta = {};
