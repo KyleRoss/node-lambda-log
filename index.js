@@ -92,7 +92,8 @@ class LambdaLog extends EventEmitter {
             data = Object.assign({ msg }, metadata, { _tags: tags });
         
         if(!this.config.silent) {
-            console[level](JSON.stringify(data, null, this.config.dev? 4 : 0));
+            let method = level === 'debug'? 'log' : level;
+            console[method](JSON.stringify(data, null, this.config.dev? 4 : 0));
         }
         
         /**
