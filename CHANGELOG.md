@@ -1,5 +1,8 @@
 # LambdaLog Changelog
 
+## 1.2.1 (5/11/2017)
+* Fix issue with `console.debug` not existing in Lambda.
+
 ## 1.2.0 (5/4/2017)
 * **Breaking Change:** `log` event now returns object containing `level`, `log` and `meta`.
 
