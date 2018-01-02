@@ -34,6 +34,11 @@ describe('LambdaLog', function() {
                 assert.equal(typeof log.config.dev, 'boolean');
             });
             
+            it('config should have debug flag', function() {
+                assert(log.config.hasOwnProperty('debug'));
+                assert.equal(typeof log.config.debug, 'boolean');
+            });
+            
             it('config should have silent flag', function() {
                 assert(log.config.hasOwnProperty('silent'));
                 assert.equal(typeof log.config.silent, 'boolean');
@@ -93,6 +98,11 @@ describe('LambdaLog', function() {
                 assert(logData._tags.indexOf('custom-tag') !== -1);
                 assert(logData._tags.indexOf(32) !== -1);
             });
+            
+            it('should have logLevel', function() {
+                let logData = log.log('error', 'Test log level');
+                assert.equal(logData._logLevel, 'error');
+            });
         });
         
         describe('info', function() {
@@ -103,6 +113,7 @@ describe('LambdaLog', function() {
             it('should set the correct level', function() {
                 let logData = log.info('Test log level');
                 assert(logData._tags.indexOf('info') !== -1);
+                assert.equal(logData._logLevel, 'info');
             });
         });
         
@@ -114,6 +125,7 @@ describe('LambdaLog', function() {
             it('should set the correct level', function() {
                 let logData = log.warn('Test log level');
                 assert(logData._tags.indexOf('warn') !== -1);
+                assert.equal(logData._logLevel, 'warn');
             });
         });
         
@@ -125,9 +137,28 @@ describe('LambdaLog', function() {
             it('should set the correct level', function() {
                 let logData = log.error('Test log level');
                 assert(logData._tags.indexOf('error') !== -1);
+                assert.equal(logData._logLevel, 'error');
             });
         });
         
+        describe('debug', function() {
+            it('should have debug method', function() {
+                assert(typeof log.debug, 'function');
+            });
+            
+            it('should set the correct level', function() {
+                log.config.debug = true;
+                let logData = log.debug('Test log level');
+                assert(logData._tags.indexOf('debug') !== -1);
+                assert.equal(logData._logLevel, 'debug');
+            });
+            
+            it('should return false with debug disabled', function() {
+                log.config.debug = false;
+                let logData = log.debug('Test debug mode');
+                assert.equal(logData, false);
+            });
+        });
     });
     
     describe('Events', function() {
