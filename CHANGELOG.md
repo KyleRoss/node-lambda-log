@@ -1,5 +1,9 @@
 # LambdaLog Changelog
 
+## 1.3.0 (1/2/2018)
+* **New:** Added `_logLevel` as property to logged messages to allow easier searching in Cloudwatch Logs.
+* Added missing tests.
+
 ## 1.2.1 (5/11/2017)
 * Fix issue with `console.debug` not existing in Lambda.
 

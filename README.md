@@ -43,11 +43,11 @@ exports.handler = function(event, context, callback) {
     
     // Log info message
     log.info('my lambda function is running!');
-    //=> { msg: 'my lambda function is running!', event:..., _tags: ['log', 'info', ...] }
+    //=> { _logLevel: 'info' msg: 'my lambda function is running!', event:..., _tags: ['log', 'info', ...] }
     
     if(somethingHappenedButNotFatal) {
         log.warn('something is missing, but it is OK');
-        //=> { msg: 'something is missing, but it is OK', event:..., _tags: ['log', 'warn', ...] }
+        //=> { _logLevel: 'warn', msg: 'something is missing, but it is OK', event:..., _tags: ['log', 'warn', ...] }
     }
     
     // Debug messages are not generated or displayed unless enabled in the config
@@ -57,15 +57,15 @@ exports.handler = function(event, context, callback) {
     // Enable debug messages
     log.config.debug = true;
     log.debug('some debug message again');
-    //=> { msg: 'some debug message again', event:..., _tags: ['log', 'debug', ...] }
+    //=> { _logLevel: 'debug', msg: 'some debug message again', event:..., _tags: ['log', 'debug', ...] }
     
     someAsyncTask(function(err, results) {
         if(err) {
             log.error(err);
-            //=> { msg: 'Error from someAsyncTask', stack: ..., event: ..., _tags: ['log', 'error', ...]}
+            //=> { _logLevel: 'error', msg: 'Error from someAsyncTask', stack: ..., event: ..., _tags: ['log', 'error', ...]}
         } else {
             log.info('someAsyncTask completed successfully!', { results });
-            //=> { msg: 'someAsyncTask completed successfully!', results:..., event: ..., _tags: ['log', 'info', ...]}
+            //=> { _logLevel: 'info', msg: 'someAsyncTask completed successfully!', results:..., event: ..., _tags: ['log', 'info', ...]}
         }
     });
 };
@@ -105,7 +105,7 @@ log.log('info', 'This is a test info message', { someKey: 'with some optional me
 ```
 
 **Throws:** `Error` if improper log level is provided.  
-**Returns:** {Object|Boolean} The generated log message or `false` if `level="debug"` and `config.debug=false`.
+**Returns:** {[logResponse](#logresponse)} The generated log message or `false` if `level="debug"` and `config.debug=false`.
 
 ### lambdalog.info(msg[, meta={}])
 Shorthand method for calling `lambdalog.log('info')`.
@@ -123,7 +123,7 @@ log.info('This is a test info message');
 log.info('This is a test info message', { someKey: 'with some optional metadata!' });
 ```
 
-**Returns:** {Object} The generated log message.
+**Returns:** {[logResponse](#logresponse)} The generated log message.
 
 ### lambdalog.warn(msg[, meta={}])
 Shorthand method for calling `lambdalog.log('warn')`.
@@ -141,7 +141,7 @@ log.warn('This is a test warn message');
 log.warn('This is a test warn message', { someKey: 'with some optional metadata!' });
 ```
 
-**Returns:** {Object} The generated log message.
+**Returns:** {[logResponse](#logresponse)} The generated log message.
 
 ### lambdalog.error(msg[, meta={}])
 Shorthand method for calling `lambdalog.log('error')`.
@@ -162,7 +162,7 @@ let err = new Error('Some error happened!');
 log.error(err);
 ```
 
-**Returns:** {Object} The generated log message.
+**Returns:** {[logResponse](#logresponse)} The generated log message.
 
 ### lambdalog.debug(msg[, meta={}])
 _(Since v1.1.0)_ Shorthand method for calling `lambdalog.log('debug')`. By default, debug messages are not generated, displayed or emitted. To enable this functionality, you must set `config.debug` to `true`.
@@ -186,7 +186,7 @@ log.debug('This is a test debug message');
 //=> { msg: "This is a test debug message" ... }
 ```
 
-**Returns:** {Object|Boolean} The generated log message or `false` if `config.debug` is not enabled.
+**Returns:** {[logResponse](#logresponse)} The generated log message or `false` if `config.debug` is not enabled.
 
 ### lambdalog.LambdaLog([meta={}, tags=[]])
 Provides access to uninstantiated LambdaLog class. If you want to customize the logger or build a wrapper around LambdaLog, you have access to the class via `lambdalog.LambaLog`.
@@ -215,6 +215,21 @@ class MyLogger extends LambdaLog {
 ```
 
 **Returns:** _this_
+
+### logResponse
+**Type:** Object | Boolean
+
+The data returned from any log method. If the using `log.debug()` and `config.debug` is disabled, the response will be `false`.
+
+**Default Properties:**
+* `_logLevel` _(String)_ - The log level (ex. error, warn, info, debug) _Since 1.3.0_
+* `msg` _(String)_ - The message of the log
+* `_tags` _(Array[String])_ - Array of tags applied to the log
+
+**Conditional Properties:**
+* `*` _(Any)_ - Any metadata provided to the log as individual properties
+* `stack` _(String)_ - Stack trace of an error if `Error` was provided
+
 
 ### Event: log
 The `log` event is emitted (using EventEmitter) for every log generated. This allows for custom integrations, such as logging to a thrid-party service. This event is emitted with the log data object generated by `lambdalog.log()` along with level and metadata. You may control events using all the methods of EventEmitter.
