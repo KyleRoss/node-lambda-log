@@ -1,6 +1,6 @@
 /**
  * @module lambda-log
- * @version 1.2.0
+ * @version 1.3.0
  * @description Basic logging mechanism for Lambda Functions
  * @requires Node 6.10+
  * @author Kyle Ross
@@ -89,7 +89,7 @@ class LambdaLog extends EventEmitter {
         }
         
         let metadata = Object.assign({}, meta || {}, this.config.meta, errorMeta),
-            data = Object.assign({ msg }, metadata, { _tags: tags });
+            data = Object.assign({ _logLevel: level, msg }, metadata, { _tags: tags });
         
         if(!this.config.silent) {
             let method = level === 'debug'? 'log' : level;
