@@ -106,6 +106,19 @@ class LambdaLog extends EventEmitter {
     }
     
     /**
+     * Creates an error log message if provided `test` is a falsy value.
+     * @since  1.4.0
+     * @param  {Any}            test      A value which is tested for a falsy value.
+     * @param  {Any}            msg       Message to log if `test` is falsy. Can be any type, but string or `Error` reccommended.
+     * @param  {Object}         [meta={}] Optional meta data to attach to the log.
+     * @return {Object|Boolean}           The compiled log object that was logged to the console or `false` if test passed.
+     */
+    assert(test, msg, meta={}) {
+        if(test) return false;
+        return this.log('error', msg, meta);
+    }
+    
+    /**
      * Checks if value is an Error or Error-like object
      * @static
      * @param  {Any}     val Value to test
