@@ -104,8 +104,10 @@ log.log('info', 'This is a test info message');
 log.log('info', 'This is a test info message', { someKey: 'with some optional metadata!' });
 ```
 
-**Throws:** `Error` if improper log level is provided.  
-**Returns:** {[logResponse](#logresponse)} The generated log message or `false` if `level="debug"` and `config.debug=false`.
+###### Throws: - _Error_
+> If improper log level is provided.  
+###### Returns: _[logResponse](#logresponse)_
+> The generated log message or `false` if `level="debug"` and `config.debug=false`.
 
 ### lambdalog.info(msg[, meta={}])
 Shorthand method for calling `lambdalog.log('info')`.
@@ -123,7 +125,8 @@ log.info('This is a test info message');
 log.info('This is a test info message', { someKey: 'with some optional metadata!' });
 ```
 
-**Returns:** {[logResponse](#logresponse)} The generated log message.
+###### Returns: _[logResponse](#logresponse)_
+> The generated log message.
 
 ### lambdalog.warn(msg[, meta={}])
 Shorthand method for calling `lambdalog.log('warn')`.
@@ -141,7 +144,8 @@ log.warn('This is a test warn message');
 log.warn('This is a test warn message', { someKey: 'with some optional metadata!' });
 ```
 
-**Returns:** {[logResponse](#logresponse)} The generated log message.
+###### Returns: _[logResponse](#logresponse)_
+> The generated log message.
 
 ### lambdalog.error(msg[, meta={}])
 Shorthand method for calling `lambdalog.log('error')`.
@@ -162,7 +166,8 @@ let err = new Error('Some error happened!');
 log.error(err);
 ```
 
-**Returns:** {[logResponse](#logresponse)} The generated log message.
+###### Returns: _[logResponse](#logresponse)_
+> The generated log message.
 
 ### lambdalog.debug(msg[, meta={}])
 _(Since v1.1.0)_ Shorthand method for calling `lambdalog.log('debug')`. By default, debug messages are not generated, displayed or emitted. To enable this functionality, you must set `config.debug` to `true`.
@@ -186,7 +191,8 @@ log.debug('This is a test debug message');
 //=> { msg: "This is a test debug message" ... }
 ```
 
-**Returns:** {[logResponse](#logresponse)} The generated log message or `false` if `config.debug` is not enabled.
+###### Returns: _[logResponse](#logresponse)_
+> The generated log message or `false` if `config.debug` is not enabled.
 
 ### lambdalog.LambdaLog([meta={}, tags=[]])
 Provides access to uninstantiated LambdaLog class. If you want to customize the logger or build a wrapper around LambdaLog, you have access to the class via `lambdalog.LambaLog`.
@@ -214,7 +220,8 @@ class MyLogger extends LambdaLog {
 }
 ```
 
-**Returns:** _this_
+###### Returns: _this_
+> Instance of LambdaLog.
 
 ### logResponse
 **Type:** Object | Boolean
