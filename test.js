@@ -51,7 +51,7 @@ describe('LambdaLog', function() {
     });
     
     describe('Methods', function() {
-        describe('log', function() {
+        describe('log()', function() {
             it('should have log method', function() {
                 assert(typeof log.log, 'function');
             });
@@ -105,7 +105,7 @@ describe('LambdaLog', function() {
             });
         });
         
-        describe('info', function() {
+        describe('info()', function() {
             it('should have info method', function() {
                 assert(typeof log.info, 'function');
             });
@@ -117,7 +117,7 @@ describe('LambdaLog', function() {
             });
         });
         
-        describe('warn', function() {
+        describe('warn()', function() {
             it('should have warn method', function() {
                 assert(typeof log.warn, 'function');
             });
@@ -129,7 +129,7 @@ describe('LambdaLog', function() {
             });
         });
         
-        describe('error', function() {
+        describe('error()', function() {
             it('should have error method', function() {
                 assert(typeof log.error, 'function');
             });
@@ -141,7 +141,7 @@ describe('LambdaLog', function() {
             });
         });
         
-        describe('debug', function() {
+        describe('debug()', function() {
             it('should have debug method', function() {
                 assert(typeof log.debug, 'function');
             });
@@ -157,6 +157,28 @@ describe('LambdaLog', function() {
                 log.config.debug = false;
                 let logData = log.debug('Test debug mode');
                 assert.equal(logData, false);
+            });
+        });
+        
+        describe('assert()', function() {
+            it('should have assert method', function() {
+                assert(typeof log.assert, 'function');
+            });
+            
+            it('should return false for a truthy value', function() {
+                let logData = log.assert(true, 'Test assert');
+                assert.equal(logData, false);
+            });
+            
+            it('should return log data for a falsy value', function() {
+                let logData = log.assert(false, 'Test assert');
+                assert.equal(logData.msg, 'Test assert');
+            });
+            
+            it('should set the correct level', function() {
+                let logData = log.assert(false, 'Test assert');
+                assert(logData._tags.indexOf('error') !== -1);
+                assert.equal(logData._logLevel, 'error');
             });
         });
     });
@@ -187,7 +209,7 @@ describe('LambdaLog', function() {
     });
     
     describe('Statics', function() {
-        describe('isError', function() {
+        describe('isError()', function() {
             it('should have static method', function() {
                 assert.equal(typeof log.LambdaLog.isError, 'function');
             });
