@@ -1,6 +1,6 @@
 /**
  * @module lambda-log
- * @version 1.3.0
+ * @version 1.4.0
  * @description Basic logging mechanism for Lambda Functions
  * @requires Node 6.10+
  * @author Kyle Ross

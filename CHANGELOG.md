@@ -1,5 +1,10 @@
 # LambdaLog Changelog
 
+## 1.4.0 (5/31/2018)
+* **New:** Added `log.assert()`.
+* Updated README formatting.
+* Added Travis for automated test running.
+
 ## 1.3.0 (1/2/2018)
 * **New:** Added `_logLevel` as property to logged messages to allow easier searching in Cloudwatch Logs.
 * Added missing tests.
