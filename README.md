@@ -68,6 +68,17 @@ exports.handler = function(event, context, callback) {
             //=> { _logLevel: 'info', msg: 'someAsyncTask completed successfully!', results:..., event: ..., _tags: ['log', 'info', ...]}
         }
     });
+    
+    // New in version 1.4.0 - assert
+    someAsyncTask(function(err, results) {
+        if(err) {
+            log.error(err);
+            //=> { _logLevel: 'error', msg: 'Error from someAsyncTask', stack: ..., event: ..., _tags: ['log', 'error', ...]}
+        } else {
+            // Will only log if no results are returned
+            log.assert(results, 'No results returned from someAsyncTask');
+        }
+    });
 };
 ```
 
@@ -189,6 +200,33 @@ log.debug('This is a test debug message');
 log.config.debug = true;
 log.debug('This is a test debug message');
 //=> { msg: "This is a test debug message" ... }
+```
+
+###### Returns: _[logResponse](#logresponse)_
+> The generated log message or `false` if `config.debug` is not enabled.
+
+### lambdalog.debug(test, msg[, meta={}])
+_(Since v1.4.0)_ Generates a log message if `test` is a falsy value. If `test` is truthy, the log message is skipped and returns `false`. Allows creating log messages without the need to wrap them in an if statement.
+
+| Argument | Type   | Required? | Description                                                                 |
+|----------|--------|-----------|-----------------------------------------------------------------------------|
+| `test`   | Any    | Yes       | Value to test if is falsy.                                                  |
+| `msg`    | Any    | Yes       | Message to log. Can be of any type, but string or `Error` is recommended.   |
+| `meta`   | Object | No        | Optional metadata object to include into the log JSON.                      |
+
+**Example:**
+```js
+const log = require('lambda-log');
+
+let results = null;
+// This log will be displayed since `results` is a falsy value.
+log.assert(results, 'No results provided!');
+//=> { msg: "No results provided!" ... }
+
+// But if they are truthy, the log is ignored:
+results = [1, 2, 3];
+log.assert(results, 'No results provided!');
+//=> false
 ```
 
 ###### Returns: _[logResponse](#logresponse)_
