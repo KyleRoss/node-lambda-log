@@ -205,7 +205,7 @@ log.debug('This is a test debug message');
 ###### Returns: _[logResponse](#logresponse)_
 > The generated log message or `false` if `config.debug` is not enabled.
 
-### lambdalog.debug(test, msg[, meta={}])
+### lambdalog.assert(test, msg[, meta={}])
 _(Since v1.4.0)_ Generates a log message if `test` is a falsy value. If `test` is truthy, the log message is skipped and returns `false`. Allows creating log messages without the need to wrap them in an if statement.
 
 | Argument | Type   | Required? | Description                                                                 |
