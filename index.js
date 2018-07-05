@@ -87,9 +87,11 @@ class LambdaLog extends EventEmitter {
             errorMeta.stack = msg.stack;
             msg = msg.message;
         }
+
+        const timestamp = new Date().toISOString();
         
         let metadata = Object.assign({}, meta || {}, this.config.meta, errorMeta),
-            data = Object.assign({ _logLevel: level, msg }, metadata, { _tags: tags });
+            data = Object.assign({ _logLevel: level, msg, timestamp }, metadata, { _tags: tags });
         
         if(!this.config.silent) {
             let method = level === 'debug'? 'log' : level;
