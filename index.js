@@ -20,7 +20,7 @@ class LambdaLog extends EventEmitter {
      * @param  {Array}  tags Global tags to include with every log
      * @return {this}        Instance of LambdaLog
      */
-    constructor(meta={}, tags=[]) {
+    constructor(meta={}, tags=[], debug=false, dev=false, silent=false) {
         super();
         /**
          * Access to the uninstantiated LambdaLog class
@@ -37,11 +37,11 @@ class LambdaLog extends EventEmitter {
             // Global tags array to include with every log
             tags,
             // Enable debugging mode (log.debug messages)
-            debug: false,
+            debug,
             // Enable development mode which pretty-prints the log object to the console
-            dev: false,
+            dev,
             // Disables logging to the console (used for testing)
-            silent: false
+            silent,
         };
         
         ['info', 'warn', 'error', 'debug'].forEach((lvl) => {
