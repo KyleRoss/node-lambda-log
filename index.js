@@ -7,6 +7,7 @@
  */
 "use strict";
 const EventEmitter = require('events');
+const stringify = require('json-stringify-safe');
 
 /**
  * @class LambdaLog
@@ -93,7 +94,7 @@ class LambdaLog extends EventEmitter {
         
         if(!this.config.silent) {
             let method = level === 'debug'? 'log' : level;
-            console[method](JSON.stringify(data, null, this.config.dev? 4 : 0));
+            console[method](stringify(data, null, this.config.dev? 4 : 0));
         }
         
         /**
