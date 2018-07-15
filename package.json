@@ -21,7 +21,12 @@
     "node6.10",
     "error",
     "warn",
-    "info"
+    "info",
+    "message",
+    "assert",
+    "json",
+    "cloudwatch",
+    "logs"
   ],
   "author": "Kyle Ross <thejavascriptguy@gmail.com>",
   "license": "MIT",
