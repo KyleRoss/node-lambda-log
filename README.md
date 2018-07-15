@@ -16,6 +16,14 @@ There are others out there, but seemed to be convoluted, included more functiona
 * Well-documented and commented source.
 * Small footprint and dependency-free!
 
+#### New in Version 2.0.0
+* Dynamic metadata can be added to every log (ex. timestamp).
+* Logs can be piped to a custom stream instead of stdout/stderr.
+* Log levels and their corresponding console method can be customized.
+* Logs are now an instance of a class with a simple API.
+* When logs are converted to JSON, you can customize/mask certain data using a replacer function.
+* And a bunch more...
+
 ---
 
 ## Getting Started
@@ -37,9 +45,9 @@ const log = require('lambda-log');
 
 exports.handler = function(event, context, callback) {
     // set some optional metadata to be included in all logs (this is an overkill example)
-    log.config.meta.event = event;
+    log.options.meta.event = event;
     // add additional tags to all logs
-    log.config.tags.push(event.env);
+    log.options.tags.push(event.env);
     
     // Log info message
     log.info('my lambda function is running!');
@@ -55,7 +63,7 @@ exports.handler = function(event, context, callback) {
     //=> false
     
     // Enable debug messages
-    log.config.debug = true;
+    log.options.debug = true;
     log.debug('some debug message again');
     //=> { _logLevel: 'debug', msg: 'some debug message again', event:..., _tags: ['log', 'debug', ...] }
     
