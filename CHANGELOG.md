@@ -1,5 +1,8 @@
 # LambdaLog Changelog
 
+## 1.5.0 (7/15/2018)
+* Added `json-stringify-safe` to prevent issues with circular references. (@jogold)
+
 ## 1.4.0 (5/31/2018)
 * **New:** Added `log.assert()`.
 * Updated README formatting.

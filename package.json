@@ -1,6 +1,6 @@
 {
   "name": "lambda-log",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Basic logging mechanism for Node 6.10+ Lambda Functions",
   "main": "index.js",
   "scripts": {
