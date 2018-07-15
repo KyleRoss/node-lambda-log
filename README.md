@@ -14,7 +14,7 @@ There are others out there, but seemed to be convoluted, included more functiona
 * Error and Error-like objects logged include stacktraces in the metadata automatically.
 * Pretty-printing of JSON object in [dev](#lambdalogconfig) mode.
 * Well-documented and commented source.
-* Small footprint and dependency-free!
+* Small footprint!
 
 #### New in Version 2.0.0
 * Dynamic metadata can be added to every log (ex. timestamp).

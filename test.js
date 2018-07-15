@@ -2,8 +2,10 @@
 const assert = require('assert');
 const log = require('./');
 
-// Silence logs for testing
-log.config.silent = true;
+beforeEach(function() {
+    // Silence logs for testing
+    log.config.silent = true;
+})
 
 describe('Module', function() {
     it('should return a new instance', function() {
@@ -102,6 +104,16 @@ describe('LambdaLog', function() {
             it('should have logLevel', function() {
                 let logData = log.log('error', 'Test log level');
                 assert.equal(logData._logLevel, 'error');
+            });
+
+            it('should not throw for circular objects', function() {
+                log.config.silent = false;
+                const circularObj = {};
+                circularObj.circularRef = circularObj;
+                circularObj.list = [ circularObj, circularObj ];
+                assert.doesNotThrow(function () {
+                    log.log('error', circularObj);
+                });
             });
         });
         

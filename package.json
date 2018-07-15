@@ -39,5 +39,8 @@
   },
   "devDependencies": {
     "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "json-stringify-safe": "^5.0.1"
   }
 }
