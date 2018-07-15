@@ -1,6 +1,6 @@
 # LambdaLog Changelog
 
-## 2.0.0 (7/10/2018)
+## 2.0.0 (7/15/2018)
 The new major release for lambda-log which contains many new extensibility features and a handful of new usability features. There are a few breaking changes from version 1.4.0 to keep in mind when migrating. All breaking changes will be noted in the changelog below:
 
 #### Internal/Module Changes
