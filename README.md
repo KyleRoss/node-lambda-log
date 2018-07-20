@@ -26,6 +26,8 @@ There are others out there, but seemed to be convoluted, included more functiona
 * When logs are converted to JSON, you can customize/mask certain data using a replacer function.
 * And a bunch more...
 
+There are a few breaking changes in version 2.0.0. If you are upgrading from the previous version, please read the Changelog and documentation to see how these changes could affect your implementation.
+
 ---
 
 ## Getting Started
@@ -101,7 +103,7 @@ Instance of the `LambdaLog` class which is exported when calling `require('lambd
 
 
 ## log.LambdaLog([_options={}_][, _levels={}_])
-Constructor for the `LambdaLog` class. Provided to be utilized in more advanced cases to allow overriding and configuration. By default, this module will export an instance of this class, but you may access the class via `log.LambdaLog`.
+Constructor for the `LambdaLog` class. Provided to be utilized in more advanced cases to allow overriding and configuration. By default, this module will export an instance of this class, but you may access the class and create your own instance via `log.LambdaLog`.
 
 | Argument  | Required? | Type   | Description                                                                            |
 |-----------|-----------|--------|----------------------------------------------------------------------------------------|
