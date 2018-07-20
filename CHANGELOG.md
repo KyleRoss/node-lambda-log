@@ -1,5 +1,33 @@
 # LambdaLog Changelog
 
+## 2.0.0 (7/15/2018)
+The new major release for lambda-log which contains many new extensibility features and a handful of new usability features. There are a few breaking changes from version 1.4.0 to keep in mind when migrating. All breaking changes will be noted in the changelog below:
+
+#### Internal/Module Changes
+* Moved `LambdaLog` class out of `index.js` into `lib/LambdaLog.js` for organization purposes.
+* **NEW:** Utilize `console` module (native Node) instead of the global `console` object for logging. This allows more control of where logs are redirected to for custom advanced integrations.
+* **NEW:** Log messages are now an instance of the `LogMessage` class which allows custom methods and better control over log messages.
+
+#### LambdaLog Class/Configuration
+* **NEW:** Added ability to configure the logger via the constructor (#3).
+* **NEW:** Added ability to configure the log levels and methods via the constructor.
+* **NEW:** Added `stdoutStream` and `stderrStream` configuration options to configure the desired output of log messages. By default it redirects to `process.stdout` and `process.stderr`.
+* **NEW:** Added `dynamicMeta` configuration option which will allow dynamic metadata to be added to each log on creation.
+* **NEW:** Added `replacer` configuration option for `JSON.stringify`.
+* **BREAKING:** Static method `isError()` has been moved to the `LogMessage` class and is no longer accessible in the `LambdaLog` class.
+
+#### Logging Functions
+* **NEW:** All log functions now accept an array of tags to append to a log.
+* **FIX:** Metadata passed into a log function will now be wrapped in a plain object if the provided value is not an object.
+* **BREAKING:** All log functions now return an instance of `LogMessage` instead of a plain log object which allows directly calling additional methods of `LogMessage` (chaining). See documentation for more information.
+
+#### Events
+* **BREAKING:** The `log` event now provides an instance of `LogMessage` instead of a plain object.
+
+#### Misc.
+* Updated tests.
+* Updated documentation/readme.
+
 ## 1.5.0 (7/15/2018)
 * Added `json-stringify-safe` to prevent issues with circular references. (@jogold)
 

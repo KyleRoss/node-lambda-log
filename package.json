@@ -1,10 +1,10 @@
 {
   "name": "lambda-log",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "description": "Basic logging mechanism for Node 6.10+ Lambda Functions",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha test.js"
+    "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,12 @@
     "node6.10",
     "error",
     "warn",
-    "info"
+    "info",
+    "message",
+    "assert",
+    "json",
+    "cloudwatch",
+    "logs"
   ],
   "author": "Kyle Ross <thejavascriptguy@gmail.com>",
   "license": "MIT",
