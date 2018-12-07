@@ -1,4 +1,4 @@
-# LambdaLog Changelog
+# LambdaLog Changelog 
 
 ## 2.0.1 (12/7/2018)
 * Fix console logging pointing to global `console` instead of custom console instance for streaming. (@sh1n1chi8acker - #10)
