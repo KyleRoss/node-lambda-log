@@ -16,8 +16,7 @@ describe('LambdaLog', function() {
             assert(log.options.dev === false);
             assert(log.options.silent === false);
             assert(log.options.replacer === null);
-            assert(log.options.stdoutStream === process.stdout);
-            assert(log.options.stderrStream === process.stderr);
+            assert(log.options.logHandler === console);
         });
         
         it ('should override default options', () => {
@@ -25,15 +24,13 @@ describe('LambdaLog', function() {
                 meta: { test: true },
                 tags: ['test'],
                 dynamicMeta: function() { /*empty*/ },
-                silent: true,
-                stderrStream: process.stdout
+                silent: true
             });
             
             assert(log.options.meta.test === true);
             assert(log.options.tags.length === 1 && log.options.tags[0] === 'test');
             assert(typeof log.options.dynamicMeta === 'function');
             assert(log.options.silent === true);
-            assert(log.options.stderrStream === process.stdout);
         });
         
         describe('Log Levels', function() {
@@ -80,15 +77,6 @@ describe('LambdaLog', function() {
                     assert(typeof log.fatal === 'function');
                     assert(typeof log.rainbow === 'function');
                 });
-            });
-        });
-        
-        describe('Console', () => {
-            it('should create a custom instance of console', () => {
-                let { Console } = require('console'),
-                    log = new LambdaLog();
-                
-                assert(log.console instanceof Console);
             });
         });
     });
