@@ -20,7 +20,8 @@ There are others out there, but seemed to be convoluted, included more functiona
 
 #### New in Version 2.0.0
 * Dynamic metadata can be added to every log (ex. timestamp).
-* Logs can be piped to a custom stream instead of stdout/stderr.
+* ~~Logs can be piped to a custom stream instead of stdout/stderr.~~
+  * In 2.1.0, you can override the logging mechanism with a `console`-like object.
 * Log levels and their corresponding console method can be customized.
 * Logs are now an instance of a class with a simple API.
 * When logs are converted to JSON, you can customize/mask certain data using a replacer function.
@@ -114,17 +115,16 @@ Constructor for the `LambdaLog` class. Provided to be utilized in more advanced 
 ### log.options
 Configuration object for LambdaLog. Most options can be changed at any time via `log.options.OPTION = VALUE;` unless otherwise noted.
 
-| Option         | Type          | Description                                                                                                                                                                                                                                         | Default          |
-|----------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
-| `meta`         | Object        | Global metadata to be included in all logs.                                                                                                                                                                                                         | `{}`             |
-| `tags`         | Array[String] | Global tags to be included in all logs.                                                                                                                                                                                                             | `[]`             |
-| `dynamicMeta`  | Function      | Function that runs for each log that returns additional metadata. See [Dynamic Metadata](#dynamic-metadata).                                                                                                                                        | `null`           |
-| `debug`        | Boolean       | Enables `log.debug()`.                                                                                                                                                                                                                              | `false`          |
-| `dev`          | Boolean       | Enable development mode which pretty-prints JSON to the console.                                                                                                                                                                                    | `false`          |
-| `silent`       | Boolean       | Disables logging to `console` but messages and events are still generated.                                                                                                                                                                          | `false`          |
-| `replacer`     | Function      | Replacer function for `JSON.stringify()` to allow handling of sensitive data before logs are written. See [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_replacer_parameter). | `null`           |
-| `stdoutStream` | Stream        | Stream in which non-error logs will be written to. This option cannot be changed after instantiation. See [Log Streams](#log-streams).                                                                                                              | `process.stdout` |
-| `stderrStream` | Stream        | Stream in which error logs will be written to. This option cannot be changed after instantiation. See [Log Streams](#log-streams).                                                                                                                  | `process.stderr` |
+| Option        | Type          | Description                                                                                                                                                                                                                                         | Default   |
+|---------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
+| `meta`        | Object        | Global metadata to be included in all logs.                                                                                                                                                                                                         | `{}`      |
+| `tags`        | Array[String] | Global tags to be included in all logs.                                                                                                                                                                                                             | `[]`      |
+| `dynamicMeta` | Function      | Function that runs for each log that returns additional metadata. See [Dynamic Metadata](#dynamic-metadata).                                                                                                                                        | `null`    |
+| `debug`       | Boolean       | Enables `log.debug()`.                                                                                                                                                                                                                              | `false`   |
+| `dev`         | Boolean       | Enable development mode which pretty-prints JSON to the console.                                                                                                                                                                                    | `false`   |
+| `silent`      | Boolean       | Disables logging to `console` but messages and events are still generated.                                                                                                                                                                          | `false`   |
+| `replacer`    | Function      | Replacer function for `JSON.stringify()` to allow handling of sensitive data before logs are written. See [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_replacer_parameter). | `null`    |
+| `logHandler`  | Object        | A `console`-like object containing all standard console functions. Allows logs to be written to any custom location. See [Log Handler](#loghandler).                                                                                                | `console` |
 
 
 ### log.&lt;_info_|_warn_|_error_|_debug_|_*_&gt;(msg[, _meta={}_][, _tags=[]_])
@@ -398,8 +398,37 @@ log.options.dynamicMeta = function(message) {
 
 ---
 
-### Log Streams
-New in version 2.0.0, you may now customize the streams in which logs are written to. By default, all logs are written using the built-in `console` object to `process.stdout` and `process.stderr`. You may use alternative streams (like `fs.createWriteStream()` to log to a file) to customize where your logs go. This is useful for non-aws or custom implementations so logs may be sent to the most convient place.
+### Log Handler
+New in version 2.1.0, you may now customize the methods used to log messages. By default, lambda-log uses the global `console` object, but you can override this with a custom instance of <code><a href="https://nodejs.org/docs/latest-v8.x/api/console.html#console_new_console_stdout_stderr">Console</a></code> or your own `console`-like object that implements, at minimum, the following functions:
+
+* log
+* debug
+* info
+* error
+* warn
+
+Keep in mind that custom implementations must be synchronus. If you need it to be asynchronus, you will need to use a custom <code><a href="https://nodejs.org/docs/latest-v8.x/api/console.html#console_new_console_stdout_stderr">Console</a></code> instance and implement utilizing streams.
+
+```js
+const log = require('lambda-log');
+
+// example using `Console` instance
+const Console = require('console');
+log.options.logHandler = new Console(myStdoutStream, myStderrStream);
+
+// or with a console-like object
+const myConsole = {
+    log(message) {
+        // log `message` somewhere custom
+    },
+    error(message) {
+        // ...
+    },
+    ...
+};
+```
+
+Note that this is a breaking change from version 2.0.0 as there were issues by always utlizing a custom `Console` instance for certain users.
 
 ---
 
