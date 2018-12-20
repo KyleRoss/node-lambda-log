@@ -413,7 +413,7 @@ Keep in mind that custom implementations must be synchronus. If you need it to b
 const log = require('lambda-log');
 
 // example using `Console` instance
-const Console = require('console');
+const { Console } = require('console');
 log.options.logHandler = new Console(myStdoutStream, myStderrStream);
 
 // or with a console-like object
