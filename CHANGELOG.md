@@ -1,5 +1,9 @@
 # LambdaLog Changelog 
 
+## 2.1.0 (12/19/2018)
+* **BREAKING:** Removed `stdoutStream` and `stderrStream` options.
+* **NEW:** Added `logHandler` option which takes a `console`-like object to send logs through. (#11)
+
 ## 2.0.1 (12/7/2018)
 * Fix console logging pointing to global `console` instead of custom console instance for streaming. (@sh1n1chi8acker - #10)
 * Update mocha to v5.2.0
