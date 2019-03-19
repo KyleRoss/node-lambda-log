@@ -93,6 +93,10 @@ describe('LambdaLog', function() {
             assert(log.LambdaLog);
         });
         
+        it('should have access to LogMessage', function() {
+            assert(log.LogMessage);
+        });
+        
         it('should have _logLevels', () => {
             assert(typeof log._logLevels === 'object');
         });

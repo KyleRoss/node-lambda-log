@@ -4,11 +4,36 @@
   "description": "Basic logging mechanism for Node 6.10+ Lambda Functions",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "build": "npm run docs && npm run test",
+    "test": "./node_modules/.bin/mocha",
+    "test-coverage": "nyc --reporter text npm test",
+    "coveralls": "nyc --reporter=lcovonly npm test -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "docs": "jsdoc2md > README.md",
+    "semantic-release": "semantic-release"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "jsdoc2md": {
+    "template": "build/README.hbs",
+    "files": [
+      "./index.js",
+      "./lib/*.js"
+    ],
+    "partial": [
+      "./build/sig-name.hbs",
+      "./build/sig-link-parent.hbs",
+      "./build/sig-link.hbs"
+    ],
+    "module-index-format": "none",
+    "global-index-format": "grouped",
+    "member-index-format": "list"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KyleRoss/node-lambda-log.git"
+    "url": "https://github.com/KyleRoss/node-lambda-log.git"
   },
   "keywords": [
     "lambda",
@@ -38,7 +63,17 @@
     "node": ">= 6.10.0"
   },
   "devDependencies": {
-    "mocha": "^5.2.0"
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "@semantic-release/changelog": "^3.0.2",
+    "@semantic-release/git": "^7.0.8",
+    "coveralls": "^3.0.3",
+    "husky": "^1.3.1",
+    "istanbul": "^0.4.5",
+    "jsdoc-to-markdown": "^4.0.1",
+    "mocha": "^5.2.0",
+    "nyc": "^13.3.0",
+    "semantic-release": "^15.13.3"
   },
   "dependencies": {
     "json-stringify-safe": "^5.0.1"
