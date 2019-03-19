@@ -98,120 +98,165 @@ exports.handler = function(event, context, callback) {
 ---
 
 # API Documentation
+<a name="module_lambda-log"></a>
 
-### log
-Instance of the `LambdaLog` class which is exported when calling `require('lambda-log')`.
+## lambda-log
+<a name="exp_module_lambda-log--log"></a>
+
+### log : [<code>LambdaLog</code>](#LambdaLog) ⏏
+Instance of the [LambdaLog](#lambdalog) class which is exported when calling `require('lambda-log')`. 
+For more advanced usage, you can create a new instance of the LambdaLog class via `new log.LambdaLog()`.
+
+**Kind**: Exported LambdaLog Instance  
+**Example**  
+```js
+const log = require('lambda-log');
+
+// Advanced usage, create new instance of LambdaLog:
+const LambdaLog = require('lambda-log').LambdaLog;
+const log = new LambdaLog();
+```
+<a name="LambdaLog"></a>
+
+## LambdaLog ⇐ [<code>EventEmitter</code>](https://nodejs.org/api/events.html#events_class_eventemitter)
+**Kind**: global class  
+**Extends**: [<code>EventEmitter</code>](https://nodejs.org/api/events.html#events_class_eventemitter)  
+
+* [LambdaLog](#LambdaLog) ⇐ [<code>EventEmitter</code>](https://nodejs.org/api/events.html#events_class_eventemitter)
+    * [new LambdaLog([options], [levels])](#new_LambdaLog_new)
+    * [log.LambdaLog](#LambdaLog+LambdaLog) : [<code>LambdaLog</code>](#LambdaLog)
+    * [log.LogMessage](#LambdaLog+LogMessage) : [<code>LogMessage</code>](#LogMessage)
+    * [log.options](#LambdaLog+options)
+    * [log.&lt;info|warn|error|debug|*&gt;(msg, [meta], [tags])](#LambdaLog+&lt;info|warn|error|debug|*&gt;) ⇒ [<code>LogMessage</code>](#LogMessage)
+    * [log.log(level, msg, [meta], [tags])](#LambdaLog+log) ⇒ [<code>LogMessage</code>](#LogMessage) \| <code>Boolean</code>
+    * [log.assert(test, msg, [meta], [tags])](#LambdaLog+assert) ⇒ [<code>LogMessage</code>](#LogMessage) \| <code>Boolean</code>
+    * Event: [log](#LambdaLog+event_log)
+
+<a name="new_LambdaLog_new"></a>
+
+### new LambdaLog([options], [levels])
+Constructor for the LambdaLog class. Provided to be utilized in more advanced cases to allow overriding and configuration. By default, this module will export an instance of this class, but you may access the class and create your own instance via `log.LambdaLog`.
 
 
-## log.LambdaLog([_options={}_][, _levels={}_])
-Constructor for the `LambdaLog` class. Provided to be utilized in more advanced cases to allow overriding and configuration. By default, this module will export an instance of this class, but you may access the class and create your own instance via `log.LambdaLog`.
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> | <code>{}</code> | Options object. See [<code>log.options</code>](#logoptions) for available options. |
+| [levels] | <code>Object</code> | <code>{}</code> | Allows adding and customizing log levels. See [Custom Log Levels](#custom-log-levels). |
 
-| Argument  | Required? | Type   | Description                                                                            |
-|-----------|-----------|--------|----------------------------------------------------------------------------------------|
-| `options` | No        | Object | Options object. See [log.options](#logoptions) for available options.                  |
-| `levels`  | No        | Object | Allows adding and customizing log levels. See [Custom Log Levels](#custom-log-levels). |
+<a name="LambdaLog+LambdaLog"></a>
 
+### log.LambdaLog : [<code>LambdaLog</code>](#LambdaLog)
+Access to the uninstantiated LambdaLog class. This allows more advanced functionality and customization.
+
+**Kind**: instance property of [<code>LambdaLog</code>](#LambdaLog)  
+**Example**  
+```js
+const LambdaLog = require('lambda-log').LambdaLog;
+const log = new LambdaLog();
+```
+<a name="LambdaLog+LogMessage"></a>
+
+### log.LogMessage : [<code>LogMessage</code>](#LogMessage)
+Access to the uninstantiated LogMessage class. You can override this property to use a custom logging class that inherits the same methods.
+
+**Kind**: instance property of [<code>LambdaLog</code>](#LambdaLog)  
+**Since**: 2.2.0  
+**Example**  
+```js
+const log = require('lambda-log');
+const MyCustomLogMessageClass = require('./myCustomLogMessageClass.js');
+
+log.LogMessage = MyCustomLogMessageClass;
+```
+<a name="LambdaLog+options"></a>
 
 ### log.options
 Configuration object for LambdaLog. Most options can be changed at any time via `log.options.OPTION = VALUE;` unless otherwise noted.
 
-| Option        | Type          | Description                                                                                                                                                                                                                                         | Default   |
-|---------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
-| `meta`        | Object        | Global metadata to be included in all logs.                                                                                                                                                                                                         | `{}`      |
-| `tags`        | Array[String] | Global tags to be included in all logs.                                                                                                                                                                                                             | `[]`      |
-| `dynamicMeta` | Function      | Function that runs for each log that returns additional metadata. See [Dynamic Metadata](#dynamic-metadata).                                                                                                                                        | `null`    |
-| `debug`       | Boolean       | Enables `log.debug()`.                                                                                                                                                                                                                              | `false`   |
-| `dev`         | Boolean       | Enable development mode which pretty-prints JSON to the console.                                                                                                                                                                                    | `false`   |
-| `silent`      | Boolean       | Disables logging to `console` but messages and events are still generated.                                                                                                                                                                          | `false`   |
-| `replacer`    | Function      | Replacer function for `JSON.stringify()` to allow handling of sensitive data before logs are written. See [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_replacer_parameter). | `null`    |
-| `logHandler`  | Object        | A `console`-like object containing all standard console functions. Allows logs to be written to any custom location. See [Log Handler](#loghandler).                                                                                                | `console` |
+**Kind**: instance property of [<code>LambdaLog</code>](#LambdaLog)  
+**Properties**
 
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| [meta] | <code>Object</code> | <code>{}</code> | Global metadata to be included in all logs. |
+| [tags] | <code>Array.&lt;String&gt;</code> | <code>[]</code> | Global tags to be included in all logs. |
+| [dynamicMeta] | <code>function</code> | <code></code> | Function that runs for each log that returns additional metadata. See [Dynamic Metadata](#dynamic-metadata). |
+| [debug] | <code>Boolean</code> | <code>false</code> | Enables `log.debug()`. |
+| [dev] | <code>Boolean</code> | <code>false</code> | Enable development mode which pretty-prints JSON to the console. |
+| [silent] | <code>Boolean</code> | <code>false</code> | Disables logging to `console` but messages and events are still generated. |
+| [replacer] | <code>function</code> | <code></code> | Replacer function for `JSON.stringify()` to allow handling of sensitive data before logs are written. See [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_replacer_parameter). |
+| [logHandler] | <code>Object</code> | <code>console</code> | A console-like object containing all standard console functions. Allows logs to be written to any custom location. See [Log Handler](#loghandler). |
 
-### log.&lt;_info_|_warn_|_error_|_debug_|_*_&gt;(msg[, _meta={}_][, _tags=[]_])
-Shortcut methods for `log.log()`. By default, the following methods are available: `log.info()`, `log.warn()`, `log.error()` and `log.debug()`. Additional methods will be added for any [custom log levels](#custom-log-levels) provided.
+<a name="LambdaLog+&lt;info|warn|error|debug|*&gt;"></a>
 
-The provided `msg` can be any type, although a string or `Error` is recommended. If `Error` is provided the stack trace is added as metadata to the log as `stack`.
+### log.&lt;info\|warn\|error\|debug\|\*&gt;(msg, [meta], [tags]) ⇒ [<code>LogMessage</code>](#LogMessage)
+Shortcut methods for `log.log()`. By default, the following methods are available: `log.info()`, `log.warn()`, `log.error()` and `log.debug()`. 
+Additional methods will be added for any [custom log levels](#custom-log-levels) provided.<br><br>The provided msg can be any type, although a string 
+or `Error` is recommended. If `Error` is provided the stack trace is added as metadata to the log as `stack`.
 
-| Argument | Required? | Type   | Description                                                               |
-|----------|-----------|--------|---------------------------------------------------------------------------|
-| `msg`    | Yes       | Any    | Message to log. Can be of any type, but string or `Error` is recommended. |
-| `meta`   | No        | Object | Optional metadata object to include in the log JSON.                      |
-| `tags`   | No        | Array  | Additional tags to attach to this log.                                    |
+**Kind**: instance method of [<code>LambdaLog</code>](#LambdaLog)  
+**Returns**: [<code>LogMessage</code>](#LogMessage) - The LogMessage instance for the log.  
 
-##### Examples:
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| msg | <code>\*</code> |  | Message to log. Can be any type, but string or `Error` reccommended. |
+| [meta] | <code>Object</code> | <code>{}</code> | Optional meta data to attach to the log. |
+| [tags] | <code>Array</code> | <code>[]</code> | Additional tags to append to this log. |
+
+**Example**  
 ```js
 const log = require('lambda-log');
 
-// Basic logs
-log.info('Hello world!');
-log.warn('Something non-fatal happened with x, y and z!');
-log.error(new Error('Houston, we have a problem'));
-
-// Adding metadata
-log.error('Something broke...', { answer: 42 });
-
-let data = { ... };
-log.info('Data received', data);
-
-// Add custom tags too...
-let number = 'this is not a number';
-log.warn('It is not a number!', { number }, ['method:numberCheck', 'validation']);
-
-// This log will return false and not display any message since options.debug is false by default
-log.debug('This is a test debug message');
-//=> false
-
-// But if we enable options.debug, it will act the same as the other log methods:
-log.options.debug = true;
-log.debug('This is a test debug message');
-//=> { msg: "This is a test debug message" ... }
+log.info('Test info log');
+log.debug('Test debug log');
+log.warn('Test warn log');
+log.error('Test error log');
 ```
+<a name="LambdaLog+log"></a>
 
-See [Log Output](#log-output) for the structure of each log output.
+### log.log(level, msg, [meta], [tags]) ⇒ [<code>LogMessage</code>](#LogMessage) \| <code>Boolean</code>
+Generates JSON log message based on the provided parameters and the global configuration. Once the JSON message is created, it is properly logged to the `console` 
+and emitted through an event. If an `Error` or `Error`-like object is provided for `msg`, it will parse out the message and include the stacktrace in the metadata.
 
-###### Returns _[LogMessage](#logmessage)_
-> Returns instance of [LogMessage](#logmessage).
- 
+**Kind**: instance method of [<code>LambdaLog</code>](#LambdaLog)  
+**Returns**: [<code>LogMessage</code>](#LogMessage) \| <code>Boolean</code> - Returns instance of LogMessage or `false` if `level = "debug"` and `options.debug = false`. May also return `false` when a [custom log level](#custom-log-levels) handler function prevents the log from being logged.  
+**Throws**:
 
-### log.log(level, msg[, _meta={}_][, _tags=[]_])
-Generates JSON log message based on the provided parameters and the global configuration. Once the JSON message is created, it is properly logged to the `console` and emitted through an event. If and `Error` or `Error`-like object is provided for `msg`, it will parse out the message and include the stacktrace in the metadata. 
+- <code>Error</code> If improper log level is provided.
 
-| Argument | Required? | Type   | Description                                                                                                                                    |
-|----------|-----------|--------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| `level`  | Yes       | String | Log level for this log. Can be any of the default log levels (`info`, `warn`, `error` or `debug`) or a [custom log level](#custom-log-levels). |
-| `msg`    | Yes       | Any    | Message to log. Can be of any type, but string or `Error` is recommended.                                                                      |
-| `meta`   | No        | Object | Optional metadata object to include in the log JSON.                                                                                           |
-| `tags`   | No        | Array  | Additional tags to attach to this log.                                                                                                         |
 
-##### Example:
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| level | <code>String</code> |  | Log level (`info`, `debug`, `warn`, `error` or a [custom log level](#custom-log-levels)) |
+| msg | <code>Any</code> |  | Message to log. Can be any type, but string or `Error` reccommended. |
+| [meta] | <code>Object</code> | <code>{}</code> | Optional meta data to attach to the log. |
+| [tags] | <code>Array</code> | <code>[]</code> | Additional tags to append to this log. |
+
+**Example**  
 ```js
-const log = require('lambda-log');
-
-log.log('info', 'This is a test info message');
-log.log('info', 'This is a test info message', { someKey: 'with some optional metadata!' });
-log.log('error', new Error('It broke'), {}, ['custom-tag']);
+log.log('error', 'Something failed!');
+// same as:
+log.error('Something failed!');
 ```
+<a name="LambdaLog+assert"></a>
 
-###### Throws: _Error_
-> If improper log level is provided.  
-###### Returns: _[LogMessage](#logmessage)_ | _Boolean_
-> Returns instance of [LogMessage](#logmessage) or `false` if `level = "debug"` and `options.debug = false`. May also return `false` when a [custom log level](#custom-log-levels) handler function prevents the log from being logged.
+### log.assert(test, msg, [meta], [tags]) ⇒ [<code>LogMessage</code>](#LogMessage) \| <code>Boolean</code>
+Generates a log message if `test` is a falsy value. If `test` is truthy, the log message is skipped and returns `false`. Allows creating log messages without the need to 
+wrap them in an if statement. The log level will be `error`.
 
+**Kind**: instance method of [<code>LambdaLog</code>](#LambdaLog)  
+**Returns**: [<code>LogMessage</code>](#LogMessage) \| <code>Boolean</code> - The LogMessage instance for the log or `false` if test passed.  
+**Since**: 1.4.0  
 
-### log.assert(test, msg[, _meta={}_][, _tags=[]_])
-_(Since v1.4.0)_ Generates a log message if `test` is a falsy value. If `test` is truthy, the log message is skipped and returns `false`. Allows creating log messages without the need to wrap them in an if statement. The log level will be `error`.
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| test | <code>Any</code> |  | A value which is tested for a falsy value. |
+| msg | <code>Any</code> |  | Message to log if `test` is falsy. Can be any type, but string or `Error` reccommended. |
+| [meta] | <code>Object</code> | <code>{}</code> | Optional meta data to attach to the log. |
+| [tags] | <code>Array</code> | <code>[]</code> | Additional tags to append to this log. |
 
-| Argument | Required? | Type   | Description                                                               |
-|----------|-----------|--------|---------------------------------------------------------------------------|
-| `test`   | Yes       | Any    | Value to test if is falsy.                                                |
-| `msg`    | Yes       | Any    | Message to log. Can be of any type, but string or `Error` is recommended. |
-| `meta`   | No        | Object | Optional metadata object to include in the log JSON.                      |
-| `tags`   | No        | Array  | Additional tags to attach to this log.                                    |
-
-##### Example:
+**Example**  
 ```js
-const log = require('lambda-log');
-
 let results = null;
 // This log will be displayed since `results` is a falsy value.
 log.assert(results, 'No results provided!');
@@ -222,40 +267,155 @@ results = [1, 2, 3];
 log.assert(results, 'No results provided!');
 //=> false
 ```
-
-###### Returns: _[LogMessage](#logmessage)_ | _Boolean_
-> Returns instance of [LogMessage](#logmessage) or `false` if the test passed.
-
+<a name="LambdaLog+event_log"></a>
 
 ### Event: log
-The `log` event is emitted (using EventEmitter) for every log generated. This allows for custom integrations, such as logging to a thrid-party service. This event is emitted with the [LogMessage](#logmessage) instance for the log. You may control events using all the methods of EventEmitter.
+The log event is emitted (using EventEmitter) for every log generated. This allows for custom integrations, such as logging to a thrid-party service. 
+This event is emitted with the [LogMessage](#logmessage) instance for the log. You may control events using all the methods of EventEmitter.
 
-##### Example:
+**Kind**: event emitted by [<code>LambdaLog</code>](#LambdaLog)  
+**Example**  
 ```js
-const log = require('lambda-log');
-
-log.on('log', function(message) {
-    // ... do what you want with the log data, such as integrating with third-party service
-    console.log(message.value);
-    console.log(message.msg);
-    console.log(message.toJSON());
-    // ...
+log.on('log', message => {
+    // an example would be sending the log message to another service
+    someLogService(message.toJSON());
 });
 ```
-
----
+<a name="LogMessage"></a>
 
 ## LogMessage
-The LogMessage class is a private/internal class that is used for generating log messages. All log methods return an instance of LogMessage allowing for a chainable api. Having a seperate class and instance for each log allows chaining and the ability to further customize this module in the future without major breaking changes. The documentation provided here is what is available to you for each log message.
+The LogMessage class is a private/internal class that is used for generating log messages. All log methods return an instance of LogMessage allowing for a chainable api. 
+Having a seperate class and instance for each log allows chaining and the ability to further customize this module in the future without major breaking changes. The documentation 
+provided here is what is available to you for each log message.
 
-### logMessage.toJSON([_format=false_])
-Returns the compiled log object converted into JSON. This method utilizes `options.replacer` for the replacer function. It also uses `json-safe-stringify` to prevent circular reference issues.
+**Kind**: global class  
 
-| Argument | Required? | Type    | Description                                                      |
-|----------|-----------|---------|------------------------------------------------------------------|
-| `format` | No        | Boolean | Enable pretty-printing of the JSON object (4 space indentation). |
+* [LogMessage](#LogMessage)
+    * [new LogMessage(log, opts)](#new_LogMessage_new)
+    * [logMessage.level](#LogMessage+level) : <code>String</code>
+    * [logMessage.meta](#LogMessage+meta) : <code>Object</code>
+    * [logMessage.tags](#LogMessage+tags) : <code>Array.&lt;String&gt;</code>
+    * [logMessage.msg](#LogMessage+msg) : <code>String</code>
+    * [logMessage.value](#LogMessage+value) ⇒ <code>Object</code>
+    * [logMessage.log](#LogMessage+log) ⇒ <code>Object</code>
+    * [logMessage.throw](#LogMessage+throw)
+    * [logMessage.toJSON([format])](#LogMessage+toJSON) ⇒ <code>String</code>
 
-##### Example:
+<a name="new_LogMessage_new"></a>
+
+### new LogMessage(log, opts)
+Constructor for LogMessage
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| log | <code>Object</code> | Object containing all the information for a log. |
+| log.level | <code>String</code> | The log level. |
+| log.msg | <code>\*</code> | The message for the log. |
+| [log.meta] | <code>Object</code> | Metadata attached to the log. |
+| [log.tags] | <code>Array.&lt;String&gt;</code> | Additional tags to attach to the log. |
+| opts | <code>Object</code> | Configuration options from LambdaLog. |
+
+<a name="LogMessage+level"></a>
+
+### logMessage.level : <code>String</code>
+String log level of the message.
+
+**Kind**: instance property of [<code>LogMessage</code>](#LogMessage)  
+**Example**  
+```js
+log.error('This is an error').level;
+//=> "error"
+```
+<a name="LogMessage+meta"></a>
+
+### logMessage.meta : <code>Object</code>
+The fully compiled metadata object for the log. Includes global and dynamic metadata.
+
+**Kind**: instance property of [<code>LogMessage</code>](#LogMessage)  
+**Example**  
+```js
+log.info('This is some info', { hello: 'world' }).meta;
+//=> { hello: 'world', ... }
+```
+<a name="LogMessage+tags"></a>
+
+### logMessage.tags : <code>Array.&lt;String&gt;</code>
+Array of tags attached to this log. Includes global tags.
+
+**Kind**: instance property of [<code>LogMessage</code>](#LogMessage)  
+**Example**  
+```js
+log.info('This is some info', {}, ['custom-tag']).tags;
+//=> ["custom-tag", ...]
+```
+<a name="LogMessage+msg"></a>
+
+### logMessage.msg : <code>String</code>
+The message for the log. If an Error was provided, it will be the message of the error.
+
+**Kind**: instance property of [<code>LogMessage</code>](#LogMessage)  
+**Example**  
+```js
+log.error('This is an error').msg;
+//=> "This is an error"
+```
+<a name="LogMessage+value"></a>
+
+### logMessage.value ⇒ <code>Object</code>
+The full log object. This is the object used in logMessage.toJSON() and when the log is written to the console. 
+See [Log Output](#log-output) for more information.
+
+**Kind**: instance property of [<code>LogMessage</code>](#LogMessage)  
+**Returns**: <code>Object</code> - The full log object.  
+**Example**  
+```js
+log.info('This is some info').value;
+//=> { _logLevel: 'info', msg: 'This is some info', ... }
+```
+<a name="LogMessage+log"></a>
+
+### logMessage.log ⇒ <code>Object</code>
+Alias of `logMessage.value`.
+
+**Kind**: instance property of [<code>LogMessage</code>](#LogMessage)  
+**Returns**: <code>Object</code> - The full log object.  
+<a name="LogMessage+throw"></a>
+
+### logMessage.throw
+Throws the log. If an error was not provided, one will be generated for you and thrown. This is useful in cases where you need to log an 
+error, but also throw it.
+
+**Kind**: instance property of [<code>LogMessage</code>](#LogMessage)  
+**Throws**:
+
+- <code>Error</code> The provided error, or a newly generated error.
+
+**Example**  
+```js
+log.error('This is an error').throw;
+
+//Shorthand for:
+let logMsg = log.error('This is an error');
+let error = new Error(logMsg.msg);
+error.log = logMsg;
+
+throw error;
+```
+<a name="LogMessage+toJSON"></a>
+
+### logMessage.toJSON([format]) ⇒ <code>String</code>
+Returns the compiled log object converted into JSON. This method utilizes `options.replacer` for the replacer function. It also uses 
+[json-stringify-safe](https://www.npmjs.com/package/json-stringify-safe) to prevent circular reference issues.
+
+**Kind**: instance method of [<code>LogMessage</code>](#LogMessage)  
+**Returns**: <code>String</code> - Log object stringified as JSON.  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [format] | <code>Boolean</code> | <code>false</code> | Enable pretty-printing of the JSON object (4 space indentation). |
+
+**Example**  
 ```js
 log.error('This is an error').toJSON(true);
 //=> {
@@ -264,75 +424,6 @@ log.error('This is an error').toJSON(true);
 //      ...
 //   }
 ```
-
-###### Returns: _String_
-> Returns the log object stringified as JSON.
-
-### logMessage.level
-String log level of the message.
-
-##### Example:
-```js
-log.error('This is an error').level;
-//=> "error"
-```
-
-### logMessage.meta
-The fully compiled metadata object for the log. Includes global and dynamic metadata.
-
-##### Example:
-```js
-log.info('This is some info', { hello: 'world' }).meta;
-//=> { hello: 'world', ... }
-```
-
-### logMessage.tags
-Array of tags attached to this log. Includes global tags.
-
-##### Example:
-```js
-log.info('This is some info', {}, ['custom-tag']).tags;
-//=> ["custom-tag", ...]
-```
-
-### logMessage.msg
-The message for the log. If an `Error` was provided, it will be the message of the error.
-
-##### Example:
-```js
-log.error('This is an error').msg;
-//=> "This is an error"
-```
-
-### logMessage.value
-The full log object. This is the object used in `logMessage.toJSON()` and when the log is written to the `console`. See [Log Output](#log-output) for more information.
-
-##### Example:
-```js
-log.info('This is some info').value;
-//=> { _logLevel: 'info', msg: 'This is some info', ... }
-```
-
-### logMessage.log
-Alias of `logMessage.value`.
-
-### logMessage.throw
-Throws the log. If an error was not provided, one will be generated for you and thrown. This is useful in cases where you need to log an error, but also throw it.
-
-##### Example:
-```js
-log.error('This is an error').throw;
-/*
-Shorthand for:
-
-    let logMsg = log.error('This is an error');
-    let error = new Error(logMsg.msg);
-    error.log = logMsg;
-    
-    throw error;
-*/
-```
-
 ---
 
 ### Log Output
