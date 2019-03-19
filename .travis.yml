@@ -29,4 +29,4 @@ jobs:
         script:
           - npm run docs
           - npx semantic-release
-      if: branch = master
+      if: branch = master AND type != pull_request
