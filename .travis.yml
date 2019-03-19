@@ -1,3 +1,5 @@
+dist: trusty
+sudo: required
 language: node_js
 node_js:
   - "11"
@@ -6,3 +8,24 @@ node_js:
   - "8"
   - "6"
   - "6.10"
+after_success: 'npm run coveralls'
+
+os:
+  - linux
+
+jobs:
+  include:
+    - stage: install
+      script: npm install
+      skip_cleanup: true
+    - stage: test
+      script: npm run test
+      skip_cleanup: true
+    - stage: release
+      node_js: lts/*
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx semantic-release
+      if: branch = master
