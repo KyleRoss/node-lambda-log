@@ -1,5 +1,3 @@
-# LambdaLog Changelog 
-
 ## 2.1.0 (12/19/2018)
 * **BREAKING:** Removed `stdoutStream` and `stderrStream` options.
 * **NEW:** Added `logHandler` option which takes a `console`-like object to send logs through. (#11)
