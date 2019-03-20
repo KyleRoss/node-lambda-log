@@ -7,7 +7,6 @@ node_js:
   - "8"
   - "6"
 cache: npm
-after_success: 'npm run coveralls'
 
 os:
   - linux
@@ -17,8 +16,11 @@ jobs:
     - stage: test
       script: npm run test
       skip_cleanup: true
+      after_success: 'npm run coveralls'
     - stage: release
       node_js: lts/*
+      script: npm run docs
+      skip_cleanup: true
       deploy:
         provider: script
         skip_cleanup: true
