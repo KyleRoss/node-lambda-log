@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/KyleRoss/node-lambda-log/compare/v2.1.0...v2.2.0) (2019-03-20)
+
+
+### Features
+
+* **logmessage:** allow overriding LogMessage ([8a867ac](https://github.com/KyleRoss/node-lambda-log/commit/8a867ac))
+
 # [1.2.0](https://github.com/KyleRoss/node-lambda-log/compare/v1.1.0...v1.2.0) (2019-03-20)
 
 
