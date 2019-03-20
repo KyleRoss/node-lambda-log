@@ -150,9 +150,8 @@ describe ('LogMessage', () => {
                 
                 assert.throws(() => {
                     logMsgPlain.throw;
-                }, {
-                    name: 'Error',
-                    message: 'Test'
+                }, function(err) {
+                    if((err instanceof Error) && err.message === 'Test') return true;
                 });
             });
         });

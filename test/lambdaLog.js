@@ -148,9 +148,8 @@ describe('LambdaLog', function() {
             it('should throw error with invalid level provided', function() {
                 assert.throws(function() {
                     log.log('random', 'Test invalid level');
-                }, {
-                    name: 'Error',
-                    message: '"random" is not a valid log level'
+                }, function(err) {
+                    if((err instanceof Error) && err.message === '"random" is not a valid log level') return true;
                 });
             });
 
