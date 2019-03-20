@@ -49,6 +49,11 @@ describe('LambdaLog', function() {
                     assert(Array.isArray(log._levels));
                     assert(log._levels.length === 4);
                 });
+                
+                it('should include custom log levels', () => {
+                    let log = new LambdaLog({}, { test: 'log' });
+                    assert(log._logLevels.test === 'log');
+                });
             });
             
             describe ('Custom', () => {
