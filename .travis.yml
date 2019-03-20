@@ -4,10 +4,9 @@ language: node_js
 node_js:
   - "11"
   - "10"
-  - "9"
   - "8"
   - "6"
-  - "6.10"
+cache: npm
 after_success: 'npm run coveralls'
 
 os:
@@ -15,9 +14,6 @@ os:
 
 jobs:
   include:
-    - stage: install
-      script: npm install
-      skip_cleanup: true
     - stage: test
       script: npm run test
       skip_cleanup: true
