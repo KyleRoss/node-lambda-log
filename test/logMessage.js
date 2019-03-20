@@ -29,6 +29,29 @@ describe ('LogMessage', () => {
         it('should create instance of LogMessage', () => {
             assert(logMsg instanceof LogMessage);
         });
+        
+        it('should create a meta object', () => {
+            let logMsgMeta = new LogMessage({
+                level: 'error',
+                msg: new Error('Test'),
+                meta: 'test',
+                tags: ['test']
+            }, { tags: [] });
+            
+            assert(typeof logMsgMeta.meta === 'object');
+        });
+        
+        it('should combine global metadata with local metadata', () => {
+            let logMsgMeta = new LogMessage({
+                level: 'error',
+                msg: new Error('Test'),
+                meta: { test: true },
+                tags: ['test']
+            }, { meta: { global: true }, tags: [] });
+            
+            assert(logMsgMeta.meta.test === true);
+            assert(logMsgMeta.meta.global === true);
+        });
     });
     
     describe ('Properties', () => {
@@ -114,6 +137,22 @@ describe ('LogMessage', () => {
             it('should throw error', () => {
                 assert.throws(() => {
                     logMsg.throw;
+                });
+            });
+            
+            it('should create an error if one is not provided', () => {
+                let logMsgPlain = new LogMessage({
+                    level: 'error',
+                    msg: 'Test',
+                    meta: { test: true },
+                    tags: ['test']
+                }, { meta: { global: true }, tags: [] });
+                
+                assert.throws(() => {
+                    logMsgPlain.throw;
+                }, {
+                    name: 'Error',
+                    message: 'Test'
                 });
             });
         });

@@ -128,6 +128,31 @@ describe('LambdaLog', function() {
                 assert(logData instanceof LogMessage);
                 assert.equal(logData.msg, 'Test log');
             });
+            
+            it('should log json to the console', function(done) {
+                log.console = {
+                    info: function(json) {
+                        log.options.silent = true;
+                        log.console = console;
+                        
+                        assert.ok(JSON.parse(json));
+                        
+                        done();
+                    }
+                };
+                
+                log.options.silent = false;
+                log.log('info', 'test');
+            });
+            
+            it('should throw error with invalid level provided', function() {
+                assert.throws(function() {
+                    log.log('random', 'Test invalid level');
+                }, {
+                    name: 'Error',
+                    message: '"random" is not a valid log level'
+                });
+            });
 
             it('should aceept and parse Error object', function() {
                 let err = new Error('Test error'),
