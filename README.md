@@ -130,6 +130,7 @@ const log = new LambdaLog();
     * [log.&lt;info|warn|error|debug|*&gt;(msg, [meta], [tags])](#LambdaLog+&lt;info|warn|error|debug|*&gt;) ⇒ [<code>LogMessage</code>](#LogMessage)
     * [log.log(level, msg, [meta], [tags])](#LambdaLog+log) ⇒ [<code>LogMessage</code>](#LogMessage) \| <code>Boolean</code>
     * [log.assert(test, msg, [meta], [tags])](#LambdaLog+assert) ⇒ [<code>LogMessage</code>](#LogMessage) \| <code>Boolean</code>
+    * [log.result(promise, [meta], [tags])](#LambdaLog+result) ⇒ [<code>Promise.&lt;LogMessage&gt;</code>](#LogMessage)
     * Event: [log](#LambdaLog+event_log)
 
 <a name="new_LambdaLog_new"></a>
@@ -266,6 +267,28 @@ log.assert(results, 'No results provided!');
 results = [1, 2, 3];
 log.assert(results, 'No results provided!');
 //=> false
+```
+<a name="LambdaLog+result"></a>
+
+### log.result(promise, [meta], [tags]) ⇒ [<code>Promise.&lt;LogMessage&gt;</code>](#LogMessage)
+Generates a log message with the result or error provided by a promise. Useful for debugging and testing.
+
+**Kind**: instance method of [<code>LambdaLog</code>](#LambdaLog)  
+**Returns**: [<code>Promise.&lt;LogMessage&gt;</code>](#LogMessage) - A new Promise that resolves with the LogMessage object after the promise completes.  
+**Since**: 2.3.0  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| promise | <code>Promise</code> |  | A promise or promise-like object to retrieve a value from. |
+| [meta] | <code>Object</code> | <code>{}</code> | Optional meta data to attach to the log. |
+| [tags] | <code>Array</code> | <code>[]</code> | Additional tags to append to this log. |
+
+**Example**  
+```js
+let promise = new Promise(resolve => resolve('this is a test'));
+
+log.result(promise);
+// => { "msg": "this is a test" ... }
 ```
 <a name="LambdaLog+event_log"></a>
 

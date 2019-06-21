@@ -1,3 +1,20 @@
+# [2.3.0](https://github.com/KyleRoss/node-lambda-log/compare/v2.2.0...v2.3.0) (2019-06-21)
+
+
+### Bug Fixes
+
+* add .DS_Store to gitignore ([968bd50](https://github.com/KyleRoss/node-lambda-log/commit/968bd50))
+
+
+### Features
+
+* add `log.result()` method ([3b98ec3](https://github.com/KyleRoss/node-lambda-log/commit/3b98ec3))
+
+
+### Performance Improvements
+
+* switch to fast-safe-stringify to increase performance ([3f5fa59](https://github.com/KyleRoss/node-lambda-log/commit/3f5fa59))
+
 # [2.2.0](https://github.com/KyleRoss/node-lambda-log/compare/v2.1.0...v2.2.0) (2019-03-20)
 
 
