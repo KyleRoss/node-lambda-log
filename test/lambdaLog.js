@@ -6,7 +6,7 @@ const LogMessage = require('../lib/LogMessage');
 
 describe('LambdaLog', function() {
     describe('Constructor', function() {
-        it ('should have default options', () => {
+        it('should have default options', () => {
             let log = new LambdaLog();
             
             assert(typeof log.options.meta === 'object');
@@ -19,7 +19,7 @@ describe('LambdaLog', function() {
             assert(log.options.logHandler === console);
         });
         
-        it ('should override default options', () => {
+        it('should override default options', () => {
             let log = new LambdaLog({
                 meta: { test: true },
                 tags: ['test'],
@@ -34,10 +34,10 @@ describe('LambdaLog', function() {
         });
         
         describe('Log Levels', function() {
-            describe ('Default', () => {
+            describe('Default', () => {
                 let log = new LambdaLog();
                 
-                it ('should have default log levels', () => {
+                it('should have default log levels', () => {
                     assert(typeof log._logLevels === 'object');
                     assert(log._logLevels.info === 'info');
                     assert(log._logLevels.warn === 'warn');
@@ -45,7 +45,7 @@ describe('LambdaLog', function() {
                     assert(typeof log._logLevels.debug === 'function');
                 });
                 
-                it ('should have array of log levels', () => {
+                it('should have array of log levels', () => {
                     assert(Array.isArray(log._levels));
                     assert(log._levels.length === 4);
                 });
@@ -56,7 +56,7 @@ describe('LambdaLog', function() {
                 });
             });
             
-            describe ('Custom', () => {
+            describe('Custom', () => {
                 let log = new LambdaLog({}, {
                     info: 'log',
                     fatal: 'error',
@@ -115,9 +115,7 @@ describe('LambdaLog', function() {
         let log = new LambdaLog({
             meta: { test: true },
             dynamicMeta: function() {
-                return {
-                    timestamp: new Date().toISOString()
-                };
+                return { timestamp: new Date().toISOString() };
             },
             tags: ['test'],
             silent: true
@@ -285,6 +283,64 @@ describe('LambdaLog', function() {
                 let logData = log.assert(false, 'Test assert');
                 assert(logData.tags.indexOf('error') !== -1);
                 assert.equal(logData.level, 'error');
+            });
+        });
+        
+        describe('result()', function() {
+            it('should have result method', function() {
+                assert.equal(typeof log.result, 'function');
+            });
+
+            it('should return a promise', function() {
+                let promise = new Promise(resolve => resolve('test')),
+                    res = log.result(promise);
+                assert.equal(typeof res.then, 'function');
+            });
+            
+            it('should throw an error when a promise is not provided', function() {
+                assert.throws(function() {
+                    log.result();
+                }, function(err) {
+                    if((err instanceof Error) && err.message === 'A promise must be provided as the first argument') return true;
+                });
+            });
+            
+            it('should throw an error when a non-valid promise is provided', function() {
+                assert.throws(function() {
+                    log.result({});
+                }, function(err) {
+                    if((err instanceof Error) && err.message === 'A promise must be provided as the first argument') return true;
+                });
+            });
+            
+            it('should return a promise the resolves with log message', function(done) {
+                let promise = new Promise(resolve => resolve('test')),
+                    res = log.result(promise);
+                
+                res.then(logData => {
+                    assert.equal(logData.msg, 'test');
+                    done();
+                });
+            });
+
+            it('should set the level to info on resolve', function(done) {
+                let promise = new Promise(resolve => resolve('test')),
+                    res = log.result(promise);
+                
+                res.then(logData => {
+                    assert.equal(logData.level, 'info');
+                    done();
+                });
+            });
+            
+            it('should set the level to error on rejection', function(done) {
+                let promise = new Promise((resolve, reject) => reject('test')),
+                    res = log.result(promise);
+                
+                res.then(logData => {
+                    assert.equal(logData.level, 'error');
+                    done();
+                });
             });
         });
     });
