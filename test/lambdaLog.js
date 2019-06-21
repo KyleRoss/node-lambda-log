@@ -297,6 +297,22 @@ describe('LambdaLog', function() {
                 assert.equal(typeof res.then, 'function');
             });
             
+            it('should throw an error when a promise is not provided', function() {
+                assert.throws(function() {
+                    log.result();
+                }, function(err) {
+                    if((err instanceof Error) && err.message === 'A promise must be provided as the first argument') return true;
+                });
+            });
+            
+            it('should throw an error when a non-valid promise is provided', function() {
+                assert.throws(function() {
+                    log.result({});
+                }, function(err) {
+                    if((err instanceof Error) && err.message === 'A promise must be provided as the first argument') return true;
+                });
+            });
+            
             it('should return a promise the resolves with log message', function(done) {
                 let promise = new Promise(resolve => resolve('test')),
                     res = log.result(promise);
