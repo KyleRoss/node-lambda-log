@@ -5,7 +5,7 @@ const LogMessage = require('../lib/LogMessage');
 const logMsg = new LogMessage({
     level: 'error',
     msg: new Error('Test'),
-    meta: { hello: 'world', arr: [1,2,3] },
+    meta: { hello: 'world', arr: [1, 2, 3] },
     tags: ['test']
 }, {
     meta: { test: true },
@@ -17,15 +17,15 @@ const logMsg = new LogMessage({
     },
     replacer: function(key, value) {
         if(key === 'ssn') {
-            return value.substr(0,3) + '-**-****';
+            return `${value.substr(0, 3)}-**-****`;
         }
         return value;
     },
     silent: true
 });
 
-describe ('LogMessage', () => {
-    describe ('Constructor', () => {
+describe('LogMessage', () => {
+    describe('Constructor', () => {
         it('should create instance of LogMessage', () => {
             assert(logMsg instanceof LogMessage);
         });
@@ -54,7 +54,7 @@ describe ('LogMessage', () => {
         });
     });
     
-    describe ('Properties', () => {
+    describe('Properties', () => {
         it('should have level', () => {
             assert(typeof logMsg.level === 'string');
             assert(logMsg.level === 'error');
@@ -68,15 +68,15 @@ describe ('LogMessage', () => {
             assert(Array.isArray(logMsg.tags));
         });
         
-        it ('should have msg', () => {
+        it('should have msg', () => {
             assert(typeof logMsg.msg === 'string');
         });
         
-        it ('should have _error', () => {
+        it('should have _error', () => {
             assert(logMsg._error instanceof Error);
         });
         
-        it ('should have _replacer', () => {
+        it('should have _replacer', () => {
             assert(typeof logMsg._replacer === 'function');
         });
     });
