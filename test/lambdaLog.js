@@ -285,6 +285,48 @@ describe('LambdaLog', function() {
                 assert.equal(logData.level, 'error');
             });
         });
+        
+        describe('result()', function() {
+            it('should have result method', function() {
+                assert.equal(typeof log.result, 'function');
+            });
+
+            it('should return a promise', function() {
+                let promise = new Promise(resolve => resolve('test')),
+                    res = log.result(promise);
+                assert.equal(typeof res.then, 'function');
+            });
+            
+            it('should return a promise the resolves with log message', function(done) {
+                let promise = new Promise(resolve => resolve('test')),
+                    res = log.result(promise);
+                
+                res.then(logData => {
+                    assert.equal(logData.msg, 'test');
+                    done();
+                });
+            });
+
+            it('should set the level to info on resolve', function(done) {
+                let promise = new Promise(resolve => resolve('test')),
+                    res = log.result(promise);
+                
+                res.then(logData => {
+                    assert.equal(logData.level, 'info');
+                    done();
+                });
+            });
+            
+            it('should set the level to error on rejection', function(done) {
+                let promise = new Promise((resolve, reject) => reject('test')),
+                    res = log.result(promise);
+                
+                res.then(logData => {
+                    assert.equal(logData.level, 'error');
+                    done();
+                });
+            });
+        });
     });
 
     describe('Events', function() {
