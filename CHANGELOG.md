@@ -1,3 +1,11 @@
+## [2.3.1](https://github.com/KyleRoss/node-lambda-log/compare/v2.3.0...v2.3.1) (2019-09-03)
+
+
+### Bug Fixes
+
+* change debug log method ([#21](https://github.com/KyleRoss/node-lambda-log/issues/21)) ([2348d8b](https://github.com/KyleRoss/node-lambda-log/commit/2348d8b))
+* change debug log method ([#21](https://github.com/KyleRoss/node-lambda-log/issues/21)) ([#22](https://github.com/KyleRoss/node-lambda-log/issues/22)) ([db33618](https://github.com/KyleRoss/node-lambda-log/commit/db33618))
+
 # [2.3.0](https://github.com/KyleRoss/node-lambda-log/compare/v2.2.0...v2.3.0) (2019-06-21)
 
 
