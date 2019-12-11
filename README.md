@@ -14,7 +14,7 @@ There are others out there, but seemed to be convoluted, included more functiona
 * Pluggable by wrapping/extending the LambdaLog class.
 * Emits event on log to allow third-party integration.
 * Error and Error-like objects logged include stacktraces in the metadata automatically.
-* Pretty-printing of JSON object in [dev](#lambdalogconfig) mode.
+* Pretty-printing of JSON object in [dev](#logoptions) mode.
 * Well-documented and commented source.
 * Small footprint!
 
