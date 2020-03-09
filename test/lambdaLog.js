@@ -33,6 +33,15 @@ describe('LambdaLog', function() {
             assert(log.options.silent === true);
         });
         
+        it('should allow overriding silent via LAMBDALOG_SILENT variable', () => {
+            let oldVal = process.env.LAMBDALOG_SILENT;
+            process.env.LAMBDALOG_SILENT = true;
+            let log = new LambdaLog();
+        
+            assert(log.options.silent === true);
+            process.env.LAMBDALOG_SILENT = oldVal;
+        })
+
         describe('Log Levels', function() {
             describe('Default', () => {
                 let log = new LambdaLog();
