@@ -33,14 +33,46 @@ describe('LambdaLog', function() {
             assert(log.options.silent === true);
         });
         
-        it('should allow overriding silent via LAMBDALOG_SILENT variable', () => {
-            let oldVal = process.env.LAMBDALOG_SILENT;
-            process.env.LAMBDALOG_SILENT = true;
-            let log = new LambdaLog();
-        
-            assert(log.options.silent === true);
-            process.env.LAMBDALOG_SILENT = oldVal;
-        })
+        describe('LAMBDALOG_SILENT', function () {
+            let oldVal;
+            beforeEach(function () {
+                oldVal = process.env.LAMBDALOG_SILENT;
+            });
+
+            afterEach(function () {
+                process.env.LAMBDALOG_SILENT = oldVal;
+            });
+
+            it('should be true for "1"', function () {
+                process.env.LAMBDALOG_SILENT = '1';
+                assert(new LambdaLog().options.silent);
+            });
+
+            it('should be true for "true"', function () {
+                process.env.LAMBDALOG_SILENT = true;
+                assert(new LambdaLog().options.silent);
+            });
+
+            it('should be true for any truthy string', function () {
+                process.env.LAMBDALOG_SILENT = 'foo';
+                assert(new LambdaLog().options.silent);
+            });
+
+            it('should be false if not defined', function () {
+                delete process.env.LAMBDALOG_SILENT;
+                assert(!new LambdaLog().options.silent);
+            });
+
+            it('should be false if "0"', function () {
+                process.env.LAMBDALOG_SILENT = '0';
+                assert(!new LambdaLog().options.silent);
+            });
+
+            it('should be false for "false"', function () {
+                process.env.LAMBDALOG_SILENT = 'false';
+                assert(!new LambdaLog().options.silent);
+            })
+        });
 
         describe('Log Levels', function() {
             describe('Default', () => {
