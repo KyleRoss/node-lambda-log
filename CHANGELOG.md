@@ -1,3 +1,15 @@
+# [2.4.0](https://github.com/KyleRoss/node-lambda-log/compare/v2.3.1...v2.4.0) (2020-05-15)
+
+
+### Bug Fixes
+
+* check for "falsey" values for LAMBDALOG_SILENT ([187f755](https://github.com/KyleRoss/node-lambda-log/commit/187f755f4f54fdf2ba1a2946a73144757468cb33))
+
+
+### Features
+
+* allow globally overriding silent via env var LAMBDALOG_SILENT ([aecbfba](https://github.com/KyleRoss/node-lambda-log/commit/aecbfba8bde04f19a6b38f4580d5e66d69586543))
+
 ## [2.3.1](https://github.com/KyleRoss/node-lambda-log/compare/v2.3.0...v2.3.1) (2019-09-03)
 
 

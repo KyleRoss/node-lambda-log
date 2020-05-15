@@ -14,7 +14,7 @@ There are others out there, but seemed to be convoluted, included more functiona
 * Pluggable by wrapping/extending the LambdaLog class.
 * Emits event on log to allow third-party integration.
 * Error and Error-like objects logged include stacktraces in the metadata automatically.
-* Pretty-printing of JSON object in [dev](#logoptions) mode.
+* Pretty-printing of JSON object in [dev](#lambdalogconfig) mode.
 * Well-documented and commented source.
 * Small footprint!
 
@@ -229,7 +229,7 @@ and emitted through an event. If an `Error` or `Error`-like object is provided f
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | level | <code>String</code> |  | Log level (`info`, `debug`, `warn`, `error` or a [custom log level](#custom-log-levels)) |
-| msg | <code>Any</code> |  | Message to log. Can be any type, but string or `Error` reccommended. |
+| msg | <code>\*</code> |  | Message to log. Can be any type, but string or `Error` reccommended. |
 | [meta] | <code>Object</code> | <code>{}</code> | Optional meta data to attach to the log. |
 | [tags] | <code>Array</code> | <code>[]</code> | Additional tags to append to this log. |
 
@@ -251,8 +251,8 @@ wrap them in an if statement. The log level will be `error`.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| test | <code>Any</code> |  | A value which is tested for a falsy value. |
-| msg | <code>Any</code> |  | Message to log if `test` is falsy. Can be any type, but string or `Error` reccommended. |
+| test | <code>\*</code> |  | A value which is tested for a falsy value. |
+| msg | <code>\*</code> |  | Message to log if `test` is falsy. Can be any type, but string or `Error` reccommended. |
 | [meta] | <code>Object</code> | <code>{}</code> | Optional meta data to attach to the log. |
 | [tags] | <code>Array</code> | <code>[]</code> | Additional tags to append to this log. |
 
