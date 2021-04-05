@@ -68,6 +68,8 @@
     "@semantic-release/changelog": "^3.0.4",
     "@semantic-release/git": "^7.0.12",
     "coveralls": "^3.0.4",
+    "eslint": "^7.23.0",
+    "eslint-config-xo-space": "^0.27.0",
     "husky": "^2.4.1",
     "jsdoc-to-markdown": "^5.0.0",
     "mocha": "^6.1.4",
