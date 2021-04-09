@@ -5,9 +5,6 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run docs && npm run test",
-    "test": "./node_modules/.bin/mocha",
-    "test-coverage": "nyc --reporter text npm test",
-    "coveralls": "nyc --reporter=lcovonly npm test -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "docs": "jsdoc2md > README.md",
     "semantic-release": "semantic-release"
   },
@@ -30,6 +27,7 @@
     "module-index-format": "none",
     "global-index-format": "grouped",
     "member-index-format": "list"
+    "test": "jest",
   },
   "repository": {
     "type": "git",
@@ -67,14 +65,12 @@
     "@commitlint/config-conventional": "^8.0.0",
     "@semantic-release/changelog": "^3.0.4",
     "@semantic-release/git": "^7.0.12",
-    "coveralls": "^3.0.4",
     "eslint": "^7.23.0",
     "eslint-config-xo-space": "^0.27.0",
     "husky": "^2.4.1",
     "jsdoc-to-markdown": "^5.0.0",
-    "mocha": "^6.1.4",
-    "nyc": "^14.1.1",
     "semantic-release": "^15.13.16"
+    "jest": "^26.6.3",
   },
   "dependencies": {
     "fast-safe-stringify": "^2.0.6"
