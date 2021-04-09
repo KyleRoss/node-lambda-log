@@ -1,0 +1,29 @@
+---
+name: Bug Report
+about: If something is not working the way you expect it to
+labels: triage
+---
+
+## What happens?
+
+...
+
+### What were you expecting to happen?
+
+...
+
+## Steps to reproduce
+
+1. ...
+2. ...
+3. ...
+
+## Any logs, output, examples?
+
+...
+
+## Environment
+
+**Operating System:** ...
+**Node Version:** ...
+**Lambda Log Version:** ...
