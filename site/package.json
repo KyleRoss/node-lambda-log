@@ -1,0 +1,66 @@
+{
+  "name": "lambda-log-site",
+  "private": true,
+  "description": "Documentation site for Lambda Log",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@fontsource/fira-code": "^4.2.2",
+    "@fontsource/fira-sans": "^4.2.2",
+    "gatsby": "^3.2.0",
+    "gatsby-plugin-alias-imports": "^1.0.5",
+    "gatsby-plugin-google-gtag": "^3.2.0",
+    "gatsby-plugin-react-helmet": "^4.2.0",
+    "gatsby-plugin-robots-txt": "^1.5.5",
+    "gatsby-plugin-sitemap": "^3.2.0",
+    "gatsby-plugin-styled-components": "^4.2.0",
+    "gatsby-remark-component-parent2div": "^1.2.3",
+    "gatsby-remark-prismjs": "^4.2.0",
+    "gatsby-source-filesystem": "^3.2.0",
+    "gatsby-transformer-remark": "^3.2.0",
+    "modern-css-reset": "^1.4.0",
+    "polished": "^4.1.1",
+    "prismjs": "^1.23.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-countup": "^4.3.3",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.2.0",
+    "rehype-react": "^6.2.0",
+    "striptags": "^3.1.1",
+    "styled-breakpoints": "^10.0.0",
+    "styled-components": "^5.2.2",
+    "typography": "^0.16.19"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.14",
+    "@babel/eslint-parser": "^7.13.14",
+    "babel-plugin-styled-components": "^1.12.0",
+    "babel-preset-gatsby": "^1.2.0",
+    "eslint": "^7.23.0",
+    "eslint-config-xo-react": "^0.24.0",
+    "eslint-config-xo-space": "^0.27.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-webpack-plugin": "^2.5.3",
+    "gatsby-plugin-eslint": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KyleRoss/node-lambda-log"
+  },
+  "bugs": {
+    "url": "https://github.com/KyleRoss/node-lambda-log/issues"
+  }
+}
