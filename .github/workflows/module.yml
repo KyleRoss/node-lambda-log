@@ -73,7 +73,7 @@ jobs:
         run: npm ci
       - uses: bradennapier/eslint-plus-action@v3.4.2
         with:
-          includeGlob: [ 'index.js', 'index.test.js', 'lib/*.js' ]
+          includeGlob: 'index.js,index.test.js,lib/*.js'
 
   release:
     name: Release
