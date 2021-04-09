@@ -44,7 +44,7 @@ jobs:
         run: npm test
       - name: Comment Coverage on PR
         if: ${{ github.event_name == 'pull_request' }}
-        uses: artiomtr/jest-coverage-report-action@v1.0
+        uses: artiomtr/jest-coverage-report-action@fdabb5bd42fa8a55bcfdfb55d855122cabfb7911
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           threshold: 100
