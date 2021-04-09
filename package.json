@@ -4,8 +4,6 @@
   "description": "Basic logging mechanism for Node 6.10+ Lambda Functions",
   "main": "index.js",
   "scripts": {
-    "build": "npm run docs && npm run test",
-    "docs": "jsdoc2md > README.md",
     "semantic-release": "semantic-release"
   },
   "husky": {
@@ -13,20 +11,6 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "jsdoc2md": {
-    "template": "build/README.hbs",
-    "files": [
-      "./index.js",
-      "./lib/*.js"
-    ],
-    "partial": [
-      "./build/sig-name.hbs",
-      "./build/sig-link-parent.hbs",
-      "./build/sig-link.hbs"
-    ],
-    "module-index-format": "none",
-    "global-index-format": "grouped",
-    "member-index-format": "list"
     "test": "jest",
   },
   "repository": {
@@ -68,7 +52,6 @@
     "eslint": "^7.23.0",
     "eslint-config-xo-space": "^0.27.0",
     "husky": "^2.4.1",
-    "jsdoc-to-markdown": "^5.0.0",
     "semantic-release": "^15.13.16"
     "jest": "^26.6.3",
   },
