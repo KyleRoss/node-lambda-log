@@ -7,3 +7,4 @@ site
 commitlint.config.js
 *.test.js
 jest.config.js
+.codeclimate.yml
