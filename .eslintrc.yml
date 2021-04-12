@@ -11,10 +11,12 @@ env:
 
 plugins:
   - 'jsdoc'
+  - 'node'
   
 extends:
   - 'xo-space/esnext'
   - 'plugin:jsdoc/recommended'
+  - 'plugin:node/recommended'
 
 rules:
   array-element-newline: off
