@@ -1,0 +1,21 @@
+name: site
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '!*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Build and Deploy Site
+        uses: srepollock/gatsby-gh-pages-action@v2.2.0
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          deploy-branch: gh-pages
+          gatsby-args: --prefix-paths
+          working-dir: ${{ github.workspace }}/site
