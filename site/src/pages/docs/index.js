@@ -1,7 +1,10 @@
 import { navigate } from 'gatsby';
 
 const DocsPage = () => {
-  navigate('/docs/getting-started');
+  if(typeof window !== 'undefined') {
+    navigate('/docs/getting-started');
+  }
+
   return null;
 };
 
