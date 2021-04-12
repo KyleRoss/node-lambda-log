@@ -2,21 +2,91 @@
 root: true
 
 parserOptions:
-  ecmaVersion: 2019
-
+  ecmaVersion: 2018
+ 
 env:
   node: true
   es6: true
-  jest: true
-
-extends:
-  - 'xo-space/esnext'
-
+  mocha: true
+ 
+extends: 'eslint:recommended'
+ 
 rules:
-  array-element-newline: off
-  capitalized-comments: off
-  curly: ['error', 'multi-line']
-  object-curly-spacing: ['error', 'always']
-  no-multiple-empty-lines: ['error', { max: 2, maxEOF: 1, maxBOF: 0 }]
-  no-negated-condition: off
-  keyword-spacing: ['error', { overrides: { if: { after: false }, for: { after: false }, while: { after: false }, catch: { after: false } } }]
+  indent: [2, 4, { "SwitchCase": 1 }]
+  strict: 1
+  linebreak-style: [2, "unix"]
+  semi: [2, "always"]
+  semi-spacing: [1, { "before": false }]
+  semi-style: [1, "last"]
+  comma-dangle: [2, "never"]
+  comma-spacing: [1, { "after": true }]
+  comma-style: [2, "last"]
+  consistent-return: 0
+  eol-last: [1, "always"]
+  eqeqeq: [2, "smart"]
+  wrap-iife: [2, "any"]
+  no-plusplus: [2, { "allowForLoopAfterthoughts": true }]
+  no-empty-function: 2
+  no-console: 0
+  no-mixed-spaces-and-tabs: 2
+  no-whitespace-before-property: 1
+  space-before-function-paren: [2, { "anonymous": "never", "named": "never", "asyncArrow": "always" }]
+  space-in-parens: [2, "never"]
+  array-callback-return: 2
+  class-methods-use-this: 0
+  dot-notation: [2, { "allowKeywords": true }]
+  new-parens: 0
+  no-alert: 1
+  no-caller: 2
+  no-else-return: 2
+  no-eval: 2
+  no-extend-native: 2
+  no-extra-bind: 2
+  no-floating-decimal: 2
+  no-implied-eval: 2
+  no-iterator: 2
+  no-lone-blocks: 2
+  no-multi-spaces: 2
+  no-new-wrappers: 2
+  no-octal: 2
+  no-proto: 2
+  no-redeclare: 2
+  no-self-assign: 2
+  no-self-compare: 2
+  no-throw-literal: 2
+  no-useless-concat: 2
+  no-useless-escape: 2
+  no-useless-return: 2
+  no-with: 2
+  no-var: 2
+  yoda: 2
+  no-dupe-keys: 2
+  use-isnan: 2
+  no-unreachable: 2
+  no-tabs: 2
+  object-curly-spacing: [2, "always"]
+  global-require: 1
+  no-buffer-constructor: 2
+  no-mixed-requires: 1
+  no-new-require: 2
+  array-bracket-newline: [1, { "multiline": true, "minItems": 6 }]
+  array-element-newline: [1, { "multiline": true, "minItems": 6 }]
+  block-spacing: [1, "always"]
+  brace-style: [1, "1tbs", { "allowSingleLine": true }]
+  func-call-spacing: [1, "never"]
+  implicit-arrow-linebreak: [1, "beside"]
+  key-spacing: [1, { "mode": "minimum" }]
+  keyword-spacing: ["error", { "overrides": { "if": { "after": false }, "for": { "after": false }, "while": { "after": false }, "catch": { "after": false } } }]
+  object-curly-newline: [1, { "minProperties": 5, "multiline": true, "consistent": true }]
+  lines-between-class-members: [1, "always", { "exceptAfterSingleLine": true }]
+  space-before-blocks: [1, "always"]
+  switch-colon-spacing: 1
+  arrow-spacing: 1
+  constructor-super: 2
+  no-useless-computed-key: 1
+  prefer-numeric-literals: 1
+  prefer-rest-params: 2
+  prefer-spread: 1
+  prefer-template: 2
+  rest-spread-spacing: 1
+  template-curly-spacing: 1

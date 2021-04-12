@@ -41,7 +41,8 @@ node_modules/
 # dotenv environment variables file
 .env
 
+# package-lock
+package-lock.json
+
 # DS_Store file
 .DS_Store
-
-res
