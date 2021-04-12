@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
 const meta = {
-  description: 'Node.js package to enforce standards when logging to CloudWatch from Lambda functions and other AWS services.',
+  description: 'Node.js package to enforce standards when logging to CloudWatch from Lambda functions, other AWS services, or anywhere you desire JSON-formatted logs.',
   image: 'https://KyleRoss.github.io/node-lambda-log/og-image.png'
 };
 
@@ -25,7 +25,6 @@ const Head = ({ lang, title }) => {
       <meta name="theme-color" content="#2d3142" />
 
       <meta name="description" content={meta.description} />
-      {location && <link rel="canonical" href={`${process.env.SITE_DOMAIN}${location.pathname}`} />}
       <meta property="og:title" content="Lambda Log" />
       <meta property="og:description" content={meta.description} />
       <meta property="og:locale" content="en_US" />
