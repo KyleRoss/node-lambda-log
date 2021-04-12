@@ -9,8 +9,12 @@ env:
   es6: true
   jest: true
 
+plugins:
+  - 'jsdoc'
+  
 extends:
   - 'xo-space/esnext'
+  - 'plugin:jsdoc/recommended'
 
 rules:
   array-element-newline: off
@@ -20,3 +24,4 @@ rules:
   no-multiple-empty-lines: ['error', { max: 2, maxEOF: 1, maxBOF: 0 }]
   no-negated-condition: off
   keyword-spacing: ['error', { overrides: { if: { after: false }, for: { after: false }, while: { after: false }, catch: { after: false } } }]
+  jsdoc/newline-after-description: off
