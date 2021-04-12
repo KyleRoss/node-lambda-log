@@ -1,0 +1,21 @@
+name: site
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '!*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Build and Deploy Site
+        uses: enriikke/gatsby-gh-pages-action@bf3ba06696b02a028d2121b04961926c1b862a3c
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          deploy-branch: gh-pages
+          gatsby-args: --prefix-paths
+          working-dir: ${{ github.workspace }}/site

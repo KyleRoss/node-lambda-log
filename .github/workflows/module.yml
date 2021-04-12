@@ -1,0 +1,96 @@
+name: module
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        node: [ '10', '12', '14' ]
+    name: test/node v${{ matrix.node }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Setup Node v${{ matrix.node }}
+        uses: actions/setup-node@master
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Tests
+        run: npm test
+
+  coverage:
+    name: Code Coverage
+    needs: [ test ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Setup Node
+        uses: actions/setup-node@master
+        with:
+          node-version: 14
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Tests
+        if: ${{ github.event_name == 'pull_request' }}
+        run: npm test
+      - name: Comment Coverage on PR
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: artiomtr/jest-coverage-report-action@fdabb5bd42fa8a55bcfdfb55d855122cabfb7911
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          threshold: 100
+      - name: Upload Coverage to Code Climate
+        uses: paambaati/codeclimate-action@v2.7.2
+        if: ${{ github.event_name == 'push' }}
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: npm test
+          coverageLocations: |
+            ${{ github.workspace }}/coverage/lcov.info:lcov
+
+  eslint:
+    name: ESLint Check
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Setup Node
+        uses: actions/setup-node@master
+        with:
+          node-version: 14
+      - name: Install Dependencies
+        run: npm ci
+      - uses: bradennapier/eslint-plus-action@v3.4.2
+        with:
+          includeGlob: 'index.js,index.test.js,lib/*.js'
+
+  release:
+    name: Release
+    if: ${{ github.event_name == 'push' }}
+    needs: [ test, coverage ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Setup Node
+        uses: actions/setup-node@master
+        with:
+          node-version: 14
+      - name: Install Dependencies
+        run: npm ci
+      - name: Publish to NPM
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
