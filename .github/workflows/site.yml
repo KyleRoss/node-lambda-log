@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
       - name: Build and Deploy Site
-        uses: enriikke/gatsby-gh-pages-action@bf3ba06696b02a028d2121b04961926c1b862a3c
+        uses: srepollock/gatsby-gh-pages-action@v2.2.0
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           deploy-branch: gh-pages
