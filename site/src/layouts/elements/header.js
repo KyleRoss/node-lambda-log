@@ -242,6 +242,7 @@ const SiteHeader = () => {
             <li className="icon">
               <OutboundLink href="https://github.com/KyleRoss/node-lambda-log" rel="noreferrer" className="github plain">
                 <IoLogoGithub />
+                <span className="sr-only">View on Github</span>
               </OutboundLink>
             </li>
           </ul>

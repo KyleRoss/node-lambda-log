@@ -59,6 +59,7 @@ const Heading = ({ children, as }) => {
       {as !== 'h1' && (
         <a href={`#${urlSafeMarkdownHeading(text)}`} className="permalink plain">
           <HiLink />
+          <span className="sr-only">Jump to {text}</span>
         </a>
       )}
       {children}
