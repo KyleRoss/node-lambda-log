@@ -24,7 +24,7 @@ const StyledHeader = styled.div`
     vertical-align: middle;
 
     &.class {
-      background-color: ${props => darken(-0.35, props.theme.colors.green)};
+      background-color: #e1eee1;
       color: ${props => props.theme.colors.green};
 
       &:before {
@@ -33,7 +33,7 @@ const StyledHeader = styled.div`
     }
 
     &.property {
-      background-color: ${props => darken(-0.35, props.theme.colors.blue)};
+      background-color: #bfe2f2;
       color: ${props => props.theme.colors.blue};
 
       &:before {
@@ -42,7 +42,7 @@ const StyledHeader = styled.div`
     }
 
     &.module {
-      background-color: ${props => darken(-0.3, props.theme.colors.red)};
+      background-color: #f9d0d3;
       color: ${props => props.theme.colors.red};
 
       &:before {
@@ -51,7 +51,7 @@ const StyledHeader = styled.div`
     }
 
     &.function {
-      background-color: ${props => darken(-0.4, props.theme.colors.purple)};
+      background-color: #d8d1ec;
       color: ${props => props.theme.colors.purple};
 
       &:before {
@@ -60,7 +60,7 @@ const StyledHeader = styled.div`
     }
 
     &.event {
-      background-color: ${props => darken(-0.35, props.theme.colors.primary)};
+      background-color: #fad8c9;
       color: ${props => props.theme.colors.primary};
 
       &:before {
@@ -69,8 +69,8 @@ const StyledHeader = styled.div`
     }
 
     &.getter {
-      background-color: ${props => darken(-0.2, props.theme.colors.yellow)};
-      color: ${props => darken(0.25, props.theme.colors.yellow)};
+      background-color: #fee6a5;
+      color: #bc8902;
 
       &:before {
         content: 'G';
@@ -78,7 +78,7 @@ const StyledHeader = styled.div`
     }
 
     &.setter {
-      background-color: ${props => darken(-0.3, props.theme.colors.pink)};
+      background-color: #ee9ccd;
       color: ${props => props.theme.colors.pink};
 
       &:before {
@@ -87,7 +87,7 @@ const StyledHeader = styled.div`
     }
 
     &.static {
-      background-color: ${props => darken(0.2, props.theme.colors.gray)};
+      background-color: #a1a9a9;
 
       &:before {
         content: 'S';
@@ -95,7 +95,7 @@ const StyledHeader = styled.div`
     }
 
     &.instance {
-      background-color: ${props => darken(-0.1, props.theme.colors.green)};
+      background-color: ${props => props.theme.colors.green};
 
       &:before {
         content: 'I';
