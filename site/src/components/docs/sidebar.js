@@ -24,18 +24,28 @@ const StyledSidebar = styled.aside`
 
   a {
     transition: color 0.2s;
+    color: ${props => props.theme.colors.dark};
 
     &.root {
       display: flex;
       align-items: center;
 
       svg {
-        color: ${props => props.theme.colors.black};
+        color: ${props => darken(0.1, props.theme.colors.gray)};
       }
     }
 
     &:hover {
-      color: ${props => props.theme.colors.black};
+      color: ${props => props.theme.colors.primary};
+    }
+    
+    &.active {
+      color: ${props => props.theme.colors.primary};
+      font-weight: 700;
+      
+      svg {
+        color: ${props => props.theme.colors.primary};
+      }
     }
   }
 
@@ -68,15 +78,17 @@ const StyledSidebar = styled.aside`
 
     li {
       a {
-        font-weight: 600;
+        font-weight: 500;
       }
 
       ul {
-        margin-left: 1rem;
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
 
         li {
           a {
             font-weight: 400;
+            font-size: 90%;
           }
         }
       }
@@ -140,7 +152,7 @@ const DocsSidebar = ({ location }) => {
         <ul>
           {pages.map(page => (
             <li key={page.id}>
-              <Link to={`/docs/${page.frontmatter.slug}`} className="plain root" onClick={() => setSidebarOpen(false)}>
+              <Link to={`/docs/${page.frontmatter.slug}`} className="plain root" activeClassName="active" onClick={() => setSidebarOpen(false)}>
                 <MdKeyboardArrowRight />
                 {page.frontmatter.title}
               </Link>
