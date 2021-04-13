@@ -3,7 +3,7 @@ module.exports = {
     PRESERVE_WEBPACK_CACHE: true,
     PARALLEL_SOURCING: true
   },
-  pathPrefix: '/node-lambda-log',
+  // pathPrefix: '/node-lambda-log',
   siteMetadata: {
     title: 'Lambda Log',
     description: 'Node.js package to enforce standards when logging to CloudWatch from Lambda functions and other AWS services.',
