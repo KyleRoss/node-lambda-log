@@ -53,7 +53,10 @@ module.exports = {
             noInlineHighlight: true
           }
         }, {
-          resolve: 'gatsby-remark-component-parent2div'
+          resolve: 'gatsby-remark-component-parent2div',
+          options: {
+            components: ['alert']
+          }
         }]
       }
     },
