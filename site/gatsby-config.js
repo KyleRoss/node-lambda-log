@@ -8,7 +8,7 @@ module.exports = {
     title: 'Lambda Log',
     description: 'Node.js package to enforce standards when logging to CloudWatch from Lambda functions and other AWS services.',
     author: 'Kyle Ross',
-    siteUrl: 'https://KyleRoss.github.io/node-lambda-log'
+    siteUrl: 'https://lambdalog.js.org'
   },
   plugins: [
     'gatsby-plugin-eslint',

@@ -24,7 +24,7 @@ Anyone can log JSON to the `console`, but with Lambda Log you also get:
 
 #### New in Version 3.0.0
 
-Version 3.0.0 of Lambda Log brings a bunch of changes, new features, and a [new website](https://kyleross.github.io/node-lambda-log).
+Version 3.0.0 of Lambda Log brings a bunch of changes, new features, and a [new website](https://lambdalog.js.org).
 
 **Broad Changes:**
 
@@ -55,19 +55,19 @@ Version 3.0.0 of Lambda Log brings a bunch of changes, new features, and a [new 
 
 ## Documentation
 
-Documentation for Lambda Log has moved to our [new website](https://kyleross.github.io/node-lambda-log).
+Documentation for Lambda Log has moved to our [new website](https://lambdalog.js.org).
 
 
 
 ## Tests
 
-See [Development Documentation](https://kyleross.github.io/node-lambda-log/docs/development).
+See [Development Documentation](https://lambdalog.js.org/docs/development).
 
 
 
 ## Contributing
 
-See [Contributing Documentation](https://kyleross.github.io/node-lambda-log/docs/contributing).
+See [Contributing Documentation](https://lambdalog.js.org/docs/contributing).
 
 
 
