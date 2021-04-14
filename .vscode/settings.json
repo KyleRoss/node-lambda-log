@@ -8,5 +8,11 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "prettier.enable": false
+  "prettier.enable": false,
+  "eslint.workingDirectories": [
+    {
+      "directory": "site",
+      "changeProcessCWD": true
+    }
+  ]
 }

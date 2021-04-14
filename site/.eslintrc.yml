@@ -5,15 +5,20 @@ env:
   browser: true
   node: true
 
+parser: '@babel/eslint-parser'
 parserOptions:
-  parser: babel-eslint
-  ecmaVersion: 2019
+  requireConfigFile: false
   sourceType: module
   ecmaFeatures:
     jsx: true
 
 globals:
   __PATH_PREFIX__: true
+  babelOptions:
+    plugins:
+      - 'babel-plugin-styled-components'
+    presets:
+      - 'babel-preset-gatsby'
 
 extends:
   - 'xo-space/esnext'
