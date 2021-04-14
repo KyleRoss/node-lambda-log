@@ -201,7 +201,7 @@ const Header = ({ type, text, returns, link, scope }) => {
   function getType(t) {
     if(t.url) {
       return (
-        <CustomLink href={t.url} className="plain">{t.type}</CustomLink>
+        <CustomLink plain href={t.url}>{t.type}</CustomLink>
       );
     }
 

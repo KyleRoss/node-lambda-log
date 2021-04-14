@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import { down } from 'styled-breakpoints';
 import { darken } from 'polished';
@@ -8,6 +8,7 @@ import { RiMenuUnfoldLine } from 'react-icons/ri';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { IoCloseSharp } from 'react-icons/io5';
 import { urlSafeMarkdownHeading } from '@src/utils';
+import Link from '@ui/link';
 
 
 const StyledSidebar = styled.aside`
@@ -38,11 +39,11 @@ const StyledSidebar = styled.aside`
     &:hover {
       color: ${props => props.theme.colors.primary};
     }
-    
+
     &.active {
       color: ${props => props.theme.colors.primary};
       font-weight: 700;
-      
+
       svg {
         color: ${props => props.theme.colors.primary};
       }
@@ -144,7 +145,7 @@ const DocsSidebar = ({ location }) => {
   const pages = data.allMarkdownRemark.edges.map(({ node }) => node);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const currentPage = location.pathname.replace(/\/docs\//i, '');
+  const currentPage = location.pathname.replace(/\/docs\//i, '').replace(/\/$/, '');
 
   return (
     <React.Fragment>
@@ -152,7 +153,7 @@ const DocsSidebar = ({ location }) => {
         <ul>
           {pages.map(page => (
             <li key={page.id}>
-              <Link to={`/docs/${page.frontmatter.slug}`} className="plain root" activeClassName="active" onClick={() => setSidebarOpen(false)}>
+              <Link plain href={`/docs/${page.frontmatter.slug}`} className="root" activeClassName="active" onClick={() => setSidebarOpen(false)}>
                 <MdKeyboardArrowRight />
                 {page.frontmatter.title}
               </Link>
@@ -161,11 +162,12 @@ const DocsSidebar = ({ location }) => {
                   {page.headings.map(heading => (
                     <li key={`${page.id}-${heading.value}`}>
                       <Link
-                        to={`/docs/${page.frontmatter.slug}#${urlSafeMarkdownHeading(heading.value)}`}
-                        className="plain"
-                        dangerouslySetInnerHTML={{ __html: heading.value }}
+                        plain
+                        href={`/docs/${page.frontmatter.slug}#${urlSafeMarkdownHeading(heading.value)}`}
                         onClick={() => setSidebarOpen(false)}
-                      />
+                      >
+                        {heading.value}
+                      </Link>
                     </li>
                   ))}
                 </ul>

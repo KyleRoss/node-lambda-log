@@ -14,8 +14,10 @@
   "dependencies": {
     "@fontsource/fira-code": "^4.2.2",
     "@fontsource/fira-sans": "^4.2.3",
+    "clsx": "^1.1.1",
     "gatsby": "^3.2.1",
     "gatsby-plugin-alias-imports": "^1.0.5",
+    "gatsby-plugin-force-trailing-slashes": "^1.0.5",
     "gatsby-plugin-google-gtag": "^3.2.0",
     "gatsby-plugin-react-helmet": "^4.2.0",
     "gatsby-plugin-robots-txt": "^1.5.5",
@@ -38,7 +40,8 @@
     "striptags": "^3.1.1",
     "styled-breakpoints": "^10.0.0",
     "styled-components": "^5.2.3",
-    "typography": "^0.16.19"
+    "typography": "^0.16.19",
+    "url-parse": "^1.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",

@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { OutboundLink } from 'gatsby-plugin-google-gtag';
 import Layout from '@layouts';
 import { ContentContainer } from '@styles/components';
 import TerminalFrame from '@ui/terminal';
+import Link from '@ui/link';
 
 
 const StyledHomePage = styled.div`
@@ -48,7 +48,7 @@ const HomePage = () => {
       <StyledHomePage>
         <h1 className="sr-only">Lambda Log</h1>
         <p className="intro">
-          A <OutboundLink href="https://www.npmjs.com/package/lambda-log" rel="noreferrer">Node.js package</OutboundLink> to
+          A <Link href="https://www.npmjs.com/package/lambda-log">Node.js package</Link> to
           facilitate and enforce logging standards from processes and applications running within Lambda Functions, various AWS
           Services, and wherever JSON logs are desired. Lambda Log formats your log messages as JSON for simple parsing and
           filtering within tools such as CloudWatch Logs. Supports <strong>Node 10+</strong>.
@@ -82,8 +82,8 @@ const HomePage = () => {
           <li>Small footprint.</li>
         </ul>
 
-        <OutboundLink href="https://github.com/KyleRoss/node-lambda-log" rel="noreferrer" className="plain btn github">View on Github</OutboundLink>
-        <OutboundLink href="https://www.npmjs.com/package/lambda-log" rel="noreferrer" className="plain btn npm">View on NPM</OutboundLink>
+        <Link plain href="https://github.com/KyleRoss/node-lambda-log" className="btn github">View on Github</Link>
+        <Link plain href="https://www.npmjs.com/package/lambda-log" className="btn npm">View on NPM</Link>
       </StyledHomePage>
     </Layout>
   );

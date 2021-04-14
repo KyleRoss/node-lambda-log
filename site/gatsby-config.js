@@ -60,6 +60,7 @@ module.exports = {
         }]
       }
     },
+    'gatsby-plugin-force-trailing-slashes',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     {
