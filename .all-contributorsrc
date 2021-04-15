@@ -67,6 +67,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "taschmidt",
+      "name": "Tim Schmidt",
+      "avatar_url": "https://avatars.githubusercontent.com/u/228736?v=4",
+      "profile": "https://github.com/taschmidt",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
