@@ -31,6 +31,15 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "gagres",
+      "name": "Gabriel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10873171?v=4",
+      "profile": "https://github.com/gagres",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7
