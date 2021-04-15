@@ -17,7 +17,9 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/2508347?v=4",
       "profile": "http://kyleross.me/",
       "contributions": [
-        "code"
+        "code",
+        "doc",
+        "maintenance"
       ]
     }
   ],
