@@ -76,6 +76,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "mariux",
+      "name": "Marius Tolzmann",
+      "avatar_url": "https://avatars.githubusercontent.com/u/918717?v=4",
+      "profile": "https://mineiros.io",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7
