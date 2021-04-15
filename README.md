@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/lambda-log.svg?style=for-the-badge)](https://www.npmjs.com/package/lambda-log) [![npm](https://img.shields.io/npm/dt/lambda-log.svg?style=for-the-badge)](https://www.npmjs.com/package/lambda-log) [![David](https://img.shields.io/david/KyleRoss/node-lambda-log.svg?style=for-the-badge)](https://david-dm.org/KyleRoss/node-lambda-log) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/KyleRoss/node-lambda-log/module?style=for-the-badge) [![Code Climate coverage](https://img.shields.io/codeclimate/coverage/KyleRoss/node-lambda-log?style=for-the-badge)](https://codeclimate.com/github/KyleRoss/node-lambda-log) [![license](https://img.shields.io/github/license/KyleRoss/node-lambda-log.svg?style=for-the-badge)](https://github.com/KyleRoss/node-lambda-log/blob/master/LICENSE) [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/KyleRoss/node-lambda-log?style=for-the-badge)](https://codeclimate.com/github/KyleRoss/node-lambda-log) [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/KyleRoss/node-lambda-log?style=for-the-badge)](https://www.codefactor.io/repository/github/kyleross/node-lambda-log) [![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/lambda-log?style=for-the-badge)](https://snyk.io/advisor/npm-package/lambda-log)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=for-the-badge)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A [Node.js package](https://www.npmjs.com/package/lambda-log) to facilitate and enforce logging standards from processes and applications running within Lambda Functions, various AWS Services, and wherever JSON logs are desired. Lambda Log formats your log messages as JSON for simple parsing and filtering within tools such as CloudWatch Logs. Supports **Node 10+**.
@@ -87,7 +87,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="http://kyleross.me/"><img src="https://avatars.githubusercontent.com/u/2508347?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kyle Ross</b></sub></a><br /><a href="https://github.com/KyleRoss/node-lambda-log/commits?author=KyleRoss" title="Code">💻</a></td>
+    <td align="center"><a href="http://kyleross.me/"><img src="https://avatars.githubusercontent.com/u/2508347?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kyle Ross</b></sub></a><br /><a href="https://github.com/KyleRoss/node-lambda-log/commits?author=KyleRoss" title="Code">💻</a> <a href="https://github.com/KyleRoss/node-lambda-log/commits?author=KyleRoss" title="Documentation">📖</a> <a href="#maintenance-KyleRoss" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/jogold"><img src="https://avatars.githubusercontent.com/u/12623249?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jonathan Goldwasser</b></sub></a><br /><a href="https://github.com/KyleRoss/node-lambda-log/commits?author=jogold" title="Code">💻</a> <a href="https://github.com/KyleRoss/node-lambda-log/issues?q=author%3Ajogold" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
