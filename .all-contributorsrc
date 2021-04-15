@@ -58,6 +58,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "nickcox",
+      "name": "nickcox",
+      "avatar_url": "https://avatars.githubusercontent.com/u/135552?v=4",
+      "profile": "https://github.com/nickcox",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7
