@@ -41,7 +41,7 @@
     "styled-breakpoints": "^10.0.0",
     "styled-components": "^5.2.3",
     "typography": "^0.16.19",
-    "url-parse": "^1.5.1"
+    "url-parse": "^1.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
