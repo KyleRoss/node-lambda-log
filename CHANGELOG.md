@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/KyleRoss/node-lambda-log/compare/v3.0.0...v3.0.1) (2021-09-27)
+
+
+### Bug Fixes
+
+* include error name in metadata ([5a1214c](https://github.com/KyleRoss/node-lambda-log/commit/5a1214c95d3a10fbf997f136275e5bde55144598)), closes [#52](https://github.com/KyleRoss/node-lambda-log/issues/52)
+
 # [3.0.0](https://github.com/KyleRoss/node-lambda-log/compare/v2.4.0...v3.0.0) (2021-04-12)
 
 
