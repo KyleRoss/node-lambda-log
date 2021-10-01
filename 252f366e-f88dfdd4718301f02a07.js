@@ -1,0 +1,2 @@
+(self.webpackChunklambda_log_site=self.webpackChunklambda_log_site||[]).push([[228],{2775:function(t,a,e){"use strict";e.d(a,{AeI:function(){return l}});var n=e(1046);function l(t){return(0,n.w_)({tag:"svg",attr:{viewBox:"0 0 24 24"},child:[{tag:"path",attr:{d:"M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"}}]})(t)}}}]);
+//# sourceMappingURL=252f366e-f88dfdd4718301f02a07.js.map

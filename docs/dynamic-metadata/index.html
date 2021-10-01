@@ -1,0 +1,339 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.99bbd5f5a67807f34895.css" id="gatsby-global-css">*,:after,:before{box-sizing:border-box}blockquote,body,dd,dl,figure,h1,h2,h3,h4,p{margin:0}ol[role=list],ul[role=list]{list-style:none}html:focus-within{scroll-behavior:smooth}body{min-height:100vh;text-rendering:optimizeSpeed;line-height:1.5}a:not([class]){-webkit-text-decoration-skip:ink;text-decoration-skip-ink:auto}img,picture{max-width:100%;display:block}button,input,select,textarea{font:inherit}@media(prefers-reduced-motion:reduce){html:focus-within{scroll-behavior:auto}*,:after,:before{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}@font-face{font-family:Fira Sans;font-style:normal;font-display:swap;font-weight:100;src:url(/static/fira-sans-latin-100-normal-fef953c97f62dc91adc3a5a5b12c6c10.woff2) format("woff2"),url(/static/fira-sans-latin-100-normal-1ae43cf93b73c72df51ea4b70177309d.woff) format("woff")}@font-face{font-family:Fira Sans;font-style:normal;font-display:swap;font-weight:200;src:url(/static/fira-sans-latin-200-normal-71da21af3c0dd8324ae7f7646edc4af0.woff2) format("woff2"),url(/static/fira-sans-latin-200-normal-6b87b15eae9baa0f6e941b103c464bae.woff) format("woff")}@font-face{font-family:Fira Sans;font-style:normal;font-display:swap;font-weight:300;src:url(/static/fira-sans-latin-300-normal-ab1746e9aed28f00aa20db3c49169e50.woff2) format("woff2"),url(/static/fira-sans-latin-300-normal-3e9e8a4cf3b3c230e1fe0f9393b6cb07.woff) format("woff")}@font-face{font-family:Fira Sans;font-style:normal;font-display:swap;font-weight:400;src:url(/static/fira-sans-latin-400-normal-f34933fbb29f451cf1db764ef4ea4374.woff2) format("woff2"),url(/static/fira-sans-latin-400-normal-a25f36fb177fc662a045b4ea91705400.woff) format("woff")}@font-face{font-family:Fira Sans;font-style:normal;font-display:swap;font-weight:500;src:url(/static/fira-sans-latin-500-normal-cbee81efe1cbb91f0b6f7a80fbd28b99.woff2) format("woff2"),url(/static/fira-sans-latin-500-normal-0d026ebc0e772738259bb4f83df7cd7e.woff) format("woff")}@font-face{font-family:Fira Sans;font-style:normal;font-display:swap;font-weight:600;src:url(/static/fira-sans-latin-600-normal-8b914a580ee0214f8f19672324e45347.woff2) format("woff2"),url(/static/fira-sans-latin-600-normal-619f57d82d9949938c55bfd1cb724ce5.woff) format("woff")}@font-face{font-family:Fira Sans;font-style:normal;font-display:swap;font-weight:700;src:url(/static/fira-sans-latin-700-normal-d2a49c052f63b44740ac0d2d5e861e76.woff2) format("woff2"),url(/static/fira-sans-latin-700-normal-354e3a3dca3040822c29a4ee7a328953.woff) format("woff")}@font-face{font-family:Fira Sans;font-style:normal;font-display:swap;font-weight:800;src:url(/static/fira-sans-latin-800-normal-414d700b9f1ce281b7fe2c9d0ec00508.woff2) format("woff2"),url(/static/fira-sans-latin-800-normal-0b14e2ab323a05fc8a1310c5df0f03b1.woff) format("woff")}@font-face{font-family:Fira Sans;font-style:normal;font-display:swap;font-weight:900;src:url(/static/fira-sans-latin-900-normal-a94a53b7bf0b2c1a2c7eee68b27cd4a9.woff2) format("woff2"),url(/static/fira-sans-latin-900-normal-302c8a7cc99dd6ac2863303ac26f408e.woff) format("woff")}@font-face{font-family:Fira Code;font-style:normal;font-display:swap;font-weight:300;src:url(/static/fira-code-latin-300-normal-26de9c1087b5f1f837a07d4d27ba7d6f.woff2) format("woff2"),url(/static/fira-code-latin-300-normal-d299756cc0fb4ed2056f189e1c218f4a.woff) format("woff")}@font-face{font-family:Fira Code;font-style:normal;font-display:swap;font-weight:400;src:url(/static/fira-code-latin-400-normal-26de9c1087b5f1f837a07d4d27ba7d6f.woff2) format("woff2"),url(/static/fira-code-latin-400-normal-9a5112f57d20c78089bae0e28319c5ca.woff) format("woff")}@font-face{font-family:Fira Code;font-style:normal;font-display:swap;font-weight:500;src:url(/static/fira-code-latin-500-normal-26de9c1087b5f1f837a07d4d27ba7d6f.woff2) format("woff2"),url(/static/fira-code-latin-500-normal-b7665e32e3143c323c793c47c3cb1f38.woff) format("woff")}@font-face{font-family:Fira Code;font-style:normal;font-display:swap;font-weight:600;src:url(/static/fira-code-latin-600-normal-26de9c1087b5f1f837a07d4d27ba7d6f.woff2) format("woff2"),url(/static/fira-code-latin-600-normal-8b375e01f9f795a9f6c04f4e18f4d12b.woff) format("woff")}@font-face{font-family:Fira Code;font-style:normal;font-display:swap;font-weight:700;src:url(/static/fira-code-latin-700-normal-26de9c1087b5f1f837a07d4d27ba7d6f.woff2) format("woff2"),url(/static/fira-code-latin-700-normal-5d22056adf4c963b1654339f85fbd28d.woff) format("woff")}</style><meta name="generator" content="Gatsby 3.2.1"/><style data-styled="" data-styled-version="5.2.3">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}/*!sc*/
+body{margin:0;}/*!sc*/
+article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block;}/*!sc*/
+audio,canvas,progress,video{display:inline-block;}/*!sc*/
+audio:not([controls]){display:none;height:0;}/*!sc*/
+progress{vertical-align:baseline;}/*!sc*/
+[hidden],template{display:none;}/*!sc*/
+a{background-color:transparent;-webkit-text-decoration-skip:objects;}/*!sc*/
+a:active,a:hover{outline-width:0;}/*!sc*/
+abbr[title]{border-bottom:none;-webkit-text-decoration:underline;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted;}/*!sc*/
+b,strong{font-weight:inherit;font-weight:bolder;}/*!sc*/
+dfn{font-style:italic;}/*!sc*/
+h1{font-size:2em;margin:.67em 0;}/*!sc*/
+mark{background-color:#ff0;color:#000;}/*!sc*/
+small{font-size:80%;}/*!sc*/
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}/*!sc*/
+sub{bottom:-.25em;}/*!sc*/
+sup{top:-.5em;}/*!sc*/
+img{border-style:none;}/*!sc*/
+svg:not(:root){overflow:hidden;}/*!sc*/
+code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em;}/*!sc*/
+figure{margin:1em 40px;}/*!sc*/
+hr{box-sizing:content-box;height:0;overflow:visible;}/*!sc*/
+button,input,optgroup,select,textarea{font:inherit;margin:0;}/*!sc*/
+optgroup{font-weight:700;}/*!sc*/
+button,input{overflow:visible;}/*!sc*/
+button,select{text-transform:none;}/*!sc*/
+[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button;}/*!sc*/
+[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0;}/*!sc*/
+[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText;}/*!sc*/
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em;}/*!sc*/
+legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal;}/*!sc*/
+textarea{overflow:auto;}/*!sc*/
+[type=checkbox],[type=radio]{box-sizing:border-box;padding:0;}/*!sc*/
+[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto;}/*!sc*/
+[type=search]{-webkit-appearance:textfield;outline-offset:-2px;}/*!sc*/
+[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none;}/*!sc*/
+::-webkit-input-placeholder{color:inherit;opacity:.54;}/*!sc*/
+::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;}/*!sc*/
+html{font:100%/1.5 'Fira Sans','Helvetica','Arial',sans-serif;box-sizing:border-box;overflow-y:scroll;}/*!sc*/
+*{box-sizing:inherit;}/*!sc*/
+*:before{box-sizing:inherit;}/*!sc*/
+*:after{box-sizing:inherit;}/*!sc*/
+body{color:hsla(0,0%,0%,0.8);font-family:'Fira Sans','Helvetica','Arial',sans-serif;font-weight:400;word-wrap:break-word;font-kerning:normal;-moz-font-feature-settings:"kern","liga","clig","calt";-ms-font-feature-settings:"kern","liga","clig","calt";-webkit-font-feature-settings:"kern","liga","clig","calt";font-feature-settings:"kern","liga","clig","calt";}/*!sc*/
+img{max-width:100%;margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}/*!sc*/
+h1{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:inherit;font-family:'Fira Sans','Helvetica','Arial',sans-serif;font-weight:200;text-rendering:optimizeLegibility;font-size:4rem;line-height:1.1;}/*!sc*/
+h2{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:inherit;font-family:'Fira Sans','Helvetica','Arial',sans-serif;font-weight:200;text-rendering:optimizeLegibility;font-size:2.2974rem;line-height:1.1;}/*!sc*/
+h3{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:inherit;font-family:'Fira Sans','Helvetica','Arial',sans-serif;font-weight:200;text-rendering:optimizeLegibility;font-size:1.7411rem;line-height:1.1;}/*!sc*/
+h4{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:inherit;font-family:'Fira Sans','Helvetica','Arial',sans-serif;font-weight:200;text-rendering:optimizeLegibility;font-size:1rem;line-height:1.1;}/*!sc*/
+h5{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:inherit;font-family:'Fira Sans','Helvetica','Arial',sans-serif;font-weight:200;text-rendering:optimizeLegibility;font-size:0.75786rem;line-height:1.1;}/*!sc*/
+h6{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:inherit;font-family:'Fira Sans','Helvetica','Arial',sans-serif;font-weight:200;text-rendering:optimizeLegibility;font-size:0.65975rem;line-height:1.1;}/*!sc*/
+hgroup{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}/*!sc*/
+ul{margin-left:1.5rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;list-style-position:outside;list-style-image:none;}/*!sc*/
+ol{margin-left:1.5rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;list-style-position:outside;list-style-image:none;}/*!sc*/
+dl{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}/*!sc*/
+dd{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}/*!sc*/
+p{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}/*!sc*/
+figure{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}/*!sc*/
+pre{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;font-size:0.85rem;line-height:1.5rem;}/*!sc*/
+table{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;font-size:1rem;line-height:1.5rem;border-collapse:collapse;width:100%;}/*!sc*/
+fieldset{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}/*!sc*/
+blockquote{margin-left:1.5rem;margin-right:1.5rem;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}/*!sc*/
+form{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}/*!sc*/
+noscript{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}/*!sc*/
+iframe{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}/*!sc*/
+hr{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:calc(1.5rem - 1px);background:hsla(0,0%,0%,0.2);border:none;height:1px;}/*!sc*/
+address{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}/*!sc*/
+b{font-weight:bold;}/*!sc*/
+strong{font-weight:bold;}/*!sc*/
+dt{font-weight:bold;}/*!sc*/
+th{font-weight:bold;}/*!sc*/
+li{margin-bottom:calc(1.5rem / 2);}/*!sc*/
+ol li{padding-left:0;}/*!sc*/
+ul li{padding-left:0;}/*!sc*/
+li > ol{margin-left:1.5rem;margin-bottom:calc(1.5rem / 2);margin-top:calc(1.5rem / 2);}/*!sc*/
+li > ul{margin-left:1.5rem;margin-bottom:calc(1.5rem / 2);margin-top:calc(1.5rem / 2);}/*!sc*/
+blockquote *:last-child{margin-bottom:0;}/*!sc*/
+li *:last-child{margin-bottom:0;}/*!sc*/
+p *:last-child{margin-bottom:0;}/*!sc*/
+li > p{margin-bottom:calc(1.5rem / 2);}/*!sc*/
+code{font-size:0.85rem;line-height:1.5rem;}/*!sc*/
+kbd{font-size:0.85rem;line-height:1.5rem;}/*!sc*/
+samp{font-size:0.85rem;line-height:1.5rem;}/*!sc*/
+abbr{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}/*!sc*/
+acronym{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}/*!sc*/
+abbr[title]{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+thead{text-align:left;}/*!sc*/
+td,th{text-align:left;border-bottom:1px solid hsla(0,0%,0%,0.12);font-feature-settings:"tnum";-moz-font-feature-settings:"tnum";-ms-font-feature-settings:"tnum";-webkit-font-feature-settings:"tnum";padding-left:1rem;padding-right:1rem;padding-top:0.75rem;padding-bottom:calc(0.75rem - 1px);}/*!sc*/
+th:first-child,td:first-child{padding-left:0;}/*!sc*/
+th:last-child,td:last-child{padding-right:0;}/*!sc*/
+::selection{color:#ffffff;background:#2b9dd4;text-shadow:none;}/*!sc*/
+html{height:-webkit-max-content;height:-moz-max-content;height:max-content;}/*!sc*/
+body{min-height:calc(100vh - 70px);min-height:-webkit-fill-available;min-height:-moz-available;min-height:stretch;color:#2e3135;background:#2d3142;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+#___gatsby,#gatsby-focus-wrapper{min-height:100vh;}/*!sc*/
+a{color:#eb6125;-webkit-text-decoration:none;text-decoration:none;font-weight:400;}/*!sc*/
+a:not(.plain){position:relative;display:inline-block;-webkit-transition:color ease 0.3s;transition:color ease 0.3s;}/*!sc*/
+a:not(.plain)::before{content:'';position:absolute;z-index:0;left:51%;right:51%;bottom:0;background:#eb6125;height:3px;-webkit-transition-property:left,right;transition-property:left,right;-webkit-transition-duration:0.3s;transition-duration:0.3s;-webkit-transition-timing-function:ease-out;transition-timing-function:ease-out;}/*!sc*/
+a:not(.plain):hover,a:not(.plain):active,a:not(.plain):focus{color:#2e3135;}/*!sc*/
+a:not(.plain):hover::before,a:not(.plain):active::before,a:not(.plain):focus::before{left:0;right:0;}/*!sc*/
+h1{font-size:2.8rem;font-weight:200;-webkit-letter-spacing:-2px;-moz-letter-spacing:-2px;-ms-letter-spacing:-2px;letter-spacing:-2px;}/*!sc*/
+h2{font-size:2.4rem;font-weight:300;-webkit-letter-spacing:-1px;-moz-letter-spacing:-1px;-ms-letter-spacing:-1px;letter-spacing:-1px;}/*!sc*/
+h3{font-size:2rem;font-weight:400;-webkit-letter-spacing:-1px;-moz-letter-spacing:-1px;-ms-letter-spacing:-1px;letter-spacing:-1px;}/*!sc*/
+h4{font-size:1.8rem;font-weight:500;-webkit-letter-spacing:-1px;-moz-letter-spacing:-1px;-ms-letter-spacing:-1px;letter-spacing:-1px;}/*!sc*/
+h5{font-size:1.4rem;font-weight:600;-webkit-letter-spacing:-1px;-moz-letter-spacing:-1px;-ms-letter-spacing:-1px;letter-spacing:-1px;}/*!sc*/
+h6{font-size:1.1rem;font-weight:700;}/*!sc*/
+u{-webkit-text-decoration:none;text-decoration:none;border-bottom:2px solid;}/*!sc*/
+code:not([class*="language-"]),kbd{display:inline-block;padding:0.4rem 0.6rem 0.2rem 0.6rem;border-radius:3px;font-family:'Fira Code',Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-weight:400;font-size:0.92rem;line-height:0.95rem;}/*!sc*/
+code:not([class*="language-"]){padding:0.3rem 0.3rem 0.2rem 0.3rem;background-color:#e6e6e6;color:#464a50;}/*!sc*/
+kbd{border:1px solid #bfc0c0;background-color:#ffffff;color:#2e3135;box-shadow:1px 1px 0 0 #bfc0c0;font-weight:bold;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;color:#5d636c;border-left:5px solid #d4d7da;}/*!sc*/
+hr{position:relative;border:none;height:2px;margin:3rem 0;background:#bfc0c0;}/*!sc*/
+ul li{margin-bottom:0.2rem;}/*!sc*/
+.sr-only,.sr-only-focusable:not(:focus):not(:focus-within){position:absolute !important;width:1px !important;height:1px !important;padding:0 !important;margin:-1px !important;overflow:hidden !important;-webkit-clip:rect(0,0,0,0) !important;clip:rect(0,0,0,0) !important;white-space:nowrap !important;border:0 !important;}/*!sc*/
+data-styled.g1[id="sc-global-fqEKQO1"]{content:"sc-global-fqEKQO1,"}/*!sc*/
+.kYscOo{position:relative;max-width:100%;width:100%;position:fixed;top:0;left:0;right:0;padding:1rem 0rem;height:70px;min-height:70px;z-index:100;background-color:#2d3142;}/*!sc*/
+.kYscOo .brand{position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:38px;-webkit-transform:perspective(1px) translateZ(0);-ms-transform:perspective(1px) translateZ(0);transform:perspective(1px) translateZ(0);box-shadow:0 0 1px rgba(0,0,0,0);-webkit-transition:all 0.3s;transition:all 0.3s;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}/*!sc*/
+.kYscOo .brand:hover,.kYscOo .brand:active,.kYscOo .brand:focus{-webkit-transform:scale(1.2);-ms-transform:scale(1.2);transform:scale(1.2);}/*!sc*/
+.kYscOo .brand svg{width:auto;height:38px;}/*!sc*/
+.kYscOo .brand .logo-text{font-size:1.6rem;font-weight:300;padding-left:0.5rem;-webkit-letter-spacing:-1px;-moz-letter-spacing:-1px;-ms-letter-spacing:-1px;letter-spacing:-1px;color:#bfc0c0;}/*!sc*/
+.kYscOo .brand .logo-text strong{color:#ffffff;}/*!sc*/
+.kYscOo nav{position:relative;max-width:1200px;width:100%;padding:0 3rem;margin:0 auto;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}/*!sc*/
+@media print{.kYscOo nav{padding:0;}}/*!sc*/
+.kYscOo nav .nav-menu{position:absolute;-webkit-transform:translateY(-100vh);-ms-transform:translateY(-100vh);transform:translateY(-100vh);-webkit-transition:background-color 0.19s linear;transition:background-color 0.19s linear;}/*!sc*/
+@media (min-width:48em){.kYscOo nav .nav-menu{position:relative;-webkit-transform:translateY(0px);-ms-transform:translateY(0px);transform:translateY(0px);height:38px;}}/*!sc*/
+.kYscOo nav ul{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;list-style:none;margin:0;}/*!sc*/
+.kYscOo nav ul li{margin:0;padding:0 1rem;}/*!sc*/
+.kYscOo nav ul li li.icon{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}/*!sc*/
+.kYscOo nav ul li a{position:relative;color:#ffffff;-webkit-text-decoration:none;text-decoration:none;font-weight:600;font-size:1.1rem;-webkit-transform:perspective(1px) translateZ(0);-ms-transform:perspective(1px) translateZ(0);transform:perspective(1px) translateZ(0);box-shadow:0 0 1px rgba(0,0,0,0);text-shadow:0 0 4px rgba(0,0,0,0.5);overflow:hidden;padding:0.3rem 0.5rem;}/*!sc*/
+.kYscOo nav ul li a:not(.plain):hover{color:#ffffff;}/*!sc*/
+.kYscOo nav ul li a:not(.plain):before{background:#eb6125;}/*!sc*/
+.kYscOo nav ul li a.active{font-weight:800;}/*!sc*/
+.kYscOo nav ul li a.active:not(.plain):before{left:0;right:0;}/*!sc*/
+.kYscOo nav .mobile-menu-btn{color:#fff;display:block;width:37px;height:auto;cursor:pointer;}/*!sc*/
+@media (min-width:48em){.kYscOo nav .mobile-menu-btn{display:none;}}/*!sc*/
+@media print{.kYscOo nav .mobile-menu-btn{display:none;}}/*!sc*/
+.kYscOo a.github{-webkit-transition:color 0.2s;transition:color 0.2s;}/*!sc*/
+.kYscOo a.github svg{width:28px;height:auto;}/*!sc*/
+.kYscOo a.github:hover{color:#eb6125;}/*!sc*/
+.kYscOo.open .nav-menu{-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);position:fixed;top:70px;left:0;right:0;bottom:0;overflow:auto;background-color:rgba(255,255,255,0.8);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);z-index:1000;padding:2rem 3rem;}/*!sc*/
+.kYscOo.open .mobile-menu-btn{display:block !important;}/*!sc*/
+.kYscOo.open nav ul{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}/*!sc*/
+.kYscOo.open nav ul li{margin-bottom:1rem;}/*!sc*/
+.kYscOo.open nav ul li a{font-size:1.5rem;}/*!sc*/
+.kYscOo.open .mobile-menu-btn{color:#ffffff;}/*!sc*/
+.kYscOo.open nav a{color:#2e3135;text-shadow:none;}/*!sc*/
+.kYscOo.open .brand.solid{background-color:transparent;padding:0;border-radius:0;}/*!sc*/
+.kYscOo.open .brand.solid svg{width:62px;height:auto;}/*!sc*/
+data-styled.g3[id="header__Header-sc-1a3nkph-0"]{content:"kYscOo,"}/*!sc*/
+.cJJyFw{text-align:center;padding:3rem 3rem;font-weight:400;font-size:0.9rem;color:#bfc0c0;}/*!sc*/
+.cJJyFw .heart{color:#E84855;font-size:1rem;}/*!sc*/
+.cJJyFw a{color:#ffffff;}/*!sc*/
+.cJJyFw a:hover{color:#FDCA40;}/*!sc*/
+data-styled.g4[id="footer__StyledFooter-sc-14qcm24-0"]{content:"cJJyFw,"}/*!sc*/
+.ffBstB{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;min-height:calc(100vh - 70px);}/*!sc*/
+data-styled.g5[id="layouts__PageWrapper-sc-1hw14zs-0"]{content:"ffBstB,"}/*!sc*/
+.eMEcWo{position:relative;max-width:100%;width:100%;padding:2rem 0;background-color:#ffffff;margin-top:70px;}/*!sc*/
+data-styled.g6[id="layouts__Main-sc-1hw14zs-1"]{content:"eMEcWo,"}/*!sc*/
+.cvrmsU{position:absolute;top:0;width:230px;min-width:230px;height:100%;background-color:rgba(255,255,255,0.8);border-right:3px solid #d4d7da;padding:0 0.6rem 0 0;margin-right:1rem;overflow:auto;}/*!sc*/
+.cvrmsU a{-webkit-transition:color 0.2s;transition:color 0.2s;color:#2d3142;}/*!sc*/
+.cvrmsU a.root{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}/*!sc*/
+.cvrmsU a.root svg{color:#a5a7a7;}/*!sc*/
+.cvrmsU a:hover{color:#eb6125;}/*!sc*/
+.cvrmsU a.active{color:#eb6125;font-weight:700;}/*!sc*/
+.cvrmsU a.active svg{color:#eb6125;}/*!sc*/
+@media (max-width:61.99875em){.cvrmsU{position:fixed;-webkit-transform:translateX(-100vw);-ms-transform:translateX(-100vw);transform:translateX(-100vw);width:100%;min-width:100%;top:70px;left:0;right:0;bottom:0;overflow:auto;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);z-index:900;padding:2rem;border:0;margin:0;-webkit-transition:-webkit-transform 0.3s;-webkit-transition:transform 0.3s;transition:transform 0.3s;font-size:1.3rem;}.cvrmsU.open{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);}}/*!sc*/
+.cvrmsU ul{list-style:none;margin:0;}/*!sc*/
+.cvrmsU ul li a{font-weight:500;}/*!sc*/
+.cvrmsU ul li ul{margin-left:1.5rem;margin-bottom:1rem;}/*!sc*/
+.cvrmsU ul li ul li a{font-weight:400;font-size:90%;}/*!sc*/
+data-styled.g9[id="sidebar__StyledSidebar-casish-0"]{content:"cvrmsU,"}/*!sc*/
+.jPRPqQ{position:fixed;z-index:950;display:none;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;bottom:2rem;right:2rem;width:3.8rem;height:3.8rem;border-radius:50%;background-color:#eb6125;cursor:pointer;}/*!sc*/
+.jPRPqQ svg{width:2rem;height:auto;color:#ffffff;}/*!sc*/
+@media (max-width:61.99875em){.jPRPqQ{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}}/*!sc*/
+data-styled.g10[id="sidebar__StyledMenuBtn-casish-1"]{content:"jPRPqQ,"}/*!sc*/
+.hBTpjo{margin-top:4rem;}/*!sc*/
+.hBTpjo .type-icon{display:inline-block;width:26px;height:26px;border-radius:5px;padding:0.25rem 0;font-size:1.1rem;font-weight:800;-webkit-letter-spacing:0;-moz-letter-spacing:0;-ms-letter-spacing:0;letter-spacing:0;margin-right:0.6rem;text-align:center;vertical-align:middle;}/*!sc*/
+.hBTpjo .type-icon.class{background-color:#e1eee1;color:#70AE6E;}/*!sc*/
+.hBTpjo .type-icon.class:before{content:'C';}/*!sc*/
+.hBTpjo .type-icon.property{background-color:#bfe2f2;color:#2b9dd4;}/*!sc*/
+.hBTpjo .type-icon.property:before{content:'P';}/*!sc*/
+.hBTpjo .type-icon.module{background-color:#f9d0d3;color:#E84855;}/*!sc*/
+.hBTpjo .type-icon.module:before{content:'M';}/*!sc*/
+.hBTpjo .type-icon.function{background-color:#d8d1ec;color:#6247AA;}/*!sc*/
+.hBTpjo .type-icon.function:before{content:'F';}/*!sc*/
+.hBTpjo .type-icon.event{background-color:#fad8c9;color:#eb6125;}/*!sc*/
+.hBTpjo .type-icon.event:before{content:'E';}/*!sc*/
+.hBTpjo .type-icon.getter{background-color:#fee6a5;color:#bc8902;}/*!sc*/
+.hBTpjo .type-icon.getter:before{content:'G';}/*!sc*/
+.hBTpjo .type-icon.setter{background-color:#ee9ccd;color:#ce2389;}/*!sc*/
+.hBTpjo .type-icon.setter:before{content:'S';}/*!sc*/
+.hBTpjo .type-icon.static{background-color:#a1a9a9;}/*!sc*/
+.hBTpjo .type-icon.static:before{content:'S';}/*!sc*/
+.hBTpjo .type-icon.instance{background-color:#70AE6E;}/*!sc*/
+.hBTpjo .type-icon.instance:before{content:'I';}/*!sc*/
+.hBTpjo .type-icon.static,.hBTpjo .type-icon.instance{color:#ffffff;margin-right:0rem;border-radius:5px 0 0 5px;}/*!sc*/
+.hBTpjo .type-icon + .type-icon{border-radius:0 5px 5px 0;}/*!sc*/
+.hBTpjo .prefix{color:#727474;font-weight:400;}/*!sc*/
+.hBTpjo .punc{color:#bfc0c0;font-weight:400;}/*!sc*/
+.hBTpjo .func{color:#6247AA;}/*!sc*/
+.hBTpjo .prop{color:#2b9dd4;}/*!sc*/
+.hBTpjo .equal-value{color:#2e3135;font-weight:400;font-family:'Fira Code',Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;}/*!sc*/
+.hBTpjo .args{font-weight:400;}/*!sc*/
+.hBTpjo .arg{color:#E84855;font-weight:600;}/*!sc*/
+.hBTpjo .arg.optional{color:#f18c94;font-weight:400;}/*!sc*/
+data-styled.g11[id="header__StyledHeader-zz6o7r-0"]{content:"hBTpjo,"}/*!sc*/
+.gOleYx{position:relative;}/*!sc*/
+.gOleYx.with-permalink:hover a.permalink svg{visibility:visible;}/*!sc*/
+.gOleYx a.permalink{float:left;margin-left:-30px;color:#bfc0c0;-webkit-transition:color 0.2s;transition:color 0.2s;}/*!sc*/
+.gOleYx a.permalink:hover{color:#2e3135;}/*!sc*/
+.gOleYx a.permalink:hover svg{visibility:visible;}/*!sc*/
+.gOleYx a.permalink svg{width:24px;height:auto;vertical-align:middle;visibility:hidden;}/*!sc*/
+data-styled.g13[id="heading__StyledHeading-sc-4z1u9v-0"]{content:"gOleYx,"}/*!sc*/
+.bKLQrn{padding:1.5rem;border-radius:10px;margin-bottom:1.5rem;}/*!sc*/
+.bKLQrn.plain{background-color:#f2f3f3;}/*!sc*/
+.bKLQrn.info{background-color:#bfe2f2;}/*!sc*/
+.bKLQrn.warn{background-color:#feedbe;}/*!sc*/
+.bKLQrn.success{background-color:#d1e5d0;}/*!sc*/
+data-styled.g14[id="alert__StyledAlert-sc-14vkc4f-0"]{content:"bKLQrn,"}/*!sc*/
+.byleGO{margin-left:280px;width:calc(100% - 280px);max-width:calc(100% - 280px);min-height:70vh;}/*!sc*/
+.byleGO code[class*="language-"],.byleGO pre[class*="language-"]{color:#f7f8f9;background:transparent;font-family:'Fira Code',Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:0.95rem;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;tab-size:2;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;}/*!sc*/
+.byleGO code[class*="language-"]::selection,.byleGO pre[class*="language-"]::selection,.byleGO code[class*="language-"] *::selection,.byleGO pre[class*="language-"] *::selection{background:#3e4852;}/*!sc*/
+.byleGO pre[class*="language-"]{padding:1.7rem 2rem;overflow:auto;border-radius:0.3em;}/*!sc*/
+.byleGO pre[class*="language-"].line-numbers{position:relative;padding:1.7rem 2rem;padding-left:4.5em;overflow:initial;counter-reset:linenumber;}/*!sc*/
+.byleGO pre[class*="language-"].line-numbers > code{position:relative;white-space:inherit;}/*!sc*/
+.byleGO pre[class*="language-"].line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:0;font-size:100%;left:-3.8em;width:3em;-webkit-letter-spacing:-1px;-moz-letter-spacing:-1px;-ms-letter-spacing:-1px;letter-spacing:-1px;background-color:#dde1e5;border-radius:0.3em 0 0 0.3em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;padding:1.7rem 0rem 1.7rem 2rem;}/*!sc*/
+.byleGO pre[class*="language-"].line-numbers .line-numbers-rows > span{display:block;counter-increment:linenumber;}/*!sc*/
+.byleGO pre[class*="language-"].line-numbers .line-numbers-rows > span:before{content:counter(linenumber);color:#3e4852;display:block;padding-right:0.8em;text-align:right;}/*!sc*/
+.byleGO pre[class*="language-"]{background:#282e35;}/*!sc*/
+.byleGO .token.comment,.byleGO .token.prolog,.byleGO .token.doctype,.byleGO .token.cdata{color:#8694a3;}/*!sc*/
+.byleGO .token.punctuation{color:#FFFFFF;}/*!sc*/
+.byleGO .token.interpolation-punctuation{color:#d54e53;}/*!sc*/
+.byleGO .token.namespace{opacity:.7;}/*!sc*/
+.byleGO .token.property,.byleGO .token.tag,.byleGO .token.constant,.byleGO .token.symbol,.byleGO .token.deleted{color:#d54e53;}/*!sc*/
+.byleGO .token.boolean,.byleGO .token.number{color:#e78c45;}/*!sc*/
+.byleGO .token.selector,.byleGO .token.attr-name,.byleGO .token.string,.byleGO .token.char,.byleGO .token.builtin,.byleGO .token.inserted{color:#b9ca4a;}/*!sc*/
+.byleGO .token.operator,.byleGO .token.entity,.byleGO .token.url,.byleGO .language-css .token.string,.byleGO .style .token.string,.byleGO .token.variable{color:#70c0b1;}/*!sc*/
+.byleGO .token.atrule,.byleGO .token.attr-value,.byleGO .token.function{color:#c397d8;}/*!sc*/
+.byleGO .token.class-name{color:#e7c547;font-weight:600;}/*!sc*/
+.byleGO .token.keyword{color:#7aa6da;}/*!sc*/
+.byleGO .token.regex,.byleGO .token.important{color:#e78c45;}/*!sc*/
+.byleGO .token.important,.byleGO .token.bold{font-weight:bold;}/*!sc*/
+.byleGO .token.italic{font-style:italic;}/*!sc*/
+.byleGO .token.entity{cursor:help;}/*!sc*/
+.byleGO .command-line-prompt{display:block;float:left;font-size:100%;-webkit-letter-spacing:-1px;-moz-letter-spacing:-1px;-ms-letter-spacing:-1px;letter-spacing:-1px;margin-right:0;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}/*!sc*/
+.byleGO .command-line-prompt > span:before{color:#999;content:' ';display:block;padding-right:0.6em;}/*!sc*/
+.byleGO .command-line-prompt > span[data-user]:before{content:"$";}/*!sc*/
+.byleGO .command-line-prompt > span[data-prompt]:before{content:attr(data-prompt);}/*!sc*/
+@media (max-width:61.99875em){.byleGO{margin-left:0;width:100%;max-width:100%;}}/*!sc*/
+.byleGO h1{-webkit-letter-spacing:-2px;-moz-letter-spacing:-2px;-ms-letter-spacing:-2px;letter-spacing:-2px;}/*!sc*/
+.byleGO h2{border-bottom:1px solid #bfc0c0;}/*!sc*/
+.byleGO h3{font-weight:800;}/*!sc*/
+.byleGO h3,.byleGO h4,.byleGO h5{margin-bottom:1rem;}/*!sc*/
+.byleGO h4,.byleGO h5{-webkit-letter-spacing:-0.5px;-moz-letter-spacing:-0.5px;-ms-letter-spacing:-0.5px;letter-spacing:-0.5px;}/*!sc*/
+.byleGO h2 + h3 > div{margin-top:0;}/*!sc*/
+data-styled.g15[id="content__StyledDocContent-sc-2guld3-0"]{content:"byleGO,"}/*!sc*/
+.ecWrqR{position:relative;max-width:1200px;width:100%;padding:0 3rem;margin:0 auto;}/*!sc*/
+@media print{.ecWrqR{padding:0;}}/*!sc*/
+data-styled.g16[id="docPage__StyledDocPage-sc-1nsjhu5-0"]{content:"ecWrqR,"}/*!sc*/
+</style><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><title data-react-helmet="true">Lambda Log | Dynamic Metadata</title><link data-react-helmet="true" rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/><link data-react-helmet="true" rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/><link data-react-helmet="true" rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/><link data-react-helmet="true" rel="manifest" href="/site.webmanifest"/><link data-react-helmet="true" rel="mask-icon" href="/safari-pinned-tab.svg" color="#ef8354"/><meta data-react-helmet="true" charSet="utf-8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" name="apple-mobile-web-app-title" content="Lambda Log"/><meta data-react-helmet="true" name="application-name" content="Lambda Log"/><meta data-react-helmet="true" name="msapplication-TileColor" content="#2d3142"/><meta data-react-helmet="true" name="theme-color" content="#2d3142"/><meta data-react-helmet="true" name="description" content="Node.js package to enforce standards when logging to CloudWatch from Lambda functions, other AWS services, or anywhere you desire JSON-formatted logs."/><meta data-react-helmet="true" property="og:title" content="Lambda Log"/><meta data-react-helmet="true" property="og:description" content="Node.js package to enforce standards when logging to CloudWatch from Lambda functions, other AWS services, or anywhere you desire JSON-formatted logs."/><meta data-react-helmet="true" property="og:locale" content="en_US"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:image" content="https://KyleRoss.github.io/node-lambda-log/og-image.png"/><meta data-react-helmet="true" name="twitter:title" content="Lambda Log"/><meta data-react-helmet="true" name="twitter:description" content="Node.js package to enforce standards when logging to CloudWatch from Lambda functions, other AWS services, or anywhere you desire JSON-formatted logs."/><meta data-react-helmet="true" name="twitter:creator" content="@kylerross"/><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"/><meta data-react-helmet="true" name="twitter:image" content="https://KyleRoss.github.io/node-lambda-log/og-image.png"/><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link as="script" rel="preload" href="/webpack-runtime-d67d745bb3ff7c1a70cc.js"/><link as="script" rel="preload" href="/framework-fb6f66690bf28a605cc9.js"/><link as="script" rel="preload" href="/app-3f7722af7e42e9ace53d.js"/><link as="script" rel="preload" href="/78e521c3-76f85de9c6b21de9a5e3.js"/><link as="script" rel="preload" href="/ae51ba48-3c982c78a4b6c6c4f0c5.js"/><link as="script" rel="preload" href="/252f366e-f88dfdd4718301f02a07.js"/><link as="script" rel="preload" href="/95b64a6e-ecfed21d9c9f67e8f701.js"/><link as="script" rel="preload" href="/d64684d8-ca9c4408fdf718ce3226.js"/><link as="script" rel="preload" href="/commons-ef26415e4619ab93def7.js"/><link as="script" rel="preload" href="/656d988e0e036d147df6c112face0483e72eee06-65b819d2adacf5343a98.js"/><link as="script" rel="preload" href="/component---src-templates-doc-page-js-ef0fa0cc6271ffce5a48.js"/><link as="fetch" rel="preload" href="/page-data/docs/dynamic-metadata/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/3829195012.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header class="header__Header-sc-1a3nkph-0 kYscOo"><nav><a class="brand plain" href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 74"><path fill="#ef8354" d="M67.656 56.734a5.757 5.757 0 01-4.7-2.659 23.632 23.632 0 01-3.307-6.614q-1.33-3.953-3.239-10.977-2.319-8.658-4.261-14.08a28.712 28.712 0 00-5.216-9.2 10.3 10.3 0 00-8.114-3.784h-5.595v7.227h4.023a5.794 5.794 0 014.807 2.9 32.918 32.918 0 013.784 8.284l-15.614 36.13h8.182l10.636-24.614A122.953 122.953 0 0053.1 52.029a26.337 26.337 0 005.216 8.523 10.27 10.27 0 007.773 3.409h5.659v-7.227h-4.092z"></path><path fill="#bfc0c0" d="M73.792 73.847q8.863 0 13.023-3.273t4.159-10.909a41.347 41.347 0 00-.682-6.273 41.432 41.432 0 01-.545-5.046q0-1.636 2.625-4.5a73.228 73.228 0 018.011-7.159q-10.637-8.521-10.636-11.931a32.725 32.725 0 01.545-4.568 37.645 37.645 0 00.682-6.409q0-7.635-4.159-10.943T73.792-.471v5.318q6.068 0 8.8 2.045t2.727 7.159a23.629 23.629 0 01-.75 5.727 25.2 25.2 0 00-.545 4.3 11.431 11.431 0 002.045 6.511 26.386 26.386 0 006.136 6.1A25.7 25.7 0 0086 42.654a11.066 11.066 0 00-1.977 6.375 25.124 25.124 0 00.545 4.227 33.469 33.469 0 01.682 6.2q0 5.047-2.693 7.057t-8.761 2.011v5.318zM26.383 68.529q-6.069 0-8.761-2.011t-2.693-7.057a33.384 33.384 0 01.682-6.2 25.231 25.231 0 00.545-4.227 11.074 11.074 0 00-1.977-6.375 25.735 25.735 0 00-6.2-5.966 26.386 26.386 0 006.136-6.1 11.431 11.431 0 002.045-6.511 25.3 25.3 0 00-.545-4.3 23.58 23.58 0 01-.75-5.727q0-5.114 2.727-7.159t8.8-2.045V-.471q-8.864 0-13.023 3.307T9.2 13.779a37.534 37.534 0 00.682 6.409 32.889 32.889 0 01.545 4.568q0 3.41-10.636 11.932A73.46 73.46 0 017.8 43.847q2.624 2.864 2.625 4.5a41.651 41.651 0 01-.545 5.046 41.2 41.2 0 00-.68 6.273q0 7.635 4.159 10.909t13.023 3.273v-5.319z"></path></svg><div class="logo-text">lambda<strong>log</strong></div></a><div class="nav-menu"><ul><li><a class="" href="/">Home</a></li><li><a class="active" href="/docs/">Documentation</a></li><li class="icon"><a href="https://github.com/KyleRoss/node-lambda-log" target="_blank" rel="noreferrer noopener" class="github plain"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 32C132.3 32 32 134.9 32 261.7c0 101.5 64.2 187.5 153.2 217.9a17.56 17.56 0 003.8.4c8.3 0 11.5-6.1 11.5-11.4 0-5.5-.2-19.9-.3-39.1a102.4 102.4 0 01-22.6 2.7c-43.1 0-52.9-33.5-52.9-33.5-10.2-26.5-24.9-33.6-24.9-33.6-19.5-13.7-.1-14.1 1.4-14.1h.1c22.5 2 34.3 23.8 34.3 23.8 11.2 19.6 26.2 25.1 39.6 25.1a63 63 0 0025.6-6c2-14.8 7.8-24.9 14.2-30.7-49.7-5.8-102-25.5-102-113.5 0-25.1 8.7-45.6 23-61.6-2.3-5.8-10-29.2 2.2-60.8a18.64 18.64 0 015-.5c8.1 0 26.4 3.1 56.6 24.1a208.21 208.21 0 01112.2 0c30.2-21 48.5-24.1 56.6-24.1a18.64 18.64 0 015 .5c12.2 31.6 4.5 55 2.2 60.8 14.3 16.1 23 36.6 23 61.6 0 88.2-52.4 107.6-102.3 113.3 8 7.1 15.2 21.1 15.2 42.5 0 30.7-.3 55.5-.3 63 0 5.4 3.1 11.5 11.4 11.5a19.35 19.35 0 004-.4C415.9 449.2 480 363.1 480 261.7 480 134.9 379.7 32 256 32z"></path></svg><span class="sr-only">View on Github</span></a></li></ul></div><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="mobile-menu-btn open-btn" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 4h18v2H3V4zm6 7h12v2H9v-2zm-6 7h18v2H3v-2z"></path></g></svg></nav></header><div class="layouts__PageWrapper-sc-1hw14zs-0 ffBstB"><main class="layouts__Main-sc-1hw14zs-1 eMEcWo"><div class="docPage__StyledDocPage-sc-1nsjhu5-0 ecWrqR"><aside class="sidebar__StyledSidebar-casish-0 cvrmsU"><ul><li><a class="root plain" href="/docs/getting-started/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg>Getting Started</a></li><li><a class="root plain" href="/docs/custom-log-levels/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg>Custom Log Levels</a></li><li><a aria-current="page" class="root plain active" href="/docs/dynamic-metadata/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg>Dynamic Metadata</a></li><li><a class="root plain" href="/docs/enhanced-tags/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg>Enahnced Tags</a></li><li><a class="root plain" href="/docs/log-handler/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg>Log Handler</a></li><li><a class="root plain" href="/docs/api/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg>API Reference</a></li><li><a class="root plain" href="/docs/development/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg>Development</a></li><li><a class="root plain" href="/docs/contributing/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg>Contributing</a></li><li><a class="root plain" href="/docs/v3-migration/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg>v3 Migration Guide</a></li></ul></aside><div class="sidebar__StyledMenuBtn-casish-1 jPRPqQ"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0H24V24H0z"></path><path d="M21 18v2H3v-2h18zM17.404 3.904L22 8.5l-4.596 4.596-1.414-1.414L19.172 8.5 15.99 5.318l1.414-1.414zM12 11v2H3v-2h9zm0-7v2H3V4h9z"></path></g></svg></div><main class="content__StyledDocContent-sc-2guld3-0 byleGO doc-content"><h1 class="heading__StyledHeading-sc-4z1u9v-0 gOleYx" id="dynamic-metadata">Dynamic Metadata</h1>
+<p>Since version 2.0.0, Lambda Log facilitates a concept of dynamically adding metadata to log messages. Dynamic Metadata is generated by the results of calling a function defined in <code>log.options.dynamicMeta</code> for each log message that is generated. This gives the ability to set metadata that may be time-based or changes on a regular basis within your application without needing to manually set the data on each log message.</p>
+<div><div class="alert__StyledAlert-sc-14vkc4f-0 bKLQrn warn"><strong>Note:</strong> Dynamic Metadata can only utilize synchronous data. Trying to utilize asynchronous data via the Dynamic Metadata function will not work.</div></div>
+<h3 class="heading__StyledHeading-sc-4z1u9v-0 gOleYx with-permalink" id="setting-dynamic-metadata"><a href="#setting-dynamic-metadata" class="permalink plain"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path></svg><span class="sr-only">Jump to <!-- -->Setting Dynamic Metadata</span></a>Setting Dynamic Metadata</h3>
+<p>A Dynamic Metadata function can be set by either passing in as the option <code>dynamicMeta</code> when creating a new instance of <a class="" href="/docs/api/#lambdalog">LambdaLog</a> or by setting <code>log.options.dynamicMeta</code> on a pre-existing instance of LambdaLog.</p>
+<p><strong>On new instance of LambdaLog:</strong></p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> LambdaLog <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&#x27;lambda-log&#x27;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> log <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LambdaLog</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function">dynamicMeta</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p><strong>On existing instance of LambdaLog:</strong></p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> log <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&#x27;lambda-log&#x27;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+log<span class="token punctuation">.</span>options<span class="token punctuation">.</span><span class="token function-variable function">dynamicMeta</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<h3 class="heading__StyledHeading-sc-4z1u9v-0 gOleYx with-permalink" id="dynamic-metadata-function"><a href="#dynamic-metadata-function" class="permalink plain"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path></svg><span class="sr-only">Jump to <!-- -->Dynamic Metadata Function</span></a>Dynamic Metadata Function</h3>
+<p>The function signature for Dynamic Metadata is as defined below:</p>
+<h4 class="heading__StyledHeading-sc-4z1u9v-0 gOleYx with-permalink" id="functionmsg-options"><a href="#functionmsg-options" class="permalink plain"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path></svg><span class="sr-only">Jump to <!-- -->function(msg, options)</span></a><div class="header__StyledHeader-zz6o7r-0 hBTpjo"><span class="type-icon function"></span><span class="heading-text"><span class="func">function</span><span class="args">(<span class="arg">msg</span>, <span class="arg">options</span>)</span></span></div></h4>
+<p>For each log message, this function will be called in order to obtain dynamic metadata to include. This function must return an object with dynamic metadata to be added. Any properties returned from this function that already exist in the metadata will be overwritten. To skip adding metadata to the log message, you may return <code>false</code>, <code>null</code>, or an empty object from this function.</p>
+<p><strong>Scope:</strong> <a class="" href="/docs/api/#logmessage">LogMessage</a> — The LogMessage instance for the given log.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>msg</td><td><code>LogMessage</code></td><td>The instance of <a class="" href="/docs/api/#logmessage">LogMessage</a> for the current log.</td></tr><tr><td>options</td><td><code>Object</code></td><td>The options object from the LambdaLog instance.</td></tr></tbody></table>
+<h3 class="heading__StyledHeading-sc-4z1u9v-0 gOleYx with-permalink" id="examples"><a href="#examples" class="permalink plain"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path></svg><span class="sr-only">Jump to <!-- -->Examples</span></a>Examples</h3>
+<p><strong>Add Timestamp to all Log Messages:</strong></p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">log<span class="token punctuation">.</span>options<span class="token punctuation">.</span><span class="token function-variable function">dynamicMeta</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    timestamp<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toISOString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<p><strong>Add UUID to all Error Logs:</strong></p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> uuid <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&#x27;uuid&#x27;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+log<span class="token punctuation">.</span>options<span class="token punctuation">.</span><span class="token function-variable function">dynamicMeta</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">message</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>level <span class="token operator">===</span> <span class="token string">&#x27;error&#x27;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      errorId<span class="token operator">:</span> uuid<span class="token punctuation">.</span><span class="token function">v4</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<p><strong>Add a Value from a Global Variable:</strong></p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">let</span> myGlobal <span class="token operator">=</span> <span class="token string">&#x27;some-value-that-changes&#x27;</span><span class="token punctuation">;</span>
+
+log<span class="token punctuation">.</span>options<span class="token punctuation">.</span><span class="token function-variable function">dynamicMeta</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    prop<span class="token operator">:</span> myGlobal
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div></main></div></main><footer class="footer__StyledFooter-sc-14qcm24-0 cJJyFw"><div class="attribution">Made with <span class="heart">♥</span> by <a href="https://kyleross.me" target="_blank" rel="noreferrer noopener" class="plain">Kyle Ross</a></div><div class="footer-links"><a href="https://github.com/KyleRoss/node-lambda-log/blob/master/LICENSE" target="_blank" rel="noreferrer noopener" class="plain">MIT License</a> | <a href="https://github.com/KyleRoss/node-lambda-log" target="_blank" rel="noreferrer noopener" class="plain">Github</a> | <a href="https://www.npmjs.com/package/lambda-log" target="_blank" rel="noreferrer noopener" class="plain">NPM</a> | <a href="https://gitter.im/KyleRoss/node-lambda-log" target="_blank" rel="noreferrer noopener" class="plain">Gitter</a></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WFFTYWNCBM"></script><script>
+      
+      
+      if(!(navigator.doNotTrack == "1" || window.doNotTrack == "1")) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer && window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-WFFTYWNCBM', {"send_page_view":false});
+      }
+      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/docs/dynamic-metadata/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-95559c4c64e5ac1e1e0e.js"],"app":["/app-3f7722af7e42e9ace53d.js"],"component---src-pages-docs-index-js":["/component---src-pages-docs-index-js-40ebb058bf467333b350.js"],"component---src-pages-index-js":["/component---src-pages-index-js-542dea504fffa5438caf.js"],"component---src-templates-doc-page-js":["/component---src-templates-doc-page-js-ef0fa0cc6271ffce5a48.js"]};/*]]>*/</script><script src="/polyfill-95559c4c64e5ac1e1e0e.js" nomodule=""></script><script src="/component---src-templates-doc-page-js-ef0fa0cc6271ffce5a48.js" async=""></script><script src="/656d988e0e036d147df6c112face0483e72eee06-65b819d2adacf5343a98.js" async=""></script><script src="/commons-ef26415e4619ab93def7.js" async=""></script><script src="/d64684d8-ca9c4408fdf718ce3226.js" async=""></script><script src="/95b64a6e-ecfed21d9c9f67e8f701.js" async=""></script><script src="/252f366e-f88dfdd4718301f02a07.js" async=""></script><script src="/ae51ba48-3c982c78a4b6c6c4f0c5.js" async=""></script><script src="/78e521c3-76f85de9c6b21de9a5e3.js" async=""></script><script src="/app-3f7722af7e42e9ace53d.js" async=""></script><script src="/framework-fb6f66690bf28a605cc9.js" async=""></script><script src="/webpack-runtime-d67d745bb3ff7c1a70cc.js" async=""></script></body></html>

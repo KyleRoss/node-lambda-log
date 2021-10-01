@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://KyleRoss.github.io/node-lambda-log/sitemap.xml
+Host: https://kyleross.github.io
