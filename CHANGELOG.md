@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/KyleRoss/node-lambda-log/compare/v3.0.1...v3.0.2) (2021-10-01)
+
+
+### Bug Fixes
+
+* skip adding a toJSON method to errors that already have one ([#61](https://github.com/KyleRoss/node-lambda-log/issues/61)) ([5b03656](https://github.com/KyleRoss/node-lambda-log/commit/5b03656ee98d06a5f445e27933413d9189cc53da))
+
 ## [3.0.1](https://github.com/KyleRoss/node-lambda-log/compare/v3.0.0...v3.0.1) (2021-09-27)
 
 
