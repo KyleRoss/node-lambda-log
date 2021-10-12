@@ -1,10 +1,15 @@
 .github
 .husky
 .vscode
+gh-pages
 site
 .eslintrc.yml
 .releaserc
 commitlint.config.js
 *.test.js
 jest.config.js
+.all-contributorsrc
 .codeclimate.yml
+babel.config.js
+CHANGELOG.md
+README.md
