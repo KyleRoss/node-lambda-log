@@ -28,7 +28,7 @@ Anyone can log JSON to the `console`, but with Lambda Log you also get:
 
 #### New in Version 3.0.0
 
-Version 3.0.0 of Lambda Log brings a bunch of changes, new features, and a [new website](https://lambdalog.js.org).
+Version 3.0.0 of Lambda Log brings a bunch of changes, new features, and a [new website](https://lambdalog.dev).
 
 **Broad Changes:**
 
@@ -59,19 +59,19 @@ Version 3.0.0 of Lambda Log brings a bunch of changes, new features, and a [new 
 
 ## Documentation
 
-Documentation for Lambda Log has moved to our [new website](https://lambdalog.js.org).
+Documentation for Lambda Log has moved to our [new website](https://lambdalog.dev).
 
 
 
 ## Tests
 
-See [Development Documentation](https://lambdalog.js.org/docs/development).
+See [Development Documentation](https://lambdalog.dev/docs/latest/development).
 
 
 
 ## Contributing
 
-See [Contributing Documentation](https://lambdalog.js.org/docs/contributing).
+See [Contributing Documentation](https://lambdalog.dev/docs/latest/contributing).
 
 
 
