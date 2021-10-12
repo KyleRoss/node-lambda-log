@@ -27,7 +27,7 @@ pre.torchlight {
     }
 
     &:hover .line:not(.line-focus) {
-      filter: blur(0px);
+      filter: blur(0);
       opacity: 1;
     }
   }
