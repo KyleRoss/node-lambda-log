@@ -12,7 +12,7 @@ env:
 plugins:
   - 'jsdoc'
   - 'node'
-  
+
 extends:
   - 'xo-space/esnext'
   - 'plugin:jsdoc/recommended'

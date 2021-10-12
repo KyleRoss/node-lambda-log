@@ -36,7 +36,7 @@ checks:
     enabled: true
   identical-code:
     enabled: true
-plugins: 
+plugins:
   eslint:
     enabled: true
     channel: "eslint-7"
