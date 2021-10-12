@@ -2,13 +2,31 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@src/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@ui/*": ["src/components/ui/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@data/*": ["src/data/*"],
-      "@pages/*": ["src/pages/*"],
-      "@styles/*": ["src/styles/*"]
-    }
-  }
+      "@/*": ["./*"],
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"],
+      "@public/*": ["public/*"],
+      "@utils/*": ["utils/*"]
+    },
+    "target": "es2020",
+    "jsx": "react"
+  },
+  "typeAcquisition": {
+    "exclude": [
+      "dotenv",
+      "agent-base",
+      "eslint-import-resolver-typescript",
+      "eslint-mdx",
+      "eslint-plugin-mdx",
+      "mdast-util-from-markdown",
+      "rxjs",
+      "source-map-js",
+      "synckit"
+    ]
+  },
+  "exclude": [
+    "out",
+    ".next",
+    "node_modules"
+  ]
 }

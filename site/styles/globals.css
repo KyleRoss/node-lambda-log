@@ -1,0 +1,8 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import "./partials/base.css";
+@import "./partials/typography.css";
+@import "./partials/torchlight.css";
+@import "./partials/docs.css";

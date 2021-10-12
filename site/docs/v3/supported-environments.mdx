@@ -1,0 +1,20 @@
+---
+title: Supported Environments
+description: 'What platforms can LambdaLog work with.'
+---
+
+While this package has "Lambda" in the name, you can use this logger just about anywhere where JSON logs are desired. LambdaLog does not depend on AWS or anything else that would limit the usage of this package. Because of this, LambdaLog focuses primarily on supporting various Node.js versions.
+
+## Node.js Versions
+The support for various Node.js versions is based on the [Node.js LTS Schedule](https://nodejs.org/en/about/releases/) and the versions [supported by AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html). While LambdaLog may work properly other versions of Node.js, they are not supported.
+
+| Node.js Version | LambdaLog Version | Tested and Supported? |
+| --------------- | ----------------- | --------------------- |
+| v16 (Current) | v3.x | Yes |
+| v14 (LTS) | v3.x | Yes |
+| v12 | v3.x | Yes |
+| v10 | v2.x - v3.x | No _(End of Life)_ |
+| v8 | v1.x - v2.x | No _(End of Life)_ |
+| v6 | v1.x - v2.x | No _(End of Life)_ |
+
+As new versions of Node.js are released and old ones reaching end of life, LambdaLog will be updated. If you must continue to use older versions of Node.js, you must install the corresponding LambdaLog version.

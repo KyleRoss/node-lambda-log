@@ -1,0 +1,7 @@
+.button {
+  @apply relative w-full py-2 pl-3 pr-10 text-left font-semibold cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm;
+}
+
+.options {
+  @apply absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded shadow-lg max-h-60 focus:outline-none sm:text-sm;
+}

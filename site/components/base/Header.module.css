@@ -1,0 +1,37 @@
+.mainNav {
+  @apply sticky top-0 left-0 right-0 py-3 h-[70px] z-100 bg-warm-50;
+}
+
+.navInner {
+  @apply flex justify-between items-center h-[46px];
+}
+
+.navBrand {
+  @apply flex items-center;
+
+  & svg {
+    @apply w-auto h-[32px] mr-2;
+  }
+
+  & :global(.logo-text) {
+    @apply text-[1.5rem] text-warm-500 font-mono tracking-tighter;
+
+    & strong {
+      @apply text-warm-500;
+    }
+  }
+}
+
+a.github {
+  @apply text-warm-500 transition-all;
+
+  & svg {
+    @apply w-8 h-8;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    @apply text-warm-700;
+  }
+}

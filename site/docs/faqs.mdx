@@ -1,0 +1,24 @@
+---
+title: FAQs
+description: 'Answers to some of the frequently asked questions.'
+---
+
+While this package has "Lambda" in the name, you can use this logger just about anywhere where JSON logs are desired. LambdaLog does not depend on AWS or anything else that would limit the usage of this package. Because of this, LambdaLog focuses primarily on supporting various Node.js versions.
+
+#### Why another logging package? There are already many great ones.
+There are a much of great logging packages available on NPM that are very similar to LambdaLog and some that have a ton more features. LambdaLog was created to balance important features with performance and ease-of-use. When running in a serverless function environment, there should be some thought around the performance and speed so your processes can execute quickly and effectively. With popular loggers like [Bunyan](https://www.npmjs.com/package/bunyan) and [Winston](https://www.npmjs.com/package/winston), they are quite large, require a lot of configuration, and are full of dependencies; see the table below.
+
+| Package | Package Size | Dependencies | Bundled Size |
+| ------- | ------------ | ------------ | ------------ |
+| Bunyan v1.8.15 | 201 kB | 4 | 15.4 kB |
+| Winston v3.3.3 | 286 kB | 9 | 147.4 kB |
+| LambdaLog v3.0.2 | 42.5 kB | 1 | 5.9 kB |
+
+#### Why is the Node.js version support so narrow?
+Currently, LambdaLog only supports the versions of Node that are [supported by AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) and the [latest current version of Node](https://nodejs.org/en/about/releases/) as it will be integrated into AWS once it reaches LTS status. Other cloud providers follow a similar schedule as well. Each release of LambdaLog will always support the previous, LTS, and current version of Node. Support for older versions will require you to use an older version of this package.
+
+#### Why does it take you so long to respond to issues and/or pull requests?
+I have a day job and a family which restricts the amount of time I can spend on open source projects. I hope to have more time to dedicate to my projects with your [sponsorship](/docs/[v]/sponsorship) and with freeing up my schedule a bit more. I will be providing priority support to my sponsors as well.
+
+#### Why does/doesn't LambdaLog do _X_?
+In an effort to keep this package lean and use-friendly, I've opted to exclude some features that you may find with other logging packages. If there is enough support for the feature, it may be added. On the other hand, LamdaLog was built to be an easy-to-use logger which is why it may do some things a specific way. I've been working to allow more customization without being overly complex.

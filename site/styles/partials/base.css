@@ -1,0 +1,74 @@
+@layer base {
+  html {
+    box-sizing: border-box;
+    height: max-content;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+}
+
+/************************************************************
+ * Body Styles                                              *
+ ************************************************************/
+::selection {
+  @apply text-white bg-orange-700;
+  text-shadow: none;
+}
+
+body {
+  @apply font-body text-base font-normal bg-warm-50 text-warm-600 overflow-x-hidden antialiased;
+
+  min-height: 100vh;
+  min-height: stretch;
+
+  &.dark {
+    @apply bg-warm-800;
+  }
+}
+
+#__next {
+  @apply relative min-h-screen;
+}
+
+a.skip-nav {
+  @apply absolute z-[501] block left-1/2 w-[12.5rem] leading-[50px] text-center bg-white rounded-b-xl;
+
+  transform: translateX(-10000px);
+
+  &:focus {
+    transform: translateX(-100px);
+  }
+}
+
+.container {
+  @apply mx-auto px-12;
+}
+
+/************************************************************
+ * Link Styles                                              *
+ ************************************************************/
+a {
+  @apply text-blue-600 no-underline font-normal;
+
+  &:not(.plain) {
+    @apply relative inline-block transition-colors;
+
+    &::before {
+      @apply absolute z-0 left-[51%] right-[51%] bottom-0 bg-orange-600 h-[2px];
+      content: '';
+      transition-property: left, right;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-out;
+    }
+
+    &:hover, &:active, &:focus {
+      @apply text-warm-900;
+
+      &::before {
+        @apply left-0 right-0;
+      }
+    }
+  }
+}

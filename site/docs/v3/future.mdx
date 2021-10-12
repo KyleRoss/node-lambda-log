@@ -1,0 +1,38 @@
+---
+title: Future Plans
+description: What's next for LambdaLog.
+---
+
+Thanks to the support of the community and contributors, LambdaLog continues to improve and become faster and more feature-rich. With the many ideas and suggestions provided, I have boiled down a list of plans for the future of LambdaLog.
+
+## Version 3.1.0
+- **Deprecation of [Custom Log Levels](/docs/[v]/custom-log-levels).**
+<br />
+The last barrier for version 4 of LambdaLog is the custom log levels. While this is a handy feature, it imposes a lot of limitations such as TypeScript types and disabling of certain log levels. This feature will be deprecated in v3.1.0 and removed in v4.0.0.
+
+## Version 4.0.0
+The next major version of LambdaLog is already in the planning phase and encapsulates many new features and a complete rewrite of the codebase.
+
+- **Log level verbosity for environment.**
+<br />
+Log levels will be defined in a hierarchy that allows configuring the verbosity of of your log messages for the environment. This will replace the options `silent` and `debug` and will allow you to configure the maximum log level you wish to log for your environment.
+- **LambdaLog will be going TypeScript.**
+<br />
+Not only will this help provide a more maintainable codebase, but will provide much better support for all of the TypeScript users.
+- **New `fatal` Log Level.**
+<br />
+A new log level (`fatal`) will be added.
+- **Custom formatter for `dev` mode.**
+<br />
+Don't want to see formatted JSON when `dev` mode is enabled? You'll be able to provide a custom formatter function to adjust how logs should be printed in `dev` mode.
+- **ESM and CommonJS Support.**
+<br />
+With the introduction of ESM into Node, more packages are moving towards using `import` (ESM) versus `require` (CommonJS). Unlike many of those packages, LambdaLog will support both!
+
+#### Planned Removals
+- **[Custom Log Levels](/docs/[v]/custom-log-levels).**
+<br />
+Custom Log Levels is deprecated and will be removed in v4.
+- **[Debug](/docs/[v]/debug-logs) mode.**
+<br />
+The Debug configuration option will be removed in favor of the new log verbosity feature.

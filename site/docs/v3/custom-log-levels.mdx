@@ -1,0 +1,116 @@
+---
+title: Custom Log Levels
+description: 'Customize the built-in log levels to fit your needs.'
+deprecated: '3.1.0'
+---
+
+<deprecated version="3.1.0" className="mb-4" />
+
+The built-in log levels may not always fit the needs of your application so LambdaLog provides instrumentation to create your own custom log levels. Custom Log Levels can be defined in two different ways: Creating an instance of the LambdaLog class or, new in version 3, by calling `addLevel()` on an existing instance of a LambdaLog class.
+
+Any custom log levels added to LambdaLog will automatically create a dynamic method on the LambdaLog class. For example, if you create a new log level called `fatal`, you'll be able to use the shorthand method `log.fatal()`.
+
+?> In order to add new features, this feature is **DEPRECATED**. If you are currently using custom log levels, expect this feature to be removed in the next major version of LambdaLog.
+
+### How do I add Custom Log Levels?
+Easy! Either create a new instance of [LambdaLog](/docs/[v]/api#lambdalog) and pass in your log levels as the second argument or use the `addLevel()` method on an existing instance of the LambdaLog class. You can even overwrite an existing log level to add custom functionality.
+
+<!--tabs-->
+#### Default Instance
+```js
+const log = require('lambda-log');
+
+// With string handler [tl! focus]
+log.addLevel('fatal', 'error'); // [tl! focus]
+
+// With function handler [tl! focus]
+log.addLevel('fatal', function (message) { // [tl! focus]
+  // custom functionality... [tl! focus]
+  return 'error'; // [tl! focus]
+}); // [tl! focus]
+```
+
+#### New Instance
+```js
+const { LambdaLog } = require('lambda-log');
+const log = new LambdaLog({}, { // [tl! focus]
+  // Log Levels object... [tl! focus]
+  fatal: 'error' // [tl! focus]
+}); // [tl! focus]
+```
+<!--/tabs-->
+
+### Log Levels Configuration
+As seen in the examples above, you can pass in an object containing log levels into a new instance of LambdaLog or add new levels to an existing instance of LambdaLog with `addLevel()`. Both share the same functionality, but have one distinct difference: By creating a new instance, you can create many new levels at once whereas `addLevel()` only adds a single log level at a time.
+
+When passing an log level configuration object into the constructor of the LambdaLog class, the object must be formed with the key being the name of the log level and the value being either a string method name from `console` — such as `log`, `info`, `warn`, `error`, `debug` — or a function that returns a string method name from `console`. The same goes for `addLevel()` where the first argument is the name of the log level and the second argument is the handler — string method name or function.
+
+Now you know how to set log levels, let's look at the signature of a log level handler function.
+
+<h as="h4" type="function" text="function(message)" />
+
+Each custom log level handler function is called for every log that is created for the given level. The function is called in the scope of the current LambdaLog instance with a single parameter — `message`. This function **must** return either a `String` method name from `console` to use for logging the message or `false` to prevent the message from being logged.
+
+<scope text="LambdaLog" link="/docs/[v]/api#lambdalog">
+  The LambdaLog instance
+</scope>
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+| message | `LogMessage` | The [LogMessage](/docs/[v]/api#logmessage) instance for the given log. |
+
+### Examples
+
+**With `addLevel()`:**
+```js
+const log = require('lambda-log');
+
+// fatal log level that logs to `console.error`
+log.addLevel('fatal', 'error');
+
+// unicorn log level that modifies the message
+log.addLevel('unicorn', function (message) {
+  // prepend an emoji to every message
+  message.msg = `🦄 ${message.msg}`;
+
+  return 'log';
+});
+
+// log level that uses custom options
+log.addLevel('trace', function () {
+  // if `log.options.trace` is false, don't log the message
+  if(!this.options.trace) return false;
+
+  // Otherwise, log the message
+  return 'debug';
+});
+```
+
+**With a new LambdaLog Instance:**
+```js
+const { LambdaLog } = require('lambda-log');
+const log = new LambdaLog({
+  // example of custom option
+  trace: true
+}, {
+  // fatal log level that logs to `console.error`
+  fatal: 'error',
+
+  // unicorn log level that modifies the message
+  unicorn(message) {
+    // prepend an emoji to every message
+    message.msg = `🦄 ${message.msg}`;
+
+    return 'log';
+  },
+
+  // log level that uses custom options
+  trace() {
+    // if `log.options.trace` is false, don't log the message
+    if(!this.options.trace) return false;
+
+    // Otherwise, log the message
+    return 'debug';
+  }
+});
+```

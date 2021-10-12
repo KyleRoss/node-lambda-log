@@ -1,0 +1,40 @@
+---
+title: About LambdaLog
+description: 'Learn the benefits of using LambdaLog.'
+---
+
+LambdaLog is a NPM package that provides customizable logging functionality in any project. Unlike other popular loggers for Node, LambdaLog was built with performance, size, and ease of use in mind which is important for processes running in a Lambda Function. While "Lambda" is in the name of this package, it can be used just about anywhere where JSON logs are desired such as other AWS services, Google Cloud, and Azure; LambdaLog has no dependency on AWS.
+
+Since the inception of LambdaLog, this project has expanded far beyond the bounds of Lambda Functions and includes many features in a lightweight, well-documented, heavily-tested, and enterprise-ready* package.
+
+<small>* LambdaLog and all production dependencies are MIT licensed and tested for vulnerabilities.</small>
+
+## The History of LambdaLog
+LambdaLog has been around since 2017 and started as a very basic logger to help improve the quality of logs in CloudWatch. I was working on a team where we were building out many [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load) processes running exclusively on Lambda and I desired a simple logging mechanism that could be utilized across all processes to ensure the log formats were consistent across the board. After diving through the many logging packages in NPM and trying out a handful, I was facing many issues where the packages were to bloated, required a ton of configuration, no longer maintained, missing important features, or contained many dependencies. Instead of _trying_ to make one these work, I decided to create my own package that pulled all the good parts from these other packages while stripping away the bloat and LambdaLog was born.
+
+Over the years, the [popularity grew massively](https://www.npmtrends.com/lambda-log) and my dedication to this simple project has as well. With over 34k downloads a week and 1.5 million downloads, LambdaLog has become the most popular standalone logger for AWS Lambda on NPM.
+
+## What's New in Version 3
+Version 3.0.0 of LambdaLog brings a bunch of changes, new features, and a new website.
+
+**Broad Changes:**
+- Refactor all code to meet new ESLint specifications and to stay up-to-date with newer ecmascript specifications.
+- New website with better documentation.
+- Tests are now using Jest instead of Mocha.
+- Switched from TravisCI to Github Actions.
+
+**New Features:**
+- Added `levelKey` configuration option to be able to change the key name for log levels.
+- Added `messageKey` configuration option to be able to change the key name for log messages.
+- Added `tagsKey` configuration option to be able to change the key name for tags.
+- Added ability to remove log level and tags from the outputted log JSON.
+- Added `addLevel()` method to quickly add a custom log level to an instance of LambdaLog.
+- Tags can now be functions that return a dynamic tag for log messages.
+- Tags now have variable support.
+- Tags that are `null`, `undefined` or `""` are now removed from the tags array.
+- Metadata that contains `Error` objects are now automatically converted to a plain object.
+
+**Breaking Changes:**
+- All of the private properties of both the LambdaLog and LogMessage classes are stored using Symbols. This may break some advanced uses of LambdaLog from version 2.
+- Tags no longer contain any default, built-in tags and are empty by default.
+- Some of the properties of LogMessage have been moved from the constructor to their own getter functions.

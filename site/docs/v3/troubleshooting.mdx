@@ -1,0 +1,49 @@
+---
+title: Troubleshooting
+description: 'How to handle some of the common gotchas with LambdaLog.'
+---
+
+While usage of LambdaLog is pretty straightforward, there are some gotchas you will need to look out for with the way that AWS Lambda works as well as how LambdaLog is implemented.
+
+### I've added global metadata/tags/options and they are being overwritten from other files.
+This is a common issue due to the way Node.js works. All `require`'d modules/files are cached to improve performance. This means that the default instance that is exported by LambdaLog is cached in memory and each time you `require` LambdaLog, you will be getting that same instance that is stored in memory.
+
+So if you were to add any options in your `index.js` and then try to use different options in another file, those options **will** be overwritten, affecting any files using LambdaLog.
+
+If you want to set different options for LambdaLog between different files, you **must** create a new instance of LambdaLog for each of your files instead of using the default instance that is provided.
+
+```js
+const log = require('lambda-log'); // [tl! --]
+const { LambdaLog } = require('lambda-log'); // [tl! ++]
+log.options.meta = { hello: 'world' }; // [tl! --]
+const log = new LambdaLog({ // [tl! add:2]
+  meta: { hello: 'world' }
+});
+```
+
+### My global tags/metadata/options are not changing each time my Lambda function runs.
+AWS Lambda will keep your Lambda Function "hot" for a certain period of time after running to speed up any subsequent executions. Due to this, the memory between runs is preserved for as long as your function is still hot. To ensure you are "starting fresh" each time your Lambda runs for LambdaLog, without impacting performance, is to move your `require` inside of your handler function if using the default instance, or the invocation of LambdaLog inside your handler function if using a new instance.
+
+<!--tabs-->
+#### Default Instance
+```js
+exports.handler = async function handler() {
+  const log = require('lambda-log');
+
+  // ...
+};
+```
+
+#### New Instance
+```js
+const { LambdaLog } = require('lambda-log');
+
+exports.handler = async function handler() {
+  const log = new LambdaLog({
+    // ...options
+  });
+
+  // ...
+};
+```
+<!--/tabs-->

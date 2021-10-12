@@ -1,0 +1,34 @@
+---
+title: Silent Mode
+description: Disable log messages when you don't need them.
+---
+
+There may be cases where you want to disable your log messages from being outputted to the console, such as during testing. LambdaLog provides a `silent` configuration option that will prevent messages from being written to the console.
+
+!> With silent mode enabled, your log messages will still be generated but not outputted to the console. This allows for more advanced functionality if needed.
+
+### Enabling Silent Mode
+Depending on how you are implementing LambdaLog into your project, you can enable this option easily.
+
+<!--tabs-->
+#### Default Instance
+```js
+const log = require('lambda-log');
+
+// Enable silent mode
+log.options.silent = true;
+```
+
+#### New Instance
+```js
+const { LambdaLog } = require('lambda-log');
+
+const log = new LambdaLog({
+  // Enable silent mode
+  silent: true
+});
+
+// You can still disable it later in your process with:
+log.options.silent = false;
+```
+<!--/tabs-->

@@ -1,0 +1,451 @@
+.docs-sidebar {
+  @apply fixed top-[70px] w-52;
+  height: calc(100% - 70px);
+
+  & > ul {
+    @apply overflow-y-auto w-52 h-full py-10 pr-4;
+  }
+
+  & ul {
+    @apply list-none m-0;
+
+    & li {
+      @apply mb-0;
+    }
+  }
+
+  & > ul > li > ul {
+    @apply ml-5 my-3;
+
+    & > li {
+      @apply mb-3;
+    }
+  }
+
+  & .docs-nav-title {
+    @apply mt-7 mb-2 px-2 font-bold text-xs text-warm-800 uppercase;
+  }
+
+  & a.docs-nav-link {
+    @apply block py-2 px-2 rounded-sm text-warm-500 text-sm font-medium transition-all;
+
+    &:hover,
+    &:active,
+    &:focus {
+      @apply text-warm-700;
+    }
+
+    &.active {
+      @apply bg-orange-100 text-orange-700 font-semibold;
+    }
+  }
+
+  & a.docs-subnav-link {
+    @apply block text-warm-500 text-xs;
+
+    &:hover,
+    &:active,
+    &:focus {
+      @apply text-warm-700;
+    }
+  }
+}
+
+.doc-wrapper {
+  @apply flex flex-col ml-60 pt-10;
+  min-height: calc(100vh - 70px);
+}
+
+.doc-content {
+  @apply pb-20;
+
+  & a {
+    @apply text-blue-600 no-underline font-medium;
+
+    &:not(.plain) {
+      @apply relative inline-block transition-colors;
+
+      &::before {
+        @apply absolute z-0 left-[51%] right-[51%] bottom-0 bg-blue-600 h-[2px];
+        content: '';
+        transition-property: left, right;
+        transition-duration: 0.15s;
+        transition-timing-function: ease-out;
+      }
+
+      &:hover, &:active, &:focus {
+        @apply text-warm-900;
+
+        &::before {
+          @apply left-0 right-0;
+        }
+      }
+    }
+  }
+
+  & strong a {
+    @apply font-bold;
+  }
+
+  & p {
+    @apply mb-6;
+  }
+
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    @apply mt-8;
+  }
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    @apply relative;
+    scroll-margin-top: 70px;
+
+    & a.heading-permalink {
+      @apply absolute hidden w-7 h-full -left-7 top-0 bottom-0 pr-2 text-warm-400 items-center;
+
+      & svg {
+        @apply w-5 h-auto;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        @apply text-warm-800;
+      }
+    }
+
+    &:hover a.heading-permalink,
+    &:focus a.heading-permalink {
+      @apply flex;
+    }
+  }
+
+  & ul {
+    @apply mb-6 ml-8 list-disc;
+
+    & li {
+      @apply mb-2;
+    }
+  }
+
+  & table {
+    @apply w-full mb-6;
+
+    & thead {
+      & th {
+        @apply bg-warm-200 text-left;
+      }
+    }
+
+    & tbody tr:nth-child(even) {
+      @apply bg-warm-100;
+    }
+
+    & th,
+    & td {
+      @apply px-3 py-2 border-b-1 border-warm-300;
+    }
+  }
+}
+
+.hint {
+  @apply relative py-6 px-8 pt-10 rounded bg-gray-300;
+
+  &:before {
+    @apply absolute top-0 left-0 py-0.5 px-3 rounded-tl rounded-br text-[0.7rem] font-bold uppercase;
+  }
+
+  &.tip {
+    @apply bg-indigo-200 text-indigo-700;
+
+    & a {
+      @apply text-indigo-700 font-semibold underline;
+
+      &:before {
+        @apply hidden;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        @apply text-indigo-800 underline;
+      }
+    }
+
+    &:before {
+      @apply bg-indigo-300 text-indigo-800;
+      content: 'Note';
+    }
+  }
+
+  &.warn {
+    @apply bg-orange-200 text-orange-700;
+
+    & a {
+      @apply text-orange-700 font-semibold underline;
+
+      &:before {
+        @apply hidden;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        @apply text-orange-800 underline;
+      }
+    }
+
+    &:before {
+      @apply bg-orange-300 text-orange-800;
+      content: 'Warning';
+    }
+  }
+
+  &.error {
+    @apply bg-red-200 text-red-700;
+
+    & a {
+      @apply text-red-700 font-semibold underline;
+
+      &:before {
+        @apply hidden;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        @apply text-red-800 underline;
+      }
+    }
+
+    &:before {
+      @apply bg-red-300 text-red-800;
+      content: 'Danger';
+    }
+  }
+}
+
+.api-heading {
+  @apply relative flex flex-col md:flex-row justify-between items-start !mt-20;
+
+  &.class,
+  &.property,
+  &.module,
+  &.function,
+  &.event,
+  &.getter,
+  &.setter {
+    & > .api-heading-content:before {
+      @apply relative inline-flex w-6 h-6 rounded text-[1.1rem] font-extrabold tracking-normal mr-2.5 justify-center items-center align-middle;
+    }
+  }
+
+  &.class > .api-heading-content:before {
+    @apply bg-green-300 text-green-700;
+    content: 'C';
+  }
+
+  &.property > .api-heading-content:before {
+    @apply bg-blue-300 text-blue-700;
+    content: 'P';
+  }
+
+  &.module > .api-heading-content:before {
+    @apply bg-red-300 text-red-700;
+    content: 'M';
+  }
+
+  &.function > .api-heading-content:before {
+    @apply bg-purple-300 text-purple-700;
+    content: 'F';
+  }
+
+  &.event > .api-heading-content:before {
+    @apply bg-orange-300 text-orange-700;
+    content: 'E';
+  }
+
+  &.getter > .api-heading-content:before {
+    @apply bg-yellow-300 text-yellow-700;
+    content: 'G';
+  }
+
+  &.setter > .api-heading-content:before {
+    @apply bg-pink-300 text-pink-700;
+    content: 'S';
+  }
+
+  & .api-returns {
+    @apply flex items-center ml-9;
+
+    & svg {
+      @apply text-warm-400 mr-2;
+    }
+
+    & .return-type {
+      @apply font-mono font-medium text-base text-warm-500 ;
+
+      & a {
+        @apply text-warm-500 underline;
+
+        &:hover,
+        &:active,
+        &:focus {
+          @apply text-warm-700 no-underline;
+        }
+      }
+    }
+  }
+
+  & .return-type + .return-type {
+    @apply border-l-2 border-warm-300 ml-3 pl-3;
+  }
+
+  &.static:after {
+    @apply absolute -top-5 text-sm uppercase font-extrabold text-warm-400;
+    content: 'Static';
+  }
+
+  &.instance:after {
+    @apply absolute -top-5 text-sm uppercase font-extrabold text-warm-400;
+    content: 'Instance';
+  }
+
+  & .prefix {
+    @apply text-warm-600 !font-normal;
+  }
+
+  & .punc {
+    @apply text-warm-500 !font-normal;
+  }
+
+  & .func {
+    @apply text-purple-700;
+  }
+
+  & .prop {
+    @apply text-blue-600;
+  }
+
+  & .equal-value {
+    @apply text-warm-900 !font-normal font-mono;
+  }
+
+  & .args {
+    @apply text-warm-500 !font-normal;
+  }
+
+  & .arg {
+    @apply text-red-500 !font-semibold;
+
+    &.optional {
+      @apply text-red-400 !font-normal;
+    }
+  }
+}
+
+h2 + .api-heading,
+h3 + .api-heading,
+h4 + .api-heading {
+  @apply !mt-4;
+}
+
+.api-scope {
+  @apply relative mb-6 py-1 pl-4;
+
+  &:before {
+    @apply absolute w-3 top-0 left-0 bottom-0 border-2 border-r-0 border-warm-200;
+    content: '';
+  }
+
+  & > small {
+    @apply uppercase font-bold block text-warm-500;
+  }
+
+  & .scope-text {
+    @apply font-semibold;
+  }
+}
+
+.badge {
+  @apply inline-flex;
+  line-height: 1.7;
+
+  &:before {
+    @apply bg-warm-300 rounded-l py-1 px-2 text-sm uppercase font-extrabold;
+    line-height: 1.7;
+  }
+
+  & > span {
+    @apply py-1 px-2 text-base bg-warm-200 rounded-r font-semibold;
+  }
+
+  &.badge-small {
+    line-height: 1.4;
+
+    &:before {
+      @apply text-xs py-0.5;
+      line-height: 1.7;
+    }
+
+    & > span {
+      @apply text-sm py-0.5;
+    }
+  }
+
+  &.deprecated {
+    & > span {
+      @apply bg-red-600 text-white;
+    }
+
+    &:before {
+      @apply bg-red-700 text-white text-opacity-90;
+      content: 'Deprecated';
+    }
+  }
+
+  &.since {
+    & > span {
+      @apply bg-green-600 text-white;
+    }
+
+    &:before {
+      @apply bg-green-700 text-white text-opacity-90;
+      content: 'Since';
+    }
+  }
+}
+
+.code-tabs {
+  @apply my-4 shadow-xl rounded;
+
+  & .code-tabs-tabs {
+    @apply flex bg-indigo-100 rounded-t overflow-hidden;
+  }
+
+  & .code-tabs-tab {
+    @apply block px-4 py-3 text-xs uppercase font-bold text-indigo-400 border-b-3 border-transparent transition-all;
+
+    &:hover {
+      @apply text-indigo-600;
+    }
+
+    &[data-selected] {
+      @apply border-indigo-500 bg-indigo-200 text-indigo-800;
+    }
+
+
+  }
+
+  & .code-tabs-panel pre.torchlight {
+    @apply m-0 rounded-t-none shadow-none;
+  }
+}
