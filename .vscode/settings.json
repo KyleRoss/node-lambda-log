@@ -14,5 +14,8 @@
       "directory": "site",
       "changeProcessCWD": true
     }
-  ]
+  ],
+  "[mdx]": {
+    "editor.wordWrap": "on"
+  }
 }
