@@ -12,12 +12,12 @@
     "url": "https://github.com/KyleRoss/node-lambda-log.git"
   },
   "keywords": [
+    "json",
     "lambda",
     "aws",
-    "ec2",
-    "ecs",
     "log",
     "logger",
+    "logging",
     "console",
     "wrap",
     "wrapper",
@@ -28,9 +28,12 @@
     "debug",
     "message",
     "assert",
-    "json",
+    "ec2",
+    "ecs",
     "cloudwatch",
-    "logs"
+    "logs",
+    "function",
+    "cloud"
   ],
   "author": "Kyle Ross <thejavascriptguy@gmail.com>",
   "license": "MIT",
