@@ -47,9 +47,11 @@ const Hero = () => {
           <div className="text-center lg:text-right">
             <div className={styles.version}>
               {version && (
-                <abbr title={new Date(versionDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}>
-                  v{version}
-                </abbr>
+                <Link plain href="https://www.npmjs.com/package/lambda-log">
+                  <abbr title={new Date(versionDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}>
+                    v{version}
+                  </abbr>
+                </Link>
               )}
             </div>
             <Link plain prefetch={false} href="/docs/latest" className={clsx(styles.btn, styles.docs)}>

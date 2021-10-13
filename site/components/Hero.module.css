@@ -30,11 +30,15 @@
 }
 
 .version {
-  @apply h-8 text-base text-indigo-100 font-semibold mb-2;
+  @apply h-8 text-base mb-2;
 
   &:before {
-    @apply inline-block mr-4 text-sm text-indigo-300;
+    @apply inline-block mr-4 text-sm text-indigo-300 font-semibold;
     content: 'Latest Version';
+  }
+
+  & a {
+    @apply text-indigo-100 font-semibold;
   }
 
   & abbr {
