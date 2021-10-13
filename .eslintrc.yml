@@ -30,3 +30,4 @@ rules:
   keyword-spacing: ['error', { overrides: { if: { after: false }, for: { after: false }, while: { after: false }, catch: { after: false } } }]
   jsdoc/newline-after-description: off
   node/no-unsupported-features/es-syntax: ['error', { versions: '>=10.0.0' }]
+  node/no-missing-require: off
