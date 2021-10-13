@@ -22,7 +22,9 @@ rules:
   array-element-newline: off
   capitalized-comments: off
   curly: ['error', 'multi-line']
+  comma-dangle: ['error', 'never']
   object-curly-spacing: ['error', 'always']
+  operator-linebreak: ['error', 'after']
   no-multiple-empty-lines: ['error', { max: 2, maxEOF: 1, maxBOF: 0 }]
   no-negated-condition: off
   keyword-spacing: ['error', { overrides: { if: { after: false }, for: { after: false }, while: { after: false }, catch: { after: false } } }]
