@@ -59,5 +59,8 @@
   },
   "bugs": {
     "url": "https://github.com/KyleRoss/node-lambda-log/issues"
+  },
+  "engines": {
+    "node": ">=14.17.0"
   }
 }
