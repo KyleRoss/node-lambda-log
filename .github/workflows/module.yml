@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - name: Install Dependencies
-        run: npm ci
+        run: npm i
       - name: Run Tests
         run: npm test
 
@@ -38,7 +38,7 @@ jobs:
         with:
           node-version: 14
       - name: Install Dependencies
-        run: npm ci
+        run: npm i
       - name: Run Tests
         if: ${{ github.event_name == 'pull_request' }}
         run: npm test
@@ -70,7 +70,7 @@ jobs:
         with:
           node-version: 14
       - name: Install Dependencies
-        run: npm ci
+        run: npm i
       - name: Delete expired artifacts
         uses: LKP-RnD/purge-expired-artifacts-action@v4
         with:
@@ -94,7 +94,7 @@ jobs:
         with:
           node-version: 14
       - name: Install Dependencies
-        run: npm ci
+        run: npm i
       - name: Publish to NPM
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
