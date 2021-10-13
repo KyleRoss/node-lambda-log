@@ -130,6 +130,10 @@ DocsPage.propTypes = {
 
 export async function getStaticProps({ params }) {
   const slug = params.slug?.[0] ?? '';
+  if(params.version === 'latest') {
+    params.version = apiVersions[0].value;
+  }
+
   const isValidVersion = apiVersions.find(ver => ver.value === params.version);
 
   if(!isValidVersion) {
@@ -172,7 +176,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const paths = [];
+  const paths = [{ params: { version: 'latest', slug: [] } }];
 
   for(const ver of apiVersions) {
     // eslint-disable-next-line no-await-in-loop
