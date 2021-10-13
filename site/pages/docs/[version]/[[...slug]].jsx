@@ -101,7 +101,8 @@ const DocsPage = ({ meta, nav, source, slug }) => {
         </button>
         <aside className={clsx('docs-sidebar', menuOpen ? 'mobile-open' : null)}>
           <div className="hidden lg:block h-12 pointer-events-none absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-warm-50" />
-          <ul role="menu">
+          <div className="docs-nav-overlay" role="presentation" onClick={() => setMenuOpen(!menuOpen)} onKeyUp={event => event.key === 'Escape' && setMenuOpen(false)} />
+          <ul className="docs-nav" role="menu">
             {menuOpen && (
               <li role="menuitem" className="!mb-8">
                 <VersionSelect className="block lg:hidden" />

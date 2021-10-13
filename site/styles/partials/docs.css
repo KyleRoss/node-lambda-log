@@ -26,7 +26,7 @@
   @apply hidden lg:block fixed top-[70px] w-52;
   height: calc(100% - 70px);
 
-  & > ul {
+  & ul.docs-nav {
     @apply overflow-y-auto w-52 h-full py-10 pr-4;
   }
 
@@ -38,7 +38,7 @@
     }
   }
 
-  & > ul > li > ul {
+  & ul.docs-nav > li > ul {
     @apply ml-5 my-3;
 
     & > li {
@@ -74,10 +74,18 @@
     }
   }
 
-  &.mobile-open {
-    @apply block w-screen left-0 right-0 bg-warm-800 bg-opacity-30 backdrop-blur-sm z-100;
+  & .docs-nav-overlay {
+    @apply hidden;
+  }
 
-    & > ul {
+  &.mobile-open {
+    @apply block w-screen top-0 left-0 h-screen z-100;
+
+    & .docs-nav-overlay {
+      @apply block fixed inset-0 bg-warm-800 bg-opacity-30 backdrop-blur-sm -z-1;
+    }
+
+    & ul.docs-nav {
       @apply bg-white pl-8 shadow-2xl max-w-[290px];
       width: 80vw;
     }

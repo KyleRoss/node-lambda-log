@@ -1,12 +1,23 @@
-.mainNav {
-  @apply sticky top-0 left-0 right-0 py-3 h-[70px] z-100 bg-warm-50;
+.header {
+  @apply sticky top-0 left-0 right-0 z-100 bg-warm-50;
 }
 
-.navInner {
-  @apply flex justify-between items-center h-[46px];
+.header,
+.inner,
+.headerBrand,
+.headerRight {
+  @apply h-[70px];
 }
 
-.navBrand {
+.inner {
+  @apply flex;
+}
+
+.headerBrand {
+  @apply flex items-center py-3 w-60 border-b-1 border-warm-300 lg:border-b-0;
+}
+
+.brand {
   @apply flex items-center;
 
   & svg {
@@ -20,6 +31,10 @@
       @apply text-warm-500;
     }
   }
+}
+
+.headerRight {
+  @apply flex items-center justify-end py-3 flex-grow border-b-1 border-warm-300;
 }
 
 a.github {
