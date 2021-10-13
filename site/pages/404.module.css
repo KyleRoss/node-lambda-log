@@ -19,7 +19,7 @@
 }
 
 .wrapper {
-  @apply container mx-auto px-12 my-20 text-center;
+  @apply container-wrapper mx-auto px-12 my-20 text-center;
 }
 
 .logo404 {

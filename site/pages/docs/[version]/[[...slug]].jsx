@@ -1,19 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import matter from 'gray-matter';
 import clsx from 'clsx';
 import { Tab, Tabs, TabList, TabPanels, TabPanel } from '@reach/tabs';
+import { MdMenuOpen, MdClose } from 'react-icons/md';
 import torchlight from 'remark-torchlight';
 import remarkHint from 'remark-hint';
 import rehypeSlug from 'rehype-slug';
 import remarkCodeTabs from '@utils/remarkCodeTabs';
+import { BreakpointContext } from '@utils/BreakpointContext';
 import { getDocumentList, getDocumentContent, getNavigation } from '@utils/docs';
 import apiVersions from '@/docs/versions';
 import { ApiVersionContext } from '@utils/ApiVersionContext';
 import Header from '@components/base/Header';
 import Footer from '@components/base/Footer';
+import VersionSelect from '@components/VersionSelect';
 import Head from '@components/Head';
 import Link from '@components/Link';
 import ApiHeading from '@components/ApiHeading';
@@ -25,6 +28,7 @@ function asLinkedHeading(as) {
 
 const DocsPage = ({ meta, nav, source, slug }) => {
   const { version } = useContext(ApiVersionContext);
+  const breakpoint = useContext(BreakpointContext);
 
   function parseVersionedLinks(href) {
     return href.replace(/(\[v\]|%5Bv%5D)/i, version);
@@ -76,16 +80,33 @@ const DocsPage = ({ meta, nav, source, slug }) => {
     TabPanel
   };
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if(breakpoint.isDesktop && menuOpen) {
+      setMenuOpen(false);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [breakpoint.isDesktop]);
+
 
   return (
     <>
       <Head meta={meta} />
       <Header />
 
-      <main id="maincontent" className="docs-page container">
-        <aside className="docs-sidebar">
+      <main id="maincontent" className="docs-page container-wrapper">
+        <button type="button" className={clsx('mobile-menu', menuOpen ? 'menu-open' : null)} aria-label="Open documents menu" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? <MdClose /> : <MdMenuOpen />}
+        </button>
+        <aside className={clsx('docs-sidebar', menuOpen ? 'mobile-open' : null)}>
           <div className="hidden lg:block h-12 pointer-events-none absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-warm-50" />
           <ul role="menu">
+            {menuOpen && (
+              <li role="menuitem" className="!mb-8">
+                <VersionSelect className="block lg:hidden" />
+              </li>
+            )}
             {nav.map(page => {
               if(page.title) {
                 return (
@@ -98,7 +119,7 @@ const DocsPage = ({ meta, nav, source, slug }) => {
 
               return (
                 <li key={url} role="menuitem">
-                  <Link plain href={url} className={clsx('docs-nav-link', isActive ? 'active' : null)}>{page.text}</Link>
+                  <Link plain href={url} className={clsx('docs-nav-link', isActive ? 'active' : null)} onClick={() => setMenuOpen(false)}>{page.text}</Link>
                 </li>
               );
             })}

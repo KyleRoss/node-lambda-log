@@ -124,6 +124,7 @@ module.exports = {
         '.container': {
           position: 'relative'
         },
+        '.container-wrapper': {},
         // screen reader only - fixes class not working properly on mobile
         '.sr-only': {
           position: 'absolute',

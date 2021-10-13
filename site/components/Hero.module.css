@@ -3,7 +3,7 @@
 }
 
 .heroInner {
-  @apply flex gap-12 flex-col lg:flex-row pt-20 pb-10;
+  @apply flex gap-12 flex-col lg:flex-row pt-8 md:pt-20 pb-10;
 }
 
 .heroLeft {
@@ -26,7 +26,7 @@
 }
 
 .downloads {
-  @apply mt-6 text-3xl text-indigo-300 font-light text-center lg:text-left;
+  @apply mt-6 text-2xl md:text-3xl text-indigo-300 font-light text-center lg:text-left;
 }
 
 .version {
@@ -48,7 +48,7 @@
 }
 
 .btn {
-  @apply inline-flex items-center rounded-full text-white py-4 px-7 font-medium text-2xl shadow-md select-none transition-all;
+  @apply inline-flex items-center rounded-full text-white py-4 px-7 font-medium text-xl md:text-2xl shadow-md select-none transition-all;
 
   & :global(.btn-icon) {
     @apply mr-2;

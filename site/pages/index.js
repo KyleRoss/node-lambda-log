@@ -18,7 +18,7 @@ const Home = () => {
     <>
       <Head meta={meta} />
       <header className={styles.header}>
-        <div className="container">
+        <div className="container-wrapper">
           <Logo withText primaryColor="#FB923C" secondaryColor="#818CF8" className={styles.logo} />
         </div>
       </header>
@@ -27,14 +27,14 @@ const Home = () => {
         <Hero />
 
         <section className="container-fluid bg-indigo-900 pt-0 mb-20">
-          <Terminal title="Install LambdaLog" className="container -bottom-8">
+          <Terminal title="Install LambdaLog" className="container-wrapper -bottom-8">
             <div className="line">
               npm install lambda-log
             </div>
           </Terminal>
         </section>
 
-        <section className="container">
+        <section className="container-wrapper">
           <p className="text-lead mb-4">
             LambdaLog facilitates and enforces logging standards in Node.js processes or applications <strong>anywhere</strong> by formatting your
             log messages as JSON for simple parsing and filtering within log management tools, such as CloudWatch Logs. <em>Works with all of the supported versions of Node.js on Lambda.</em>
@@ -45,7 +45,7 @@ const Home = () => {
           </p>
         </section>
 
-        <section className="container">
+        <section className="container-wrapper">
           <div className="bg-slate-300 text-slate-600 py-6 px-8 md:mx-6 my-12 rounded">
             <strong>Why another <s>Lambda</s> logger?</strong>
             <p>
@@ -57,7 +57,7 @@ const Home = () => {
         </section>
 
         <section className="container-fluid bg-indigo-800 py-12">
-          <div className="container">
+          <div className="container-wrapper">
             <h2 className="text-white mb-1">Features</h2>
             <p className="text-lead text-white mb-8">Anyone can log JSON to the console, but with Lambda Log you also get:</p>
             <div className={styles.featureList}>
@@ -114,7 +114,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="container text-center py-16">
+        <section className="container-wrapper text-center py-16">
           <h2 className="font-light">Ready to use LambdaLog?</h2>
 
           <Link plain prefetch={false} href="/docs/latest" className={clsx(styles.btn, styles.docs)}>

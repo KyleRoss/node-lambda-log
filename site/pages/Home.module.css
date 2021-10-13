@@ -6,11 +6,11 @@
   @apply flex items-center;
 
   & svg {
-    @apply w-20 h-auto mr-2;
+    @apply w-12 md:w-16 lg:w-20 h-auto mr-2;
   }
 
   & :global(.logo-text) {
-    @apply text-3xl font-mono text-indigo-50 tracking-tighter;
+    @apply text-xl md:text-2xl lg:text-3xl font-mono text-indigo-50 tracking-tighter;
   }
 }
 
@@ -43,7 +43,7 @@
 }
 
 .btn {
-  @apply inline-flex items-center rounded-full text-white py-4 px-7 font-medium text-2xl shadow-md select-none transition-all;
+  @apply inline-flex items-center rounded-full text-white py-4 px-7 font-medium text-xl md:text-2xl shadow-md select-none transition-all;
 
   & :global(.btn-icon) {
     @apply mr-2;

@@ -16,7 +16,7 @@ const Custom404 = () => {
 
       <main className={styles.page}>
         <div className={styles.header}>
-          <div className="container">
+          <div className="container-wrapper">
             <Logo withText primaryColor="#FB923C" secondaryColor="#818CF8" className={styles.logo} />
           </div>
         </div>

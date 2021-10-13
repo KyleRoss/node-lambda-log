@@ -1,5 +1,29 @@
+.mobile-menu {
+  @apply block lg:hidden fixed bottom-3 right-2 sm:bottom-4 sm:right-4 z-500 bg-indigo-900 text-white p-3 rounded-full transition-all cursor-pointer;
+
+  &:hover,
+  &:active,
+  &:focus {
+    @apply shadow-xl bg-indigo-700;
+  }
+
+  & svg {
+    @apply w-6 h-6 xs:w-8 xs:h-8 rotate-180;
+  }
+
+  &.menu-open {
+    @apply bg-red-600;
+
+    &:hover,
+    &:active,
+    &:focus {
+      @apply bg-red-500;
+    }
+  }
+}
+
 .docs-sidebar {
-  @apply fixed top-[70px] w-52;
+  @apply hidden lg:block fixed top-[70px] w-52;
   height: calc(100% - 70px);
 
   & > ul {
@@ -49,10 +73,19 @@
       @apply text-warm-700;
     }
   }
+
+  &.mobile-open {
+    @apply block w-screen left-0 right-0 bg-warm-800 bg-opacity-30 backdrop-blur-sm z-100;
+
+    & > ul {
+      @apply bg-white pl-8 shadow-2xl max-w-[290px];
+      width: 80vw;
+    }
+  }
 }
 
 .doc-wrapper {
-  @apply flex flex-col ml-60 pt-10;
+  @apply flex flex-col lg:ml-60 pt-10;
   min-height: calc(100vh - 70px);
 }
 

@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <nav id="navigation" className={clsx(styles.mainNav, (breakpoint.isMobile || breakpoint.isTablet) ? 'mobile-nav' : null)}>
-      <div className={clsx('container', styles.navInner)}>
+      <div className={clsx('container-wrapper', styles.navInner)}>
         <Logo withText linked className={styles.navBrand} aria-label="Lambda Log Home" />
 
         <VersionSelect className="ml-auto mr-5 hidden lg:block" />

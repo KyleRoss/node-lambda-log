@@ -31,7 +31,7 @@
 }
 
 .title {
-  @apply text-[0.85rem] text-gray-600 select-none;
+  @apply text-[0.85rem] text-gray-600 select-none truncate;
 }
 
 .spacer {

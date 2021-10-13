@@ -36,7 +36,7 @@ const Hero = () => {
 
   return (
     <section className={clsx('container-fluid', styles.hero)}>
-      <div className={clsx('container', styles.heroInner)}>
+      <div className={clsx('container-wrapper', styles.heroInner)}>
         <div className={styles.heroLeft}>
           <h1 className={clsx('h2', 'mb-2', styles.title)}>The Most Popular Lambda Logger for Node.js<span aria-hidden="true">*</span></h1>
           <div className={styles.downloads}>
@@ -71,7 +71,7 @@ const Hero = () => {
         </div>
       </div>
       <div className={styles.disclaimer}>
-        <div className="container text-center">
+        <div className="container-wrapper text-center">
           <span>*</span> LambdaLog can be used <strong>anywhere</strong> JSON logs are desired!
         </div>
       </div>
