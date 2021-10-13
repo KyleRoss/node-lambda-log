@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "prepare": "is-ci || husky install"
+    "prepare": "is-ci || husky install",
+    "lint": "eslint index.js index.test.js \"lib/*.js\""
   },
   "repository": {
     "type": "git",
