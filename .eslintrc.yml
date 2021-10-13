@@ -14,7 +14,7 @@ plugins:
   - 'node'
 
 extends:
-  - 'xo-space/esnext'
+  - 'xo-space'
   - 'plugin:jsdoc/recommended'
   - 'plugin:node/recommended'
 
