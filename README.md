@@ -1,16 +1,17 @@
 # lambda-log
 
-[![npm](https://img.shields.io/npm/v/lambda-log.svg?style=for-the-badge)](https://www.npmjs.com/package/lambda-log) [![npm](https://img.shields.io/npm/dt/lambda-log.svg?style=for-the-badge)](https://www.npmjs.com/package/lambda-log) [![David](https://img.shields.io/david/KyleRoss/node-lambda-log.svg?style=for-the-badge)](https://david-dm.org/KyleRoss/node-lambda-log) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/KyleRoss/node-lambda-log/module?style=for-the-badge) [![Code Climate coverage](https://img.shields.io/codeclimate/coverage/KyleRoss/node-lambda-log?style=for-the-badge)](https://codeclimate.com/github/KyleRoss/node-lambda-log) [![license](https://img.shields.io/github/license/KyleRoss/node-lambda-log.svg?style=for-the-badge)](https://github.com/KyleRoss/node-lambda-log/blob/master/LICENSE) [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/KyleRoss/node-lambda-log?style=for-the-badge)](https://codeclimate.com/github/KyleRoss/node-lambda-log) [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/KyleRoss/node-lambda-log?style=for-the-badge)](https://www.codefactor.io/repository/github/kyleross/node-lambda-log) [![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/lambda-log?style=for-the-badge)](https://snyk.io/advisor/npm-package/lambda-log)
+[![npm](https://img.shields.io/npm/v/lambda-log.svg?style=for-the-badge)](https://www.npmjs.com/package/lambda-log) [![npm](https://img.shields.io/npm/dt/lambda-log.svg?style=for-the-badge)](https://www.npmjs.com/package/lambda-log) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/KyleRoss/node-lambda-log/module?style=for-the-badge) [![Code Climate coverage](https://img.shields.io/codeclimate/coverage/KyleRoss/node-lambda-log?style=for-the-badge)](https://codeclimate.com/github/KyleRoss/node-lambda-log) [![license](https://img.shields.io/github/license/KyleRoss/node-lambda-log.svg?style=for-the-badge)](https://github.com/KyleRoss/node-lambda-log/blob/master/LICENSE) [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/KyleRoss/node-lambda-log?style=for-the-badge)](https://codeclimate.com/github/KyleRoss/node-lambda-log) [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/KyleRoss/node-lambda-log?style=for-the-badge)](https://www.codefactor.io/repository/github/kyleross/node-lambda-log) [![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/lambda-log?style=for-the-badge)](https://snyk.io/advisor/npm-package/lambda-log)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-A [Node.js package](https://www.npmjs.com/package/lambda-log) to facilitate and enforce logging standards from processes and applications running within Lambda Functions, various AWS Services, and wherever JSON logs are desired. Lambda Log formats your log messages as JSON for simple parsing and filtering within tools such as CloudWatch Logs. Supports **Node 10+**.
+LambdaLog is a [Node.js package](https://www.npmjs.com/package/lambda-log) facilitates and enforces logging standards in Node.js processes or applications **anywhere** by formatting your log messages as JSON for simple parsing and filtering within log management tools, such as CloudWatch Logs. _Works with all of the supported versions of Node.js on Lambda._
 
-> This module is not just for Lambda! You can use this is many different environments that support reading JSON from logs. While the name remains `lambda-log`, it's really a universal JSON logger.
+Originally created for AWS Lambda Functions, LambdaLog is a lightweight and feature-rich library that has **no** dependency on AWS or Lambda, meaning you can use it in any type of Node.js project you wish. **It's really a universal JSON logger.**
+
 
 **Why another lambda logger?**
-There are others out there, but seemed to be convoluted, included more functionality than needed, not maintained, or not configurable enough. I created lambda-log to include the important functionality from other loggers, but still keeping it simple with minimal dependencies.
+There are plenty of other logging libraries in the NPM ecosystem but most are convoluted, included more functionality than needed, not maintained, or are not configurable enough. I created LambdaLog to include the important functionality from other loggers, but still maintaining simplicity with minimal dependencies.
 
 ### Features
 
@@ -22,12 +23,12 @@ Anyone can log JSON to the `console`, but with Lambda Log you also get:
 - Pluggable and customizable by extending the LambdaLog class.
 - Pretty-printing of the JSON log message in dev mode.
 - Well documented, commented, and maintained source code.
-- Over 1 million downloads and more than 20k weekly downloads.
+- Over 1.5 million downloads and more than 35k weekly downloads.
 - Small footprint.
 
 #### New in Version 3.0.0
 
-Version 3.0.0 of Lambda Log brings a bunch of changes, new features, and a [new website](https://lambdalog.js.org).
+Version 3.0.0 of Lambda Log brings a bunch of changes, new features, and a [new website](https://lambdalog.dev).
 
 **Broad Changes:**
 
@@ -58,19 +59,19 @@ Version 3.0.0 of Lambda Log brings a bunch of changes, new features, and a [new 
 
 ## Documentation
 
-Documentation for Lambda Log has moved to our [new website](https://lambdalog.js.org).
+Documentation for Lambda Log has moved to our [new website](https://lambdalog.dev).
 
 
 
 ## Tests
 
-See [Development Documentation](https://lambdalog.js.org/docs/development).
+See [Development Documentation](https://lambdalog.dev/docs/latest/development).
 
 
 
 ## Contributing
 
-See [Contributing Documentation](https://lambdalog.js.org/docs/contributing).
+See [Contributing Documentation](https://lambdalog.dev/docs/latest/contributing).
 
 
 

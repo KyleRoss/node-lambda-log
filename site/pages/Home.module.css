@@ -1,0 +1,27 @@
+.tagline {
+  @apply !font-extrabold text-center text-white;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.featureList {
+  @apply grid gap-6 grid-cols-1 md:grid-cols-2 xxl:grid-cols-3;
+}
+
+.feature {
+  @apply py-3 px-4;
+
+  & strong {
+    @apply text-sm font-semibold uppercase text-white;
+    text-shadow: 0px 2px 1px rgba(0,0,0,0.8);
+  }
+
+  & p {
+    @apply text-indigo-300;
+  }
+}
+
+.strike {
+  text-decoration-style: wavy;
+  text-decoration-thickness: 3px;
+  text-decoration-color: theme('colors.rose.600');
+}

@@ -1,0 +1,130 @@
+@layer base {
+  html {
+    box-sizing: border-box;
+    height: max-content;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+}
+
+@layer utilities {
+  .container-wrapper {
+    @apply relative mx-auto w-full xl:container px-4 sm:px-6 md:px-8 lg:px-12;
+  }
+}
+
+/************************************************************
+ * Body Styles                                              *
+ ************************************************************/
+::selection {
+  @apply text-white bg-orange-700;
+  text-shadow: none;
+}
+
+body {
+  @apply font-body text-base font-normal bg-warm-50 text-warm-600 overflow-x-hidden antialiased;
+
+  min-height: 100vh;
+  min-height: stretch;
+
+  &.dark {
+    @apply bg-warm-900;
+  }
+}
+
+#__next {
+  @apply relative min-h-screen;
+}
+
+a.skip-nav {
+  @apply absolute z-[501] block left-1/2 w-[12.5rem] leading-[50px] text-center bg-white rounded-b-xl;
+
+  transform: translateX(-10000px);
+
+  &:focus {
+    transform: translateX(-100px);
+  }
+}
+
+.container {
+  @apply mx-auto px-4 sm:px-6 md:px-8 lg:px-12;
+}
+
+.container-wrapper {
+  @apply relative mx-auto w-full xl:max-w-screen-xl xxl:max-w-screen-xxl px-4 sm:px-6 md:px-8 lg:px-12;
+}
+
+/************************************************************
+ * Link Styles                                              *
+ ************************************************************/
+a {
+  @apply text-indigo-600 underline font-normal transition-all;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    @apply underline text-warm-800;
+    text-decoration-color: theme('colors.indigo.500');
+    text-decoration-thickness: 2px;
+  }
+
+  &.plain {
+    font-weight: unset;
+    text-decoration: unset;
+    text-decoration-color: unset;
+    text-decoration-thickness: unset;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: unset;
+      text-decoration-color: unset;
+      text-decoration-thickness: unset;
+    }
+  }
+}
+
+/************************************************************
+ * Well Styles                                              *
+ ************************************************************/
+.well {
+  @apply bg-warm-200 rounded py-3 px-4 text-warm-700 font-light;
+
+  & strong,
+  & b {
+    @apply font-bold;
+  }
+
+  & a {
+    @apply font-medium underline;
+    color: inherit;
+    text-decoration-color: inherit;
+    text-decoration-thickness: 1px;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  &.well-info {
+    @apply bg-indigo-100 text-indigo-800;
+  }
+
+  &.well-success {
+    @apply bg-green-100 text-green-800;
+  }
+
+  &.well-warn {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+
+  &.well-danger {
+    @apply bg-rose-100 text-rose-800;
+  }
+}

@@ -1,23 +1,24 @@
 {
   "name": "lambda-log",
   "version": "3.0.2",
-  "description": "Basic logging mechanism for Node 6.10+ Lambda Functions",
+  "description": "Lightweight logging library for any Node 10+ applications",
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "prepare": "is-ci || husky install"
+    "prepare": "is-ci || husky install",
+    "lint": "eslint index.js index.test.js \"lib/*.js\""
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/KyleRoss/node-lambda-log.git"
   },
   "keywords": [
+    "json",
     "lambda",
     "aws",
-    "ec2",
-    "ecs",
     "log",
     "logger",
+    "logging",
     "console",
     "wrap",
     "wrapper",
@@ -28,34 +29,37 @@
     "debug",
     "message",
     "assert",
-    "json",
+    "ec2",
+    "ecs",
     "cloudwatch",
-    "logs"
+    "logs",
+    "function",
+    "cloud"
   ],
   "author": "Kyle Ross <thejavascriptguy@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/KyleRoss/node-lambda-log/issues"
   },
-  "homepage": "https://lambdalog.js.org",
+  "homepage": "https://lambdalog.dev",
   "engines": {
-    "node": ">= 10.0.0"
+    "node": ">=10.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.1.1",
-    "@commitlint/config-conventional": "^12.1.1",
-    "@semantic-release/changelog": "^5.0.1",
-    "@semantic-release/git": "^9.0.0",
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
+    "@semantic-release/changelog": "^6.0.0",
+    "@semantic-release/git": "^10.0.0",
     "eslint": "^7.23.0",
-    "eslint-config-xo-space": "^0.27.0",
-    "eslint-plugin-jsdoc": "^32.3.0",
+    "eslint-config-xo-space": "^0.30.0",
+    "eslint-plugin-jsdoc": "^36.1.1",
     "eslint-plugin-node": "^11.1.0",
-    "husky": "^6.0.0",
-    "is-ci": "^2.0.0",
-    "jest": "^26.6.3",
-    "semantic-release": "^17.4.2"
+    "husky": "^7.0.2",
+    "is-ci": "^3.0.0",
+    "jest": "^27.2.5",
+    "semantic-release": "^18.0.0"
   },
   "dependencies": {
-    "fast-safe-stringify": "^2.0.6"
+    "fast-safe-stringify": "^2.1.1"
   }
 }

@@ -1,0 +1,29 @@
+---
+title: Message Handling
+description: 'Learn how messages are parsed when creating a log.'
+---
+
+LambdaLog does its best to parse any type of message you can provide it. You may pass in any JSON-stringify-able primitive value as a log such as `String`, `Number`, `Array`, `Object`, and `Boolean`, along with any instance of an `Error`.
+
+### Primitive Types
+Most primitive types in JavaScript can be stringified into JSON so no additional handling is provided by LambdaLog. Keep in mind that `undefined` cannot be stringified into JSON and will throw an error.
+
+#### Objects
+You may pass in an object as a log message, but there are some limitations. It's best to use plain objects when possible.
+
+- If the object is a class and has anything on the `prototype`, these values will not be included in the message.
+- Objects containing circular references will be truncated.
+
+
+### Errors
+In many cases, you may log an `Error` that occurred within your application. Errors may be passed in as the log message for any log level. LambdaLog determines if the provided value is an error by checking:
+
+- The value is an object AND it's an instance of `Error`.
+- The value is an object AND it has a `message` and `stack` property.
+
+If LambdaLog determines the value is an error, there is a few things that will happen:
+
+- The log message is set to the value of the `message` property.
+- A `stack` property is added to the metadata for the log with the value of the error's `stack` property.
+- A `name` property is added to the metadata for the log with the value of the error's `name` property.
+- Any additional properties on the error object that is **not** on the `prototype` will be added to the log's metadata.

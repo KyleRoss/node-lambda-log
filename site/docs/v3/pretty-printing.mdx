@@ -1,0 +1,48 @@
+---
+title: Pretty Printing
+description: 'Format JSON logs for easier reading during development.'
+---
+
+When running your process locally for testing and during development, the JSON logs provided by LambdaLog will be shown in the terminal as a single line making it harder to read the logs. You may enable the `dev` option to have the logs formatted when printed to the console.
+
+x> Ensure the `dev` option is **DISABLED** when deployed. CloudWatch will not be able to parse the logs correctly, causing multiple items to show for a single log message. This will cost more money and yield unfilterable logs within CloudWatch.
+
+### Enable `dev` Option
+
+<!--tabs-->
+#### Default Instance
+```js
+const log = require('lambda-log');
+
+log.options.dev = true; // [tl! focus]
+```
+
+#### New Instance
+```js
+const { LambdaLog } = require('lambda-log');
+
+const log = new LambdaLog({ // [tl! focus]
+  dev: true // [tl! focus]
+}); // [tl! focus]
+```
+<!--/tabs-->
+
+### Example
+**With `dev` option disabled:**
+```js
+log.info('Example log without dev mode', { hello: 'world' });
+/* => { "_logLevel": "info",  "msg": "Example log without dev mode", "hello": "world", "_tags": [] } */
+```
+
+**With `dev` option enabled:**
+```js
+log.info('Example log with dev mode', { hello: 'world' });
+/* =>
+  {
+    "_logLevel": "info",
+    "msg": "Example log with dev mode",
+    "hello": "world",
+    "_tags": []
+  }
+*/
+```

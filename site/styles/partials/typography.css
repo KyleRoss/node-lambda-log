@@ -1,0 +1,125 @@
+/************************************************************
+ * Heading Styles                                           *
+ ************************************************************/
+@layer utilities {
+  @variants responsive {
+    .h1 {
+      @apply font-extrabold tracking-tight text-4xl;
+    }
+
+    .h2 {
+      @apply font-bold tracking-tight text-3xl;
+    }
+
+    .h3 {
+      @apply font-bold tracking-tight text-2xl;
+    }
+
+    .h4 {
+      @apply font-semibold text-xl;
+    }
+
+    .h5 {
+      @apply font-medium text-lg;
+    }
+
+    .h6 {
+      @apply font-light text-base uppercase;
+    }
+  }
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6,
+h1, h2, h3, h4, h5, h6,
+.heading-base {
+  @apply font-header;
+
+  &:not([class*="mb-"]) {
+    margin-bottom: 1.625rem;
+  }
+}
+
+h1 {
+   @apply h1;
+
+   & small {
+     @apply block text-xl font-light text-warm-600;
+   }
+}
+
+h2 {
+  @apply h2;
+}
+
+h3 {
+  @apply h3;
+}
+
+h4 {
+  @apply h4;
+}
+
+h5 {
+  @apply h5;
+}
+
+h6 {
+  @apply h6;
+}
+
+/************************************************************
+ * HTML Styles                                              *
+ ************************************************************/
+u {
+  @apply no-underline border-2 border-solid;
+}
+
+blockquote {
+  @apply my-4 p-4 text-warm-500 border-l-5 border-solid border-warm-200;
+}
+
+ul li {
+  @apply mb-1;
+}
+
+hr {
+  @apply relative border-0 h-0.5 my-12 bg-warm-200 overflow-visible;
+
+  &:before {
+    @apply absolute w-10 h-auto top-1/2 left-1/2 z-1 bg-warm-50 px-1 grayscale;
+    transform: translate(-50%, -40%);
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 101 74' opacity='0.5'%3E%3Cpath fill='%23F97316' d='M67.656 56.734a5.757 5.757 0 01-4.7-2.659 23.632 23.632 0 01-3.307-6.614q-1.33-3.953-3.239-10.977-2.319-8.658-4.261-14.08a28.712 28.712 0 00-5.216-9.2 10.3 10.3 0 00-8.114-3.784h-5.595v7.227h4.023a5.794 5.794 0 014.807 2.9 32.918 32.918 0 013.784 8.284l-15.614 36.13h8.182l10.636-24.614A122.953 122.953 0 0053.1 52.029a26.337 26.337 0 005.216 8.523 10.27 10.27 0 007.773 3.409h5.659v-7.227h-4.092z' /%3E%3Cpath fill='%23A8A29E' d='M73.792 73.847q8.863 0 13.023-3.273t4.159-10.909a41.347 41.347 0 00-.682-6.273 41.432 41.432 0 01-.545-5.046q0-1.636 2.625-4.5a73.228 73.228 0 018.011-7.159q-10.637-8.521-10.636-11.931a32.725 32.725 0 01.545-4.568 37.645 37.645 0 00.682-6.409q0-7.635-4.159-10.943T73.792-.471v5.318q6.068 0 8.8 2.045t2.727 7.159a23.629 23.629 0 01-.75 5.727 25.2 25.2 0 00-.545 4.3 11.431 11.431 0 002.045 6.511 26.386 26.386 0 006.136 6.1A25.7 25.7 0 0086 42.654a11.066 11.066 0 00-1.977 6.375 25.124 25.124 0 00.545 4.227 33.469 33.469 0 01.682 6.2q0 5.047-2.693 7.057t-8.761 2.011v5.318zM26.383 68.529q-6.069 0-8.761-2.011t-2.693-7.057a33.384 33.384 0 01.682-6.2 25.231 25.231 0 00.545-4.227 11.074 11.074 0 00-1.977-6.375 25.735 25.735 0 00-6.2-5.966 26.386 26.386 0 006.136-6.1 11.431 11.431 0 002.045-6.511 25.3 25.3 0 00-.545-4.3 23.58 23.58 0 01-.75-5.727q0-5.114 2.727-7.159t8.8-2.045V-.471q-8.864 0-13.023 3.307T9.2 13.779a37.534 37.534 0 00.682 6.409 32.889 32.889 0 01.545 4.568q0 3.41-10.636 11.932A73.46 73.46 0 017.8 43.847q2.624 2.864 2.625 4.5a41.651 41.651 0 01-.545 5.046 41.2 41.2 0 00-.68 6.273q0 7.635 4.159 10.909t13.023 3.273v-5.319z' /%3E%3C/svg%3E");
+  }
+
+  &.bold {
+    @apply h-1.5 bg-indigo-400 rounded-lg;
+
+    &:before {
+      @apply hidden;
+    }
+  }
+}
+
+/************************************************************
+ * Code Styles                                              *
+ ************************************************************/
+code:not([class*="language-"]) {
+  @apply font-mono font-normal text-[0.89rem] text-purple-600;
+
+  &:before,
+  &:after {
+    @apply text-warm-500;
+    content: '`';
+  }
+}
+
+strong code:not([class*="language-"]),
+b code:not([class*="language-"]) {
+  @apply font-bold;
+}
+
+kbd {
+  @apply font-mono text-[0.85rem] leading-6 inline-block px-1.5 rounded-sm;
+  @apply border-1 border-solid border-slate-300 bg-white text-slate-800 font-bold;
+  box-shadow: 1px 1px 0 0 theme('colors.slate.300');
+}

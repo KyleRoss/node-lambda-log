@@ -1,0 +1,146 @@
+---
+title: Log Handler
+description: 'Choose where your logs are written.'
+---
+
+By default, log messages are written using the various methods available in the [Console API](https://developer.mozilla.org/en-US/docs/Web/API/console). LambdaLog gives you the ability to use your own custom handler for writing log messages to any place you wish including a third-party service. To create your own log handler, you only need to create an object or class in which implements the various methods used by LambdaLog in the console API.
+
+There are a couple of different ways to do this, but most commonly:
+
+- Create a new [Console](https://nodejs.org/dist/latest-v14.x/docs/api/console.html) class.
+- Create a class or object that implements the methods of `console`.
+
+Either way you go, the class or object must, at minimum, implement the following methods:
+
+- log
+- debug
+- info
+- warn
+- error
+
+?> **Note:** Due to the nature of `console`, all methods must be synchronous. If you need asynchronous functionality, you may either use [streams](https://nodejs.org/dist/latest-v14.x/docs/api/stream.html) or understand the risk of logs not making it to their destination if the process was to end prior to all asynchronous code executing.
+
+### Console Class
+The first method is by creating a new instance of the Console class. One example would be to write logs to a file versus the terminal.
+
+```js
+const { LambdaLog } = require('lambda-log');
+const fs = require('fs');
+const { Console } = require('console');
+
+// Create write streams for standard log messages and error messages.
+const logFile = fs.createWriteStream('./out.log');
+const errorLogFile = fs.createWriteStream('./errors.log');
+
+// Set logHandler to a new instance of the Console class.
+const log = new LambdaLog({
+  logHandler: new Console({ stdout: logFile, stderr: errorLogFile })
+});
+```
+
+With this example, your logs will now be written to a file instead of the terminal.
+
+### Custom Class or Object
+The second method is by creating a custom class or object that implements some of the functions as `console`. If you want a more complete custom log handler, you may also extend the [Console](https://nodejs.org/dist/latest-v14.x/docs/api/console.html) class and only override the methods you need to. Let's look at some examples.
+
+
+#### Custom log handler object
+```js
+const myConsole = {
+  log(message) {
+    // write a file, send to a third-party service, etc.
+    // and you can still log the message to the terminal:
+    console.log(message);
+  },
+  debug(message) {
+    // ...
+  },
+  info(message) {
+    // ...
+  },
+  warn(message) {
+    // ...
+  },
+  error(message) {
+    // ...
+  }
+};
+
+// Set logHandler to custom console
+log.options.logHandler = myConsole;
+```
+
+#### Custom log handler class
+```js
+class MyConsole {
+  log(message) {
+    // write a file, send to a third-party service, etc.
+    // and you can still log the message to the terminal:
+    console.log(message);
+  }
+
+  debug(message) {
+    // ...
+  }
+
+  info(message) {
+    // ...
+  }
+
+  warn(message) {
+    // ...
+  }
+
+  error(message) {
+    // ...
+  }
+};
+
+// Set logHandler to custom console
+log.options.logHandler = new MyConsole();
+```
+
+#### Extend Console class with custom functionality
+```js
+const { Console } = require('console');
+const ddEvents = require('datadog-events');
+
+class MyConsole extends Console {
+  constructor() {
+    // Call parent constructor
+    super({ stdout: process.stdout, stderr: process.stderr });
+  }
+
+  // Override error to send logs to a third-party, such as DataDog
+  async error(message) {
+    // Call the parent method so it's still logged to the terminal:
+    super(message);
+
+    // Parse message back into an object:
+    const data = JSON.parse(message);
+
+    // Send error event to DataDog:
+    await ddEvents.error(data.msg, data.stack, {
+      tags: data._tags
+    });
+  }
+};
+
+// Set logHandler to custom console
+log.options.logHandler = new MyConsole();
+```
+
+While this is a viable way of sending data to a third-party, it's recommended to use the `log` event instead:
+
+```js
+const log = require('lambda-log');
+const ddEvents = require('datadog-events');
+
+log.on('log', async msg => {
+  if(msg.level === 'error') {
+    await ddEvents.error(msg.msg, JSON.stringify(msg.meta, null, 4), {
+      tags: msg.tags
+    });
+  }
+});
+```

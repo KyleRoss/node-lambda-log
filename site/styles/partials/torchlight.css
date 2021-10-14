@@ -1,0 +1,54 @@
+pre.torchlight {
+  @apply my-4 rounded overflow-x-auto shadow-lg;
+  font-size: 0.92rem;
+
+  & ::selection {
+    @apply bg-warm-200 text-warm-600;
+  }
+
+  & code[class*="language-"] {
+    @apply block py-4 min-w-max;
+
+    & .line {
+      @apply px-4;
+    }
+
+    & .line-number,
+    & .summary-caret {
+      @apply mr-4;
+    }
+  }
+
+  &.has-focus-lines {
+    & .line:not(.line-focus) {
+      transition: filter 0.35s, opacity 0.35s;
+      filter: blur(.095rem);
+      opacity: .65;
+    }
+
+    &:hover .line:not(.line-focus) {
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
+
+  &.has-add-lines .line.line-add {
+    @apply !bg-green-100;
+
+    & span {
+      @apply !text-green-600;
+    }
+  }
+
+  &.has-remove-lines .line.line-remove {
+    @apply !bg-red-100;
+
+    & span {
+      @apply !text-rose-500;
+    }
+  }
+
+  &.has-highlight-lines .line.line-highlight {
+    @apply !bg-warm-100 font-semibold;
+  }
+}

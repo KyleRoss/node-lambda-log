@@ -1,0 +1,123 @@
+---
+title: Examples
+description: 'Common patterns and examples using LambdaLog.'
+---
+
+To help jump start development with LambdaLog and some of the features/patterns, there are a handful of different examples that have been used in the real-world.
+
+### Tag log messages per file
+A good use case for [global tags](/docs/[v]/tagging) is by labeling your log messages with the file the log is coming from. You will need to create a new instance of LambdaLog for each of your files instead of using the default instance.
+
+```js
+// index.js
+
+const { LambdaLog } = require('lambda-log'); // [tl! highlight]
+
+exports.handler = async function handler(event) {
+  // Require other files within the handler to prevent caching issues.
+  const api = require('./api');
+  const log = new LambdaLog({ // [tl! highlight:3]
+    tags: ['index']
+  });
+
+  log.info('Starting process'); // [tl! highlight]
+  // => { "_logLevel": "info", "msg": "Starting process", "_tags": ["index"] } [tl! reindex(null) .select-none]
+
+  // ...
+
+  try {
+    if(api.isValidId(event.id)) {
+      const result = await api.getData(event);
+
+      return result;
+    }
+
+    return false;
+  } catch(error) {
+    log.error(error).throw; // [tl! highlight]
+    // => { "_logLevel": "error", "msg": "...", "name": "Error", "stack": "...", "_tags": ["index"] } [tl! reindex(null) .select-none]
+  }
+};
+```
+All logs will contain `["index"]` as their tag.
+
+```js
+// api.js
+
+const { LambdaLog } = require('lambda-log'); // [tl! highlight:3]
+const log = new LambdaLog({
+  tags: ['api']
+});
+
+module.exports = {
+  getData: async function getData(event) {
+    log.info('Calling API with event data', { event }); // [tl! highlight]
+    // => { "_logLevel": "info", "msg": "Calling API with event data", "event": { ... }, "_tags": ["api"] } [tl! reindex(null) .select-none]
+
+    // ..get data
+
+    return data;
+  },
+
+  isValidId(id) {
+    if(/^[0-9a-z]{10}/.test(id)) {
+      return true;
+    }
+
+    log.warn(`Invalid ID provided`, { id }, ['isValidId']); // [tl! highlight]
+    // => { "_logLevel": "warn", "msg": "Invalid ID provided", "id": "...", "_tags": ["api", "isValidId"] } [tl! reindex(null) .select-none]
+    return false;
+  }
+};
+```
+All logs will contain `["api"]` as their tag. The last `log.warn()` also has local tags as well which will yield `["api", "isValidId"]` as its tags.
+
+
+### Include Lambda Function Name/Invocation ID in the log messages
+You can add additional information from the [Lambda Context Object](https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html) into the global metadata of your logs.
+
+<!--tabs-->
+#### Default Instance
+```js
+// index.js
+
+exports.handler = async function handler(event, context) {
+  // Require inside the handler to prevent caching issues on subsequent executions
+  const log = require('lambda-log'); // [tl! highlight:4]
+  log.options.meta = {
+    functionName: context.functionName,
+    requestId: context.awsRequestId
+  };
+
+  log.info('Starting process'); // [tl! highlight]
+  // => { "_logLevel": "info", "msg": "Starting process", "functionName": "my-lambda-function", "requestId": "xxx", "_tags": [] } [tl! reindex(null) .select-none]
+
+  // ...
+
+  return true;
+};
+```
+
+#### New Instance
+```js
+// index.js
+
+const { LambdaLog } = require('lambda-log'); // [tl! highlight]
+
+exports.handler = async function handler(event, context) {
+  const log = new LambdaLog({ // [tl! highlight:5]
+    meta: {
+      functionName: context.functionName,
+      requestId: context.awsRequestId
+    }
+  });
+
+  log.info('Starting process'); // [tl! highlight]
+  // => { "_logLevel": "info", "msg": "Starting process", "functionName": "my-lambda-function", "requestId": "xxx", "_tags": [] } [tl! reindex(null) .select-none]
+
+  // ...
+
+  return true;
+};
+```
+<!--/tabs-->

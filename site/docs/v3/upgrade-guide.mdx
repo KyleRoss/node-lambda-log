@@ -1,0 +1,95 @@
+---
+title: Upgrade Guide
+description: 'Learn how to upgrade to the latest version of LambdaLog.'
+---
+
+## Version 2.x to 3.x
+While there were not a lot of breaking changes to the public API in version 3.0.0, there were several breaking changes internally in LambdaLog. For the most users, upgrading to version 3.0.0 should be seamless.
+
+### Breaking Changes
+
+##### Default log tags have been removed. In the last version of LambdaLog, every log message contained a `log` and `[LEVEL]` tag by default and they could not be changed or removed.
+For version 3.0.0, these default log message tags have been removed, leaving the `_tags` array empty by default when a message is logged.
+
+If you want the old functionality back, you can do so by using the following configuration:
+```js
+const log = require('lambda-log');
+log.options.tags = ['log', '<<level>>']; // [tl! highlight]
+
+log.info('Test');
+// => { "_logLevel": "info", "msg": "Test", "_tags": ["log", "info"] }
+```
+
+##### Error objects passed into metadata is now converted to a plain object.
+Prior to version 3.0.0, any `Error` objects passed into the metadata for a log was not converted to a plain object leading it to show up as an empty object, [because JavaScript](https://levelup.gitconnected.com/beware-of-using-json-stringify-for-logging-933f18626d51). Now Error objects are converted so they can be properly JSON stringified in the output.
+
+##### A handful of properties on the [LogMessage](/docs/[v]/api#logmessage) class have been changed to getters/setters.
+Before, you were able to directly manipulate these properties on the LogMessage class as needed but this has changed in version 3.0.0. For most of the getters, a corresponding setter has been added to support these changes, but they will also work differently.
+
+```js
+// Before:
+const { LambdaLog } = require('lambda-log');
+const log = new LambdaLog({}, {
+  unicorn(message) {
+    // prepend an emoji to every message
+    message.msg = `🦄 ${message.msg}`;
+
+    // Add additional metadata
+    message.meta.myProp = 'someValue';
+
+    // Add tags
+    message.tags.push('new-tag');
+    // or overwrite tags
+    message.tags = ['only', 'these', 'tags'];
+
+    return 'log';
+  }
+});
+
+// Now in version 3.0.0:
+const { LambdaLog } = require('lambda-log');
+const log = new LambdaLog({}, {
+  unicorn(message) {
+    // prepend an emoji to every message - This still works the same
+    message.msg = `🦄 ${message.msg}`;
+
+    // Add additional metadata
+    // The setter function will merge this object into the existing metadata
+    message.meta = { myProp: 'someValue' };
+
+    // Add tags
+    // The setter concatenates an array of values into the existing tags array
+    message.tags = ['new-tag'];
+
+    // You can no longer overwrite existing tags
+
+    return 'log';
+  }
+});
+```
+
+##### Interal properties on both the [LambdaLog](/docs/[v]/api#lambdalog) and [LogMessage](/docs/[v]/api#logmessage) classes are now referenced using Symbols instead of standard property names.
+If you were implementing advanced custom code for LambdaLog, this may impact you. All of the existing private properties on the two classes were originally named, starting with an underscore. In version 3.0.0, this has changed to use a Symbol as the name. In the cases where you need to access these properties, a new static property, `symbols` has been added to both classes that allow access to the Symbols being used within the class.
+
+```js
+// Before:
+const log = require('lambda-log');
+
+// Manually override log level configuration
+log._logLevels.error = 'log';
+
+// Now in version 3.0.0:
+const log, { LambdaLog } = require('lambda-log');
+
+// Manually override log level configuration
+log[LambdaLog.symbols.LEVELS].error = 'log';
+
+// Although a new method was created to make this easier:
+const log = require('lambda-log');
+
+log.addLevel('error', 'log');
+```
+
+---
+
+See the [API Reference](/docs/[v]/api) and [Changelog](https://github.com/KyleRoss/node-lambda-log/blob/master/CHANGELOG.md) for more information.

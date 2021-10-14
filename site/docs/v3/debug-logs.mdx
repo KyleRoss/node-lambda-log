@@ -1,0 +1,59 @@
+---
+title: Debug Logs
+description: 'Enable and disable debug logs to reduce noise.'
+---
+
+<deprecated version="4.0.0" className="mb-4" />
+
+When writing code, it's a good practice to log as much as you can that would help you debug an issue in an environment where you do not have direct access, such as AWS Lambda. LambdaLog provides a `debug` log level which you can use to log verbose information within your process. These debug logs will not be logged to the `console` unless you enable the `debug` configuration option in LambdaLog, allowing you to keep the noise to a minimum but also have the ability to enable the logs for debugging purposes.
+
+?> This feature will be **DEPRECATED** in the next major version and replaced with a log level verbosity setting instead. You may continue to use this feature until the next version of LambdaLog is released.
+
+### Writing Debug Logs
+Similar to other log levels, you can use the specified method to log a debug message. These logs will **not** be written to the console unless the `debug` configuration option is enabled.
+
+```js
+const log = require('lambda-log');
+
+log.debug('This is a debug message');
+// => false
+
+// Enable debug mode
+log.options.debug = true;
+
+log.debug('It can take all the same options as a regular log', { suchAs: 'the metadata object' }, ['and', 'tags'])
+// => { "_logLevel": "debug", "msg": "It can take all the same options as a regular log", "suchAs": "the metadata object", "_tags": ["and", "tags"] }
+
+// Disable debug mode
+log.options.debug = false;
+
+// Using the standard log method
+log.log('debug', 'Example debug message');
+// => false
+```
+
+### Enabling Debug Logs
+Depending on how you are implementing LambdaLog into your project, you can enable this option easily and at any time.
+
+<!--tabs-->
+#### Default Instance
+```js
+const log = require('lambda-log');
+
+// Enable debug logs
+log.options.debug = true;
+```
+
+#### New Instance
+```js
+const { LambdaLog } = require('lambda-log');
+
+const log = new LambdaLog({
+  // Enable debug logs
+  debug: true
+});
+
+// You can still disable it later in your process with:
+log.options.debug = false;
+```
+<!--/tabs-->

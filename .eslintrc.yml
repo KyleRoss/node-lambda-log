@@ -12,9 +12,9 @@ env:
 plugins:
   - 'jsdoc'
   - 'node'
-  
+
 extends:
-  - 'xo-space/esnext'
+  - 'xo-space'
   - 'plugin:jsdoc/recommended'
   - 'plugin:node/recommended'
 
@@ -22,8 +22,12 @@ rules:
   array-element-newline: off
   capitalized-comments: off
   curly: ['error', 'multi-line']
+  comma-dangle: ['error', 'never']
   object-curly-spacing: ['error', 'always']
+  operator-linebreak: ['error', 'after']
   no-multiple-empty-lines: ['error', { max: 2, maxEOF: 1, maxBOF: 0 }]
   no-negated-condition: off
   keyword-spacing: ['error', { overrides: { if: { after: false }, for: { after: false }, while: { after: false }, catch: { after: false } } }]
   jsdoc/newline-after-description: off
+  node/no-unsupported-features/es-syntax: ['error', { version: '>=10.0.0' }]
+  node/no-missing-require: off

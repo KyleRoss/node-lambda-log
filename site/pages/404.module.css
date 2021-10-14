@@ -1,0 +1,73 @@
+.header {
+  @apply flex flex-col items-center py-6;
+
+  & .logo {
+    @apply flex items-center;
+
+    & svg {
+      @apply w-12 h-auto mr-2;
+    }
+
+    & :global(.logo-text) {
+      @apply text-xl font-mono text-indigo-50 tracking-tighter;
+    }
+  }
+}
+
+.page {
+  @apply w-screen min-h-screen bg-indigo-900;
+}
+
+.wrapper {
+  @apply container-wrapper mx-auto px-12 my-20 text-center;
+}
+
+.logo404 {
+  @apply w-72 md:w-96 mx-auto;
+
+  & svg {
+    @apply w-72 md:w-96 h-auto overflow-visible;
+  }
+
+  & :global(.lambda),
+  & :global(.curly) {
+    fill: none;
+    stroke-width: 1px;
+    stroke: theme('colors.indigo.400');
+    stroke-dasharray: 3;
+    stroke-dashoffset: -3;
+    stroke-linecap: round;
+    opacity: 0.3;
+  }
+}
+
+.content {
+  @apply flex flex-col items-center mt-8;
+
+  & h1 {
+    @apply text-4xl md:text-6xl text-white font-light;
+  }
+
+  & p {
+    @apply text-indigo-300 mb-8;
+  }
+}
+
+.btn {
+  @apply inline-flex items-center rounded-full text-white mt-5 py-4 px-7 font-medium text-xl shadow-md select-none transition-all;
+
+  &:hover,
+  &:active,
+  &:focus {
+    @apply shadow-xl;
+    transform: scale(1.1);
+  }
+}
+
+.home {
+  @apply bg-orange-500;
+}
+
+.docs {
+  @apply bg-green-500;
+}

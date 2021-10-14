@@ -1,0 +1,73 @@
+.terminal {
+  @apply rounded-lg;
+}
+
+.titleBar {
+  @apply flex justify-between py-2.5 px-4 rounded-t-lg bg-gray-200;
+}
+
+.contextButtons {
+  @apply flex items-center;
+
+  & > span {
+    @apply block rounded-full w-3.5 h-3.5 mr-1.5 border-0 border-solid;
+    box-shadow: inset 0 0 1px 1px rgb(0 0 0 / 10%);
+  }
+}
+
+.close {
+  background-color: #fe6057;
+  border-color: #BE1C13;
+}
+
+.minimize {
+  background-color: #ffbd2d;
+  border-color: #B07800;
+}
+
+.maximize {
+  background-color: #28cb42;
+  border-color: #009219;
+}
+
+.title {
+  @apply text-[0.85rem] text-gray-600 select-none truncate;
+}
+
+.spacer {
+  width: 56px;
+}
+
+.content {
+  @apply shadow-lg bg-white min-h-[6rem] rounded-b-lg p-4 font-mono font-medium;
+
+  & ::selection {
+    @apply bg-warm-400;
+  }
+
+  & :global(.line) {
+    @apply text-gray-700;
+  }
+
+  & :global(.line:last-child) {
+    &:after {
+      @apply inline-block ml-1 bg-gray-800 bg-opacity-30 w-2.5 h-6 -mb-1.5;
+      content: '';
+      animation: cursor 1.5s infinite;
+    }
+  }
+
+  & :global(.line:before) {
+    @apply mr-2 text-gray-400;
+    content: '$';
+  }
+}
+
+@keyframes cursor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.1;
+  }
+}

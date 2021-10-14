@@ -12,10 +12,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
-      - name: Build and Deploy Site
-        uses: srepollock/gatsby-gh-pages-action@v2.2.0
+      - name: Deploy Site
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
-          deploy-branch: gh-pages
-          gatsby-args: --prefix-paths
-          working-dir: ${{ github.workspace }}/site
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./gh-pages
+          cname: lambdalog.js.org

@@ -1,0 +1,52 @@
+.header {
+  @apply sticky top-0 left-0 right-0 z-100 bg-warm-50;
+}
+
+.header,
+.inner,
+.headerBrand,
+.headerRight {
+  @apply h-[70px];
+}
+
+.inner {
+  @apply flex;
+}
+
+.headerBrand {
+  @apply flex items-center py-3 w-60 border-b-1 border-warm-300 lg:border-b-0;
+}
+
+.brand {
+  @apply flex items-center;
+
+  & svg {
+    @apply w-auto h-[32px] mr-2;
+  }
+
+  & :global(.logo-text) {
+    @apply text-[1.5rem] text-warm-500 font-mono tracking-tighter;
+
+    & strong {
+      @apply text-warm-500;
+    }
+  }
+}
+
+.headerRight {
+  @apply flex items-center justify-end py-3 flex-grow border-b-1 border-warm-300;
+}
+
+a.github {
+  @apply text-warm-500 transition-all;
+
+  & svg {
+    @apply w-8 h-8;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    @apply text-warm-700;
+  }
+}

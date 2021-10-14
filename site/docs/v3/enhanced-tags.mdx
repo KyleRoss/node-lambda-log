@@ -1,0 +1,111 @@
+---
+title: Enhanced Tags
+description: 'Customize tags on your logs with variables and functions.'
+since: '3.0.0'
+---
+
+<since version="3.0.0" className="mb-4" />
+
+New in version 3.0.0, log tags can be further customized to fit your needs. There are two new methods of enhancing the tags; with tag variables and functions.
+
+## Tag Variables
+LambdaLog now has the ability to interpret tag variables for each log message. Variables are surrounded with double-angle brackets (`<<>>`). As of currently, the following variables are available:
+
+| Variable | Description | Example |
+| -------- | ----------- | ------- |
+| level | The log level for the given log message. | `<<level>>` |
+
+Additional variable tags will be added in future versions of LambdaLog.
+
+Let's see an example of using variable tags:
+
+```js
+const log = require('lambda-log');
+
+log.options.tags = ['<<level>>'];
+
+log.info('Info message');
+// => { "_logLevel": "info", "msg": "Info message", "_tags": ["info"] }
+
+log.warn('Warn message');
+// => { "_logLevel": "warn", "msg": "Warn message", "_tags": ["warn"] }
+
+log.error('Error message');
+// => { "_logLevel": "error", "msg": "Info message", "_tags": ["error"] }
+
+// Even with a custom log level:
+log.fatal('Fatal message');
+// => { "_logLevel": "fatal", "msg": "Fatal message", "_tags": ["fatal"] }
+```
+
+Tag Variables can be used anywhere tags can be specified; in the global tags and log-specific tags.
+
+## Tag Functions
+Tag Functions allow you to add tag(s) to a log message at log time dynamically. You may include functions as items within a tag array that are executed when a log is generated. Tag Functions can be included in the global tags and log-specific tags.
+
+<h as="h4" type="function" text="function({ level, meta, options })" />
+
+Each Tag Function is called with an object as the only parameter. This function must return a `String` or `null`. If this function returns `null`, a tag will not be added to the log message.
+
+<scope text="LogMessage" link="/docs/[v]/api#logmessage">
+  The LogMessage instance for the given log
+</scope>
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+| obj | `Object` | Object containing access to useful values. |
+| obj.level | `String` | The log level for the given log message. |
+| obj.meta | `Object` | The compiled metadata for the given log message. |
+| obj.options | `Object` | The options object from the LambdaLog instance. |
+
+### Examples
+
+**Include "debug" tag when debug mode is enabled:**
+```js
+const log = require('lambda-log');
+
+log.options.debug = true;
+log.options.tags = [function ({ options }) {
+  return options.debug ? 'debug' : null;
+}];
+
+log.info('Test log');
+// => { "_logLevel": "info", "msg": "Test log", "_tags": ["debug"] }
+```
+
+**Include tag from metadata:**
+```js
+const log = require('lambda-log');
+
+log.options.tags = [function ({ meta }) {
+  return meta.namespace ? meta.namespace : null;
+}];
+
+log.info('Test log', { namespace: 'my-module' });
+// => { "_logLevel": "info", "msg": "Test log", "_tags": ["my-module"] }
+```
+
+**Custom log level tag:**
+```js
+const log = require('lambda-log');
+
+log.options.tags = [function ({ level }) {
+  return `level-${level}`;
+}];
+
+log.info('Test log');
+// => { "_logLevel": "info", "msg": "Test log", "_tags": ["level-info"] }
+```
+
+**Generate a UUID for each error log:**
+```js
+const log = require('lambda-log');
+const uuid = require('uuid/v4');
+
+log.options.tags = [function ({ level }) {
+  return level === 'error' ? uuid() : null;
+}];
+
+log.error('Test log');
+// => { "_logLevel": "error", "msg": "Test log", "_tags": ["60afb76c-d87d-46c0-9bd4-38f429085ba8"] }
+```
