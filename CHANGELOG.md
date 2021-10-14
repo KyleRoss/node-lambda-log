@@ -1,3 +1,18 @@
+# [3.1.0](https://github.com/KyleRoss/node-lambda-log/compare/v3.0.2...v3.1.0) (2021-10-14)
+
+
+### Bug Fixes
+
+* add redirect to github pages for old site to new domain ([bae1b15](https://github.com/KyleRoss/node-lambda-log/commit/bae1b159d7f2f0264547c8ae913dba514728cac6))
+* add step to workflow to purge expired artifacts ([f051daf](https://github.com/KyleRoss/node-lambda-log/commit/f051daf70f3cae689958476a6cf5ff4953da44df))
+
+
+### Features
+
+* deprecate `addLevel()` method ([86897b1](https://github.com/KyleRoss/node-lambda-log/commit/86897b1d011e9c19c4c105040503c37a73ad4ac2))
+* deprecate custom log levels ([abba03a](https://github.com/KyleRoss/node-lambda-log/commit/abba03a4753f97fca9c6891d8219bb33a2ad4fda))
+* rebuild site using Next.js with new design and more documentation ([4304c1d](https://github.com/KyleRoss/node-lambda-log/commit/4304c1d38c830096dbcf69190033cff36a4e51bc))
+
 ## [3.0.2](https://github.com/KyleRoss/node-lambda-log/compare/v3.0.1...v3.0.2) (2021-10-01)
 
 
