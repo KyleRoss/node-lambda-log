@@ -35,7 +35,7 @@ log.options.meta.prop4 = new Error('It even handles errors!');
 // Example log message:
 log.info('Example with global metadata');
 /* => {
-    "level": "info",
+    "_logLevel": "info",
     "msg": "Example with global metadata",
     "prop1": "test",
     "prop2": 123,
@@ -70,7 +70,7 @@ log.options.meta.prop5 = ['more', 'data'];
 // Example log message:
 log.info('Example with global metadata');
 /* => {
-    "level": "info",
+    "_logLevel": "info",
     "msg": "Example with global metadata",
     "prop1": "test",
     "prop2": 123,
@@ -98,7 +98,7 @@ log.options.meta.prop1 = 'test';
 // Example log message:
 log.info('Example with local metadata', { hello: 'world' });
 /* => {
-    "level": "info",
+    "_logLevel": "info",
     "msg": "Example with local metadata",
     "prop1": "test",
     "hello": "world",
@@ -108,7 +108,7 @@ log.info('Example with local metadata', { hello: 'world' });
 // With primitive types:
 log.info('Example with local metadata', 'This is a string as metadata');
 /* => {
-    "level": "info",
+    "_logLevel": "info",
     "msg": "Example with local metadata",
     "prop1": "test",
     "meta": "This is a string as metadata",
@@ -119,7 +119,7 @@ log.info('Example with local metadata', 'This is a string as metadata');
 const err = new Error('Something bad happened')
 log.info('Example with local metadata', err);
 /* => {
-    "level": "info",
+    "_logLevel": "info",
     "msg": "Example with local metadata",
     "prop1": "test",
     "meta": {
@@ -134,7 +134,7 @@ log.info('Example with local metadata', err);
 const err = new Error('Something bad happened')
 log.info('Example with local metadata', { err });
 /* => {
-    "level": "info",
+    "_logLevel": "info",
     "msg": "Example with local metadata",
     "prop1": "test",
     "err": {

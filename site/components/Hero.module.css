@@ -99,7 +99,7 @@
   &:hover,
   &:focus,
   &:active {
-    @apply bg-green-500;
+    @apply bg-green-500 text-white;
   }
 }
 

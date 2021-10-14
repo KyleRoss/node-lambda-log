@@ -101,27 +101,7 @@
   @apply pb-20;
 
   & a {
-    @apply text-blue-600 no-underline font-medium;
-
-    &:not(.plain) {
-      @apply relative inline-block transition-colors;
-
-      &::before {
-        @apply absolute z-0 left-[51%] right-[51%] bottom-0 bg-blue-600 h-[2px];
-        content: '';
-        transition-property: left, right;
-        transition-duration: 0.15s;
-        transition-timing-function: ease-out;
-      }
-
-      &:hover, &:active, &:focus {
-        @apply text-warm-900;
-
-        &::before {
-          @apply left-0 right-0;
-        }
-      }
-    }
+    @apply font-medium;
   }
 
   & strong a {
@@ -275,57 +255,91 @@
 }
 
 .api-heading {
-  @apply relative flex flex-col md:flex-row justify-between items-start !mt-20;
+  @apply relative border-b-3 pb-1.5 !mt-16;
 
-  &.class,
-  &.property,
-  &.module,
-  &.function,
-  &.event,
-  &.getter,
-  &.setter {
-    & > .api-heading-content:before {
-      @apply relative inline-flex w-6 h-6 rounded text-[1.1rem] font-extrabold tracking-normal mr-2.5 justify-center items-center align-middle;
+  &.sticky {
+    @apply sticky top-[70px] py-4 px-5 -ml-4 bg-warm-50 z-20;
+  }
+
+  & .api-descriptor {
+    @apply flex items-start mb-2 select-none;
+
+    & .tag {
+      @apply inline-block pt-1 pb-0.5 px-2 mr-1 rounded-sm text-xs uppercase font-extrabold tracking-normal;
+    }
+
+    & .tag-scope {
+      @apply bg-warm-200 text-warm-700;
     }
   }
 
-  &.class > .api-heading-content:before {
-    @apply bg-green-300 text-green-700;
-    content: 'C';
+  &.class,
+  &.module {
+    @apply border-0 rounded-r flex flex-row-reverse justify-between items-center;
+
+    & .api-descriptor {
+      @apply mb-0;
+    }
   }
 
-  &.property > .api-heading-content:before {
-    @apply bg-blue-300 text-blue-700;
-    content: 'P';
+  &.module {
+    @apply bg-red-100;
+
+    & .tag-type {
+      @apply bg-red-300 text-red-700;
+    }
   }
 
-  &.module > .api-heading-content:before {
-    @apply bg-red-300 text-red-700;
-    content: 'M';
+  &.class {
+    @apply bg-green-100;
+
+    & .tag-type {
+      @apply bg-green-300 text-green-700;
+    }
   }
 
-  &.function > .api-heading-content:before {
-    @apply bg-purple-300 text-purple-700;
-    content: 'F';
+  &.function {
+    @apply border-purple-300;
+
+    & .tag-type {
+      @apply bg-purple-300 text-purple-700;
+    }
   }
 
-  &.event > .api-heading-content:before {
-    @apply bg-orange-300 text-orange-700;
-    content: 'E';
+  &.property {
+    @apply border-blue-300;
+
+    & .tag-type {
+      @apply bg-blue-300 text-blue-700;
+    }
   }
 
-  &.getter > .api-heading-content:before {
-    @apply bg-yellow-300 text-yellow-700;
-    content: 'G';
+  &.event {
+    @apply border-orange-300;
+
+    & .tag-type {
+      @apply bg-orange-300 text-orange-700;
+    }
   }
 
-  &.setter > .api-heading-content:before {
-    @apply bg-pink-300 text-pink-700;
-    content: 'S';
+  &.getter {
+    @apply border-yellow-300;
+
+    & .tag-type {
+      @apply bg-yellow-300 text-yellow-700;
+    }
+  }
+
+  &.setter {
+    @apply border-pink-300;
+
+    & .tag-type {
+      @apply bg-pink-300 text-pink-700;
+    }
   }
 
   & .api-returns {
-    @apply flex items-center ml-9;
+    @apply flex items-center ml-4;
 
     & svg {
       @apply text-warm-400 mr-2;
@@ -348,16 +362,6 @@
 
   & .return-type + .return-type {
     @apply border-l-2 border-warm-300 ml-3 pl-3;
-  }
-
-  &.static:after {
-    @apply absolute -top-5 text-sm uppercase font-extrabold text-warm-400;
-    content: 'Static';
-  }
-
-  &.instance:after {
-    @apply absolute -top-5 text-sm uppercase font-extrabold text-warm-400;
-    content: 'Instance';
   }
 
   & .prefix {
@@ -488,5 +492,33 @@ h4 + .api-heading {
 
   & .code-tabs-panel pre.torchlight {
     @apply m-0 rounded-t-none shadow-none;
+  }
+}
+
+.api-group {
+  @apply border-l-4 pl-4;
+
+  &.module {
+    @apply border-red-300 border-opacity-30;
+  }
+
+  &.class {
+    @apply border-green-300 border-opacity-30;
+  }
+}
+
+.api-indent {
+  @apply pl-6;
+}
+
+.params {
+  @apply pl-4 border-l-3 border-indigo-100;
+
+  & > p {
+    @apply bg-indigo-50 rounded py-2 px-3;
+
+    & strong:first-of-type {
+      @apply block text-lg border-b-1 border-indigo-200 mb-1 pb-1;
+    }
   }
 }

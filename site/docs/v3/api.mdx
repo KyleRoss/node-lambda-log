@@ -5,9 +5,8 @@ description: 'Complete reference of the LambdaLog API.'
 
 Using `lambda-log` is very simple and can be utilized by either using the default `export` or by instantiating the [LambdaLog](#lambdalog) class.
 
-## Module
-
-<h as="h3" type="module" text="lambda-log" />
+::: div api-group module
+<h sticky as="h2" type="module" text="lambda-log" />
 
 The default export for this package which is an instance of the [LambdaLog](#lambdalog) class.
 
@@ -22,8 +21,10 @@ const log = require('lambda-log'); // [tl! focus]
 log.info('Hello world!');
 ```
 
+<hr />
 
-<h as="h4" type="property" text="log.LambdaLog" returns="#LambdaLog" />
+::: div api-indent
+<h as="h3" type="property" text="log.LambdaLog" returns="#LambdaLog" />
 
 Access to the uninstantiated [LambdaLog](#lambdalog) class. Useful for creating your own instance or adding/overridding functionality.
 
@@ -35,65 +36,107 @@ const log = new LambdaLog(); // [tl! focus]
 log.info('Hello world!');
 ```
 
+<hr />
 
-<h as="h4" type="property" text="log.LogMessage" returns="#LogMessage" />
+<h as="h3" type="property" text="log.LogMessage" returns="#LogMessage" />
 
 Access to the uninstantiated [LogMessage](#logmessage) class. You can override this property to use a custom logging class that inherits the same methods.
 
+:::
+:::
 
-## Classes
+<hr />
 
-<h as="h3" type="class" text="LambdaLog" />
+::: div api-group class
+
+<h sticky as="h2" type="class" text="LambdaLog" />
 
 Main class for the module.
 
 **Extends:** [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter)
 
+<hr />
 
-<h as="h4" type="function" text="constructor([options], [levels])" />
+::: div api-indent
+<h as="h3" type="function" text="constructor([options], [levels])" returns="this" />
 
 Constructor for the LambdaLog class. Provided to be utilized in more advanced cases to allow overriding and configuration. By default, this module will export an instance of this class but you may access the class and create your own instance via `log.LambdaLog`.
 
-| Param | Type | Required? | Description | Default |
-| ----- | ---- | --------- | ----------- | ------- |
-| options | Object | No | Options object. See [log.options](#logoptions) for available options. | `{}` |
-| levels | Object | No | **Deprecated** Allows adding and customizing log levels. See [Custom Log Levels](/docs/[v]/custom-log-levels). | `{}` |
+#### Parameters
 
-**Returns:** _this_
+::: div params
+  **options `Object`**
+  Optional. Configuration options for LambdaLog. See [log.options](#logoptions) for available options. Default is `{}`.
 
+  **levels `Object`**
+  **DEPRECATED** Optional. Allows adding and customizing log levels. See [Custom Log Levels](/docs/[v]/custom-log-levels). Default is `[]`.
+:::
 
-<h as="h4" type="property" text="log.options" returns="Object" />
+<hr />
+
+<h as="h3" type="property" text="log.options" returns="Object" />
 
 Configuration object for LambdaLog. All options are optional. Most options can be changed at any time via `log.options.OPTION = VALUE;` unless otherwise noted. Options changed using `log.options` apply to the specific instance of LambdaLog. If you need to use different options throughout your app, it's best to create a new instance of [LambdaLog](#lambdalog) for each corresponding need.
 
-| Option | Type | Default | Description |
-| ------ | ---- | ------- | ----------- |
-| meta | `Object` | `{}` | Global metadata to be included in all logs for the instance of LambdaLog. |
-| tags | `String[]¦Function[]` | `[]` | Global tags to be included in all logs for the instance of LambdaLog. See [Enhanced Tags](/docs/[v]/enhanced-tags). |
-| dynamicMeta | `Function` | `null` | Function that is executed for each log message to retrieve additional metadata. See [Dynamic Metadata](/docs/[v]/dynamic-metadata). |
-| debug | `Boolean` | `false` | Enables `log.debug()`. |
-| dev | `Boolean` | `false` | Enables pretty-printing of JSON logs to the `console`. |
-| silent | `Boolean` | `false` | Disables logging to `console` but messages and events are still generated. Can be controlled by `LAMBDALOG_SILENT` environment variable. |
-| replacer | `Function` | `null` | Replacer function for `JSON.stringify()` to allow handling of sensitive data before logs are written. See [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_replacer_parameter). |
-| logHandler | `Object` | `console` | A console-like object containing all standard console functions. Allows logs to be written to any custom location. See [Log Handler](/docs/[v]/log-handler). |
-| levelKey | `String¦null` | `_logLevel` | _Since 3.0.0_ — Override the key in the JSON log message for the log level. Set to `null` to remove this key from the JSON output. |
-| messageKey | `String` | `msg` | _Since 3.0.0_ — Override the key in the JSON log message for the message. |
-| tagsKey | `String¦null` | `_tags` | _Since 3.0.0_ — Override the key in the JSON log message for the tags. Set to `null` to remove this key from the JSON output. |
+#### Properties
 
+::: div params
+  **meta `Object`**
+  Global metadata to be included in all logs for the instance of LambdaLog. Default is `{}`. See [Metadata](/docs/[v]/metadata).
 
-<h as="h4" type="function" text="log.<info|warn|error|debug|*>(msg, [meta], [tags])" returns="#LogMessage" />
+  **tags `String[]|Function[]`**
+  Global tags to be included in all logs for the instance of LambdaLog. Default is `[]`. See [Enhanced Tags](/docs/[v]/enhanced-tags).
 
-Shortcut methods for `log.log()`. By default, the following methods are available: `log.info()`, `log.warn()`, `log.error()` and `log.debug()`. Additional methods will be added for any custom log levels provided.
+  **dynamicMeta `Function`**
+  Function that is executed for each log message to retrieve additional metadata. Default is `null`. See [Dynamic Metadata](/docs/[v]/dynamic-metadata).
+
+  **debug `Boolean`**
+  **DEPRECATED** Enables `log.debug()`. Default is `false`. See [Debug Logs](/docs/[v]/debug-logs).
+
+  **dev `Boolean`**
+  Enables pretty-printing of JSON logs to the `console`. Default is `false`. See [Pretty Printing](/docs/[v]/pretty-printing).
+
+  **silent `Boolean`**
+  Disables logging to `console` but messages and events are still generated. Can be controlled by `LAMBDALOG_SILENT` environment variable. Default is `false`. See [Silent Mode](/docs/[v]/silent-mode).
+
+  **replacer `Function`**
+  Replacer function for `JSON.stringify()` to allow handling of sensitive data before logs are written. Default is `null`. See [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_replacer_parameter).
+
+  **logHandler `Object`**
+  A console-like object containing all standard console functions. Allows logs to be written to any custom location. Default is `console`. See [Log Handler](/docs/[v]/log-handler).
+
+  **levelKey `String|null`**
+  _Since 3.0.0_ — Override the key in the JSON log message for the log level. Set to `null` to remove this key from the JSON output. Default is `"_logLevel"`.
+
+  **messageKey `String`**
+  _Since 3.0.0_ — Override the key in the JSON log message for the message. Default is `"msg"`.
+
+  **tagsKey `String|null`**
+  _Since 3.0.0_ — Override the key in the JSON log message for the tags. Set to `null` to remove this key from the JSON output. Default is `"_tags"`.
+:::
+
+<hr />
+
+<h as="h3" type="function" text="log.<info|warn|error|debug|*>(msg, [meta], [tags])" returns="#LogMessage|Boolean" />
+
+Shortcut methods for `log.log()`. By default, the following methods are available: `log.info()`, `log.warn()`, `log.error()` and `log.debug()`. Additional methods will be added for any custom log levels provided. This method will return the instance of LogMessage or `false` if [debug logs](/docs/[v]/debug-logs) are enabled and you are calling `log.debug()`.
 
 The provided `msg` can be any type, although a string or `Error` is recommended. If `Error` is provided the stack trace is added as metadata to the log as `stack`.
 
-| Param | Type | Required? | Description | Default |
-| ----- | ---- | --------- | ----------- | ------- |
-| msg | `Any` | Yes | Message to log. Can be any type, but string or Error reccommended. | -- |
-| meta | `Object` | No | Metadata to include in the logged JSON. If an object is provided, each of the properties are merged into the root of the JSON. If any other type is provided, the value will be set on the `meta` key within the root of the JSON. | `{}` |
-| tags | `String[]¦Function[]` | No | Tags to set for this log message. See [Enhanced Tags](/docs/[v]/enhanced-tags). | `[]` |
+x> Custom Log Levels have been deprecated in version 3.1.0 and will be removed in version 4.0.0. Once removed, this shortcut methods will only be added for the built-in log levels.
 
-**Returns:** [LogMessage](#logmessage)
+#### Parameters
+
+::: div params
+  **msg `String|Number|Object|Array|Error`**
+  Required. Message to log. Can be any type listed, but string or Error reccommended.
+
+  **meta `Object|String|Number|Array`**
+  Optional. Metadata to include in the logged JSON. If an object is provided, each of the properties are merged into the root of the JSON. If any other type is provided, the value will be set on the `meta` key within the root of the JSON. See [Metadata](/docs/[v]/metadata). Default is `{}`.
+
+  **tags `String[]|Function[]`**
+  Optional. Tags to set for this log message. See [Tagging](/docs/[v]/tagging). Default is `[]`.
+:::
 
 **Example**
 ```js
@@ -108,18 +151,27 @@ log.error(new Error('There was an error!')); // [tl! focus]
 log.info('Success!', { stats }, ['success']); // [tl! focus]
 ```
 
-<h as="h4" type="function" text="log.log(level, msg, [meta], [tags])" returns="#LogMessage|Boolean" />
+<hr />
 
-Generates JSON log message based on the provided parameters and the global configuration. Once the JSON message is created, it is properly logged to the `console` and emitted through an event. If an `Error` or `Error`-like object is provided for `msg`, it will parse out the message and include the stacktrace in the metadata.
+<h as="h3" type="function" text="log.log(level, msg, [meta], [tags])" returns="#LogMessage|Boolean" />
 
-| Param | Type | Required? | Description | Default |
-| ----- | ---- | --------- | ----------- | ------- |
-| level | `String` | Yes | The log level for this log. Must be one of `info`, `warn`, `error`, `debug` or the name of a [custom log level](/docs/[v]/custom-log-levels). | -- |
-| msg | `Any` | Yes | Message to log. Can be any type, but string or Error reccommended. | -- |
-| meta | `Object` | No | Metadata to include in the logged JSON. If an object is provided, each of the properties are merged into the root of the JSON. If any other type is provided, the value will be set on the `meta` key within the root of the JSON. | `{}` |
-| tags | `String[]¦Function[]` | No | Tags to set for this log message. See [Enhanced Tags](/docs/[v]/enhanced-tags). | `[]` |
+Generates JSON log message based on the provided parameters and the global configuration. Once the JSON message is created, it is properly logged to the `console` and emitted through an event. If an `Error` or `Error`-like object is provided for `msg`, it will parse out the message and include the stacktrace in the metadata. This method will return the instance of LogMessage or `false` if [debug logs](/docs/[v]/debug-logs) are enabled and you using the `debug` log level.
 
-**Returns:** [LogMessage](#logmessage)
+#### Parameters
+
+::: div params
+  **level `String`**
+  Required. The log level for this log. Must be one of `info`, `warn`, `error`, `debug` or the name of a [custom log level](/docs/[v]/custom-log-levels).
+
+  **msg `String|Number|Object|Array|Error`**
+  Required. Message to log. Can be any type listed, but string or Error reccommended.
+
+  **meta `Object|String|Number|Array`**
+  Optional. Metadata to include in the logged JSON. If an object is provided, each of the properties are merged into the root of the JSON. If any other type is provided, the value will be set on the `meta` key within the root of the JSON. See [Metadata](/docs/[v]/metadata). Default is `{}`.
+
+  **tags `String[]|Function[]`**
+  Optional. Tags to set for this log message. See [Tagging](/docs/[v]/tagging). Default is `[]`.
+:::
 
 **Example**
 ```js
@@ -128,19 +180,27 @@ log.log('error', 'Something failed!');
 log.error('Something failed!');
 ```
 
+<hr />
 
-<h as="h4" type="function" text="log.assert(test, msg, [meta], [tags])" returns="#LogMessage|Boolean" since="1.4.0" />
+<h as="h3" type="function" text="log.assert(test, msg, [meta], [tags])" returns="#LogMessage|Boolean" since="1.4.0" />
 
 Generates a log message if `test` is a falsy value. If `test` is truthy, the log message is skipped and returns `false`. Allows creating log messages without the need to wrap them in an if statement. The log level will be `error`.
 
-| Param | Type | Required? | Description | Default |
-| ----- | ---- | --------- | ----------- | ------- |
-| test | `Any` | Yes | A value which is tested for a falsy value. | -- |
-| msg | `Any` | Yes | Message to log. Can be any type, but string or Error reccommended. | -- |
-| meta | `Object` | No | Metadata to include in the logged JSON. If an object is provided, each of the properties are merged into the root of the JSON. If any other type is provided, the value will be set on the `meta` key within the root of the JSON. | `{}` |
-| tags | `String[]¦Function[]` | No | Tags to set for this log message. See [Enhanced Tags](/docs/[v]/enhanced-tags). | `[]` |
+#### Parameters
 
-**Returns:** [LogMessage](#logmessage) _or_ `false` if test passed.
+::: div params
+  **test `Any`**
+  Required. A value which is tested for a falsy value.
+
+  **msg `String|Number|Object|Array|Error`**
+  Required. Message to log. Can be any type listed, but string or Error reccommended.
+
+  **meta `Object|String|Number|Array`**
+  Optional. Metadata to include in the logged JSON. If an object is provided, each of the properties are merged into the root of the JSON. If any other type is provided, the value will be set on the `meta` key within the root of the JSON. See [Metadata](/docs/[v]/metadata). Default is `{}`.
+
+  **tags `String[]|Function[]`**
+  Optional. Tags to set for this log message. See [Tagging](/docs/[v]/tagging). Default is `[]`.
+:::
 
 **Example**
 ```js
@@ -155,18 +215,24 @@ log.assert(results, 'No results provided!');
 //=> false
 ```
 
+<hr />
 
-<h as="h4" type="function" text="log.result(promise, [meta], [tags])" returns="Promise<#LogMessage>" since="2.3.0" />
+<h as="h3" type="function" text="log.result(promise, [meta], [tags])" returns="Promise<#LogMessage>" since="2.3.0" />
 
-Generates a log message with the result or error provided by a promise. Useful for debugging and testing.
+Generates a log message with the result or error provided by a promise. This method does not take a message, instead it uses the result or error of the provided Promise as the message. Useful for debugging and testing.
 
-| Param | Type | Required? | Description | Default |
-| ----- | ---- | --------- | ----------- | ------- |
-| promise | `Promise` | Yes | A Promise to retrieve a result from. | -- |
-| meta | `Object` | No | Metadata to include in the logged JSON. If an object is provided, each of the properties are merged into the root of the JSON. If any other type is provided, the value will be set on the `meta` key within the root of the JSON. | `{}` |
-| tags | `String[]¦Function[]` | No | Tags to set for this log message. See [Enhanced Tags](/docs/[v]/enhanced-tags). | `[]` |
+#### Parameters
 
-**Returns:** Promise<[LogMessage](#logmessage)>
+::: div params
+  **promise `Promise<Any>`**
+  Required. A Promise to retrieve a result from.
+
+  **meta `Object|String|Number|Array`**
+  Optional. Metadata to include in the logged JSON. If an object is provided, each of the properties are merged into the root of the JSON. If any other type is provided, the value will be set on the `meta` key within the root of the JSON. See [Metadata](/docs/[v]/metadata). Default is `{}`.
+
+  **tags `String[]|Function[]`**
+  Optional. Tags to set for this log message. See [Tagging](/docs/[v]/tagging). Default is `[]`.
+:::
 
 **Example**
 ```js
@@ -181,17 +247,23 @@ log.result(promise);
 // => { "_logLevel": "error", "msg": "Something failed" ... }
 ```
 
+<hr />
 
-<h as="h4" type="function" text="log.addLevel(name, handler)" deprecated="3.1.0" />
+<h as="h3" type="function" text="log.addLevel(name, handler)" returns="this" deprecated="3.1.0" />
 
 Add a custom log level to this instance of LambdaLog. A dynamic method for the new log level will be added to the class. If you pass a `function` as `handler`, the function is called for each log message with the parameter `msg` — The [LogMessage](#logmessage) instance for the current log message — and the function is scoped to the current instance of LambdaLog. This function must return either `false` to disable the log from being generated or a string `console` method name such as `log`, `info`, `warn`, `error`, and `debug`.
 
-| Param | Type | Required? | Description | Default |
-| ----- | ---- | --------- | ----------- | ------- |
-| name | `String` | Yes | The name of the log level. | -- |
-| handler | `String¦Function` | Yes | The `console` method as a string to use to log this message or a function that returns a `console` method as a string. | -- |
+See [Custom Log Levels](/docs/[v]/custom-log-levels).
 
-**Returns:** _this_
+#### Parameters
+
+::: div params
+  **name `String`**
+  Required. The name of the log level.
+
+  **handler `String|Function`**
+  Required. The `console` method as a string to use to log this message or a function that returns a `console` method as a string.
+:::
 
 **Example**
 ```js
@@ -213,8 +285,9 @@ log.options.trace = true;
 log.trace('This is a trace message');
 ```
 
+<hr />
 
-<h as="h4" type="event" text="log" />
+<h as="h3" type="event" text="log" />
 
 The log event is emitted (using EventEmitter) for every log generated. This allows for custom integrations, such as logging to a thrid-party service. This event is emitted with the [LogMessage](#logmessage) instance for the log. You may control events using all the methods of EventEmitter.
 
@@ -226,39 +299,64 @@ log.on('log', message => {
 });
 ```
 
+<hr />
 
-<h as="h4" type="property" scope="static" text="LambdaLog.symbols" returns="Object" since="3.0.0" />
+<h as="h3" type="property" scope="static" text="LambdaLog.symbols" returns="Object" since="3.0.0" />
 
 Static object which contains [Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol) definitions used within the LambdaLog class. Available only for advanced usage.
 
-| Property | Description |
-| -------- | ----------- |
-| LEVELS | The symbol used for the log levels configuration internally. For example: `log[LambdaLog.symbols.LEVELS]`. |
+?> The use of Symbols will be removed in the next major release of LambdaLog due to switching to TypeScript.
 
----
+#### Properties
 
-<h as="h3" type="class" text="LogMessage" />
+::: div params
+  **LEVELS `Symbol`**
+  The symbol used for the log levels configuration internally. For example: `log[LambdaLog.symbols.LEVELS]`.
+:::
+
+:::
+:::
+
+<hr className="bold" />
+
+::: div api-group class
+
+<h sticky as="h2" type="class" text="LogMessage" />
 
 A new instance of this class is created for every log message. The instance of this class is returned from various log methods and passed into the `log` event. The purpose of this class is to transform and compile a log message into JSON to be outputted.
 
+<hr />
 
-<h as="h4" type="function" text="constructor(log, opts)" />
+::: div api-indent
+<h as="h3" type="function" text="constructor(log, opts)" returns="this" />
 
 Constructor for the LogMessage class. Called with an object `log` that contains the data for the log message and an object `opts` which is the LambdaLog options.
 
-| Param | Type | Required? | Description | Default |
-| ----- | ---- | --------- | ----------- | ------- |
-| log | `Object` | Yes | Data for the given log message. | -- |
-| log.level | `String` | Yes | The log level for this message. | -- |
-| log.msg | `Any` | Yes | The message of the log. | -- |
-| log.meta | `Object` | No | Metadata to attach to this log message. | `{}` |
-| log.tags | `String[]¦Function[]` | No | Tags to attach to this log message. | `[]` |
-| opts | `Object` | Yes | Options from the LambdaLog instance. | -- |
+#### Parameters
 
-**Returns:** _this_
+::: div params
+  **log `Object`**
+  Required. Data for the given log message.
 
+  **log.level `String`**
+  Required. The log level for this message.
 
-<h as="h4" type="getter" text="message.level" returns="String" />
+  **log.msg `String|Number|Object|Array|Error`**
+  Required. The message of the log.
+
+  **log.meta `Object|String|Number|Array`**
+  Optional. Metadata to attach to this log message.
+
+  **log.tags `String[]|Function[]`**
+  Optional. Tags to attach to this log message.
+
+  **opts `Object`**
+  Options from the LambdaLog instance.
+:::
+
+<hr />
+
+<h as="h3" type="getter" text="message.level" returns="String" />
 
 Gets the level for this log message.
 
@@ -269,8 +367,9 @@ console.log(message.level);
 // => "info"
 ```
 
+<hr />
 
-<h as="h4" type="getter" text="message.msg" returns="String" />
+<h as="h3" type="getter" text="message.msg" returns="String" />
 
 Gets the transformed message for this log message.
 
@@ -283,8 +382,9 @@ console.log(message.msg);
 // => "There was an error"
 ```
 
+<hr />
 
-<h as="h4" type="setter" text="message.msg = String" />
+<h as="h3" type="setter" text="message.msg = String" />
 
 Set the message for the log message, overwriting the existing message.
 
@@ -301,8 +401,9 @@ console.log(message.msg);
 // => "New message"
 ```
 
+<hr />
 
-<h as="h4" type="getter" text="message.meta" returns="Object" />
+<h as="h3" type="getter" text="message.meta" returns="Object" />
 
 Gets the combined metadata for this log message. This includes metadata passed into the log message, global metadata, and [dynamic metadata](/docs/[v]/dynamic-metadata). From version 3.0.0, any `Error` or `Error`-like objects found in the root of the metadata will be converted to a plain object.
 
@@ -315,8 +416,9 @@ console.log(message.meta);
 // => { prop: 'value', with: 'metadata', err: { message: 'An error', stack: '...' } }
 ```
 
+<hr />
 
-<h as="h4" type="setter" text="message.meta = Object" />
+<h as="h3" type="setter" text="message.meta = Object" />
 
 Adds or overwrites metadata for the log message while keeping the existing metadata.
 
@@ -333,8 +435,9 @@ console.log(message.meta);
 // => { prop: 'newValue', with: 'metadata', abc: 123 }
 ```
 
+<hr />
 
-<h as="h4" type="getter" text="message.tags" returns="String[]" />
+<h as="h3" type="getter" text="message.tags" returns="String[]" />
 
 Gets the tags for this log message. This includes tags passed into the log message and global tags. The tags are generated from strings or by using [enhanced tags](/docs/[v]/enhanced-tags).
 
@@ -347,8 +450,9 @@ console.log(message.tags);
 // => ['a-tag', 'info', 'success']
 ```
 
+<hr />
 
-<h as="h4" type="setter" text="message.tags = String[]|Function[]" />
+<h as="h3" type="setter" text="message.tags = String[]|Function[]" />
 
 Adds additional tags to the log message while keeping existing tags. You may include [enhanced tags](/docs/[v]/enhanced-tags).
 
@@ -365,8 +469,9 @@ console.log(message.tags);
 // => ['a-tag', 'success', 'info', 'more-tags']
 ```
 
+<hr />
 
-<h as="h4" type="getter" text="message.value" returns="Object" />
+<h as="h3" type="getter" text="message.value" returns="Object" />
 
 Gets the compiled log object for this log message. From version 3.0.0, the key names of the properties in this object can be overridden using the options `levelKey`, `messageKey`, and `tagsKey` in [log.options](#logoptions). If `levelKey` or `tagsKey` is set to `null` or `undefined`, those properties will not be included in the output of the log message.
 
@@ -379,8 +484,9 @@ console.log(message.value);
 // => { _logLevel: 'info', msg: 'This is an info log', _tags: [] }
 ```
 
+<hr />
 
-<h as="h4" type="getter" text="message.throw" />
+<h as="h3" type="getter" text="message.throw" />
 
 Throws the an error. If an error was not provided, one will be generated for you and thrown. This is useful in cases where you need to log an error, but also throw it.
 
@@ -396,57 +502,76 @@ error.log = logMsg;
 throw error;
 ```
 
+<hr />
 
-<h as="h4" type="function" text="message.toJSON([format])" returns="String" />
+<h as="h3" type="function" text="message.toJSON([format])" returns="String" />
 
-Returns the compiled log object converted into a JSON string. This method utilizes `log.options.replacer` for the replacer function. Uses [fast-safe-stringify](https://github.com/davidmarkclements/fast-safe-stringify) to prevent circular reference issues.
+Returns the compiled log object converted into a JSON string. This method utilizes `log.options.replacer` for the replacer function. Uses [fast-safe-stringify](https://github.com/davidmarkclements/fast-safe-stringify) to prevent circular reference issues. Returns `message.value` JSON stringified.
 
-| Param | Type | Required? | Description | Default |
-| ----- | ---- | --------- | ----------- | ------- |
-| format | `Boolean` | No | Pretty-print the JSON object with 4-space indentation. | `false` |
+#### Parameters
 
-**Returns:** `String` — JSON string of [message.value](#messagevalue).
+::: div params
+  **format `Boolean`**
+  Optional. Pretty-print the JSON object with 4 spaces of indentation. Default is `false`.
+:::
 
 **Example**
 ```js
 log.error('This is an error').toJSON(true);
-//=> {
+// => {
 //      "_logLevel": "error",
 //      "msg": "This is an error",
 //      ...
 //   }
 ```
 
+<hr />
 
-<h as="h4" type="function" scope="static" text="LogMessage.isError(val)" returns="Boolean" />
+<h as="h3" type="function" scope="static" text="LogMessage.isError(val)" returns="Boolean" />
 
-Static function that checks if provided `val` is an `Error` or `Error`-like object.
+Static function that checks if provided `val` is an `Error` or `Error`-like object. Returns `true` if the provided value is an Error, otherwise `false`.
 
-| Param | Type | Required? | Description | Default |
-| ----- | ---- | --------- | ----------- | ------- |
-| val | `Any` | Yes | Value to test if it's an `Error` or `Error`-like object. | -- |
+#### Parameters
 
-**Returns:** Boolean — `true` if is an error, otherwise `false`.
+::: div params
+  **val `Any`**
+  Required. Value to test if it's an `Error` or `Error`-like object.
+:::
 
+<hr />
 
-<h as="h4" type="function" scope="static" text="LogMessage.stubError(err)" returns="Error" />
+<h as="h3" type="function" scope="static" text="LogMessage.stubError(err)" returns="Error" />
 
 Static function that stubs an `Error` with a `toJSON` method for easily converting an `Error` into a plain object.
 
-| Param | Type | Required? | Description | Default |
-| ----- | ---- | --------- | ----------- | ------- |
-| err | `Error` | Yes | The `Error` to stub with a `toJSON` method. | -- |
+#### Parameters
 
-**Returns:** `Error`
+::: div params
+  **err `Error`**
+  Required. The `Error` to stub with a `toJSON` method.
+:::
 
+<hr />
 
-<h as="h4" type="property" scope="static" text="LogMessage.symbols" returns="Object" since="3.0.0" />
+<h as="h3" type="property" scope="static" text="LogMessage.symbols" returns="Object" since="3.0.0" />
 
 Static object which contains [Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol) definitions used within the LogMessage class. Available only for advanced usage.
 
-| Property | Description |
-| -------- | ----------- |
-| LOG | The symbol used for the log data internally. For example: `message[LogMessage.symbols.LOG]`. |
-| META | The symbol used for the log metadata internally. For example: `message[LogMessage.symbols.META]`. |
-| ERROR | The symbol used for the original passed `Error`, if applicable, internally. For example: `message[LogMessage.symbols.ERROR]`. |
-| OPTS | The symbol used for the LambdaLog options internally. For example: `message[LogMessage.symbols.OPTS]`. |
+#### Properties
+
+::: div params
+  **LOG `Symbol`**
+  The symbol used for the log data internally. For example: `message[LogMessage.symbols.LOG]`.
+
+  **META `Symbol`**
+  The symbol used for the log metadata internally. For example: `message[LogMessage.symbols.META]`.
+
+  **ERROR `Symbol`**
+  The symbol used for the original passed `Error`, if applicable, internally. For example: `message[LogMessage.symbols.ERROR]`.
+
+  **OPTS `Symbol`**
+  The symbol used for the LambdaLog options internally. For example: `message[LogMessage.symbols.OPTS]`.
+:::
+
+:::
+:::

@@ -1,0 +1,63 @@
+.header {
+  @apply flex flex-col items-center bg-indigo-800 py-6;
+}
+
+.logo {
+  @apply flex items-center;
+
+  & svg {
+    @apply w-12 md:w-16 lg:w-20 h-auto mr-2;
+  }
+
+  & :global(.logo-text) {
+    @apply text-xl md:text-2xl lg:text-3xl font-mono text-indigo-50 tracking-tighter;
+  }
+}
+
+.main {
+  & :global(.page-hero) {
+    @apply container-fluid bg-indigo-800 py-12;
+
+    & h1 {
+      @apply text-center !font-extrabold text-4xl text-white;
+      @apply md:leading-[4rem] md:text-5xl lg:text-left xl:text-6xl;
+      text-shadow: 0 3px 0 rgba(0, 0, 0, 0.3);
+
+      & small {
+        @apply text-indigo-200 font-medium tracking-tighter;
+      }
+    }
+  }
+}
+
+.btn {
+  @apply inline-flex items-center rounded-full text-white py-4 px-7 font-medium text-xl md:text-2xl shadow-md select-none transition-all;
+
+  & :global(.btn-icon) {
+    @apply mr-2;
+  }
+
+  & :global(.btn-arrow) {
+    @apply inline-block ml-2 transition-transform;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    @apply shadow-xl;
+
+    & :global(.btn-arrow) {
+      transform: translateX(10px);
+    }
+  }
+}
+
+.docs {
+  @apply bg-green-600;
+
+  &:hover,
+  &:focus,
+  &:active {
+    @apply bg-green-500 text-white;
+  }
+}

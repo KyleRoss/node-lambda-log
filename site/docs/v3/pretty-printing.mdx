@@ -31,7 +31,7 @@ const log = new LambdaLog({ // [tl! focus]
 **With `dev` option disabled:**
 ```js
 log.info('Example log without dev mode', { hello: 'world' });
-/* => { "level": "info",  "msg": "Example log without dev mode", "hello": "world", "_tags": [] } */
+/* => { "_logLevel": "info",  "msg": "Example log without dev mode", "hello": "world", "_tags": [] } */
 ```
 
 **With `dev` option enabled:**
@@ -39,7 +39,7 @@ log.info('Example log without dev mode', { hello: 'world' });
 log.info('Example log with dev mode', { hello: 'world' });
 /* =>
   {
-    "level": "info",
+    "_logLevel": "info",
     "msg": "Example log with dev mode",
     "hello": "world",
     "_tags": []

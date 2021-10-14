@@ -1,0 +1,64 @@
+.contributor {
+  @apply flex flex-row rounded shadow-md bg-white transition-all; /* py-3 px-4 */
+  @apply md:flex-col md:items-center md:bg-transparent md:shadow-none;
+
+  & :global(.avatar) {
+    @apply relative flex items-center justify-center w-[100px] min-h-[100px] h-full bg-cover bg-center bg-no-repeat rounded-l overflow-hidden transition-all;
+    @apply md:h-[100px] md:rounded-full md:border-3 md:border-white md:shadow-md;
+
+    &:after {
+      @apply absolute inset-0 bg-warm-800 opacity-0 rounded-l transition-opacity;
+      @apply md:rounded-full;
+      content: '';
+    }
+
+    & > svg {
+      @apply relative block opacity-0 w-12 h-12 z-2 transition-all;
+      transform: translateX(-65px);
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      &:after {
+        @apply opacity-50;
+        content: '';
+      }
+
+      & > svg {
+        @apply opacity-100;
+        transform: translateX(0px);
+      }
+    }
+  }
+
+  & :global(.content) {
+    @apply text-warm-800 py-1.5 px-4 md:text-center md:p-0;
+
+    & strong {
+      @apply block mt-1 text-indigo-600;
+    }
+
+    & small {
+      @apply block leading-tight text-warm-600;
+    }
+
+    & ul {
+      @apply flex flex-row flex-wrap justify-start gap-3 mt-2 md:justify-center;
+
+      & li {
+        @apply mb-0 text-xl;
+
+        & a {
+          @apply block transition-transform;
+        }
+
+        & a:hover,
+        & a:active,
+        & a:focus {
+          @apply scale-125;
+        }
+      }
+    }
+  }
+}

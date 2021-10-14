@@ -22,7 +22,7 @@ log.debug('This is a debug message');
 log.options.debug = true;
 
 log.debug('It can take all the same options as a regular log', { suchAs: 'the metadata object' }, ['and', 'tags'])
-// => { "level": "debug", "msg": "It can take all the same options as a regular log", "suchAs": "the metadata object", "_tags": ["and", "tags"] }
+// => { "_logLevel": "debug", "msg": "It can take all the same options as a regular log", "suchAs": "the metadata object", "_tags": ["and", "tags"] }
 
 // Disable debug mode
 log.options.debug = false;

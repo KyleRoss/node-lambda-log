@@ -31,7 +31,7 @@ log.options.tags.push('some-tag', 'another-tag');
 // Example log message:
 log.info('Example with global tags');
 /* => {
-    "level": "info",
+    "_logLevel": "info",
     "msg": "Example with global tags",
     "_tags": ["some-tag", "another-tag"]
   } */
@@ -56,7 +56,7 @@ log.options.tags.push('cool-tag');
 // Example log message:
 log.info('Example with global tags');
 /* => {
-    "level": "info",
+    "_logLevel": "info",
     "msg": "Example with global metadata",
     "_tags": ["some-tag", "another-tag", "cool-tag"]
   } */
@@ -75,7 +75,7 @@ log.options.tags.push('test');
 // Example log message:
 log.info('Example with local tags', null, ['example-tag', 'local-tag-example']);
 /* => {
-    "level": "info",
+    "_logLevel": "info",
     "msg": "Example with local tags",
     "_tags": ["test", "example-tag", "local-tag-example"]
   } */

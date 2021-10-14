@@ -67,7 +67,7 @@
 }
 
 .links {
-  @apply flex gap-4 justify-end mt-2;
+  @apply flex flex-wrap gap-4 justify-end mt-2;
 
   & li {
     @apply mb-0;

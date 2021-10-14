@@ -29,6 +29,7 @@
     "react-icons": "^4.3.1",
     "react-string-replace": "^0.4.4",
     "rehype-slug": "^5.0.0",
+    "remark-containers": "^1.2.0",
     "remark-hint": "^1.0.10",
     "remark-torchlight": "^0.0.2"
   },

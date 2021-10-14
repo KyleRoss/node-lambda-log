@@ -8,7 +8,7 @@ import LinkedHeading from '@components/LinkedHeading';
 import Link from '@components/Link';
 
 
-const ApiHeading = ({ as, type, text, returns, link, scope, since, deprecated }) => {
+const ApiHeading = ({ as, type, text, returns, link, scope, since, deprecated, sticky }) => {
   function getType(t) {
     if(t.url) {
       return (
@@ -71,7 +71,7 @@ const ApiHeading = ({ as, type, text, returns, link, scope, since, deprecated })
       ));
     }
 
-    return <span className="api-heading-badges">{badges}</span>;
+    return <span className="api-heading-badges ml-auto">{badges}</span>;
   }
 
   function formatText(text) {
@@ -126,12 +126,16 @@ const ApiHeading = ({ as, type, text, returns, link, scope, since, deprecated })
   }
 
   return (
-    <LinkedHeading as={as} className={clsx('api-heading', scope, type)} id={slug(text)} title={type}>
+    <LinkedHeading as={as} className={clsx('api-heading', sticky ? 'sticky' : null, scope, type)} id={slug(text)} title={type}>
+      <span className={clsx('api-descriptor')} aria-hidden="true">
+        {scope && <span className="tag tag-scope">{scope}</span>}
+        {type && <span className="tag tag-type">{type}</span>}
+        {getBadges()}
+      </span>
       <span className="api-heading-content">
         {formatText(text)}
         {getReturns()}
       </span>
-      {getBadges()}
     </LinkedHeading>
   );
 };
@@ -144,11 +148,13 @@ ApiHeading.propTypes = {
   returns: PropTypes.string,
   link: PropTypes.string,
   since: PropTypes.string,
-  deprecated: PropTypes.string
+  deprecated: PropTypes.string,
+  sticky: PropTypes.bool
 };
 
 ApiHeading.defaultProps = {
-  as: 'h4'
+  as: 'h4',
+  sticky: false
 };
 
 export default ApiHeading;

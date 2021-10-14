@@ -20,7 +20,7 @@ const Footer = ({ variant }) => {
           </div>
           <ul role="menu" className={styles.links}>
             <li role="menuitem">
-              <Link plain href="https://github.com/KyleRoss/node-lambda-log/blob/master/LICENSE">MIT License</Link>
+              <Link plain href="/license">MIT License</Link>
             </li>
             <li role="menuitem">
               <Link plain href="https://github.com/KyleRoss/node-lambda-log">Github</Link>
@@ -30,6 +30,9 @@ const Footer = ({ variant }) => {
             </li>
             <li role="menuitem">
               <Link plain href="https://github.com/KyleRoss/node-lambda-log/discussions">Support</Link>
+            </li>
+            <li role="menuitem">
+              <Link plain href="/contributors">Contributors</Link>
             </li>
           </ul>
 

@@ -21,7 +21,7 @@ exports.handler = async function handler(event) {
   });
 
   log.info('Starting process'); // [tl! highlight]
-  // => { "level": "info", "msg": "Starting process", "_tags": ["index"] } [tl! reindex(null) .select-none]
+  // => { "_logLevel": "info", "msg": "Starting process", "_tags": ["index"] } [tl! reindex(null) .select-none]
 
   // ...
 
@@ -35,7 +35,7 @@ exports.handler = async function handler(event) {
     return false;
   } catch(error) {
     log.error(error).throw; // [tl! highlight]
-    // => { "level": "error", "msg": "...", "name": "Error", "stack": "...", "_tags": ["index"] } [tl! reindex(null) .select-none]
+    // => { "_logLevel": "error", "msg": "...", "name": "Error", "stack": "...", "_tags": ["index"] } [tl! reindex(null) .select-none]
   }
 };
 ```
@@ -52,7 +52,7 @@ const log = new LambdaLog({
 module.exports = {
   getData: async function getData(event) {
     log.info('Calling API with event data', { event }); // [tl! highlight]
-    // => { "level": "info", "msg": "Calling API with event data", "event": { ... }, "_tags": ["api"] } [tl! reindex(null) .select-none]
+    // => { "_logLevel": "info", "msg": "Calling API with event data", "event": { ... }, "_tags": ["api"] } [tl! reindex(null) .select-none]
 
     // ..get data
 
@@ -65,7 +65,7 @@ module.exports = {
     }
 
     log.warn(`Invalid ID provided`, { id }, ['isValidId']); // [tl! highlight]
-    // => { "level": "warn", "msg": "Invalid ID provided", "id": "...", "_tags": ["api", "isValidId"] } [tl! reindex(null) .select-none]
+    // => { "_logLevel": "warn", "msg": "Invalid ID provided", "id": "...", "_tags": ["api", "isValidId"] } [tl! reindex(null) .select-none]
     return false;
   }
 };
@@ -90,7 +90,7 @@ exports.handler = async function handler(event, context) {
   };
 
   log.info('Starting process'); // [tl! highlight]
-  // => { "level": "info", "msg": "Starting process", "functionName": "my-lambda-function", "requestId": "xxx", "_tags": [] } [tl! reindex(null) .select-none]
+  // => { "_logLevel": "info", "msg": "Starting process", "functionName": "my-lambda-function", "requestId": "xxx", "_tags": [] } [tl! reindex(null) .select-none]
 
   // ...
 
@@ -113,7 +113,7 @@ exports.handler = async function handler(event, context) {
   });
 
   log.info('Starting process'); // [tl! highlight]
-  // => { "level": "info", "msg": "Starting process", "functionName": "my-lambda-function", "requestId": "xxx", "_tags": [] } [tl! reindex(null) .select-none]
+  // => { "_logLevel": "info", "msg": "Starting process", "functionName": "my-lambda-function", "requestId": "xxx", "_tags": [] } [tl! reindex(null) .select-none]
 
   // ...
 

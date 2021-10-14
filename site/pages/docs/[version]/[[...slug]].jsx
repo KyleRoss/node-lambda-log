@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import { Tab, Tabs, TabList, TabPanels, TabPanel } from '@reach/tabs';
 import { MdMenuOpen, MdClose } from 'react-icons/md';
 import torchlight from 'remark-torchlight';
+import remarkContainers from 'remark-containers';
 import remarkHint from 'remark-hint';
 import rehypeSlug from 'rehype-slug';
 import remarkCodeTabs from '@utils/remarkCodeTabs';
@@ -179,6 +180,7 @@ export async function getStaticProps({ params }) {
           }
         }],
         remarkCodeTabs,
+        remarkContainers,
         remarkHint
       ],
       rehypePlugins: [
