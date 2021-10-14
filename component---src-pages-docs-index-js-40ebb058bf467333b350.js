@@ -1,2 +1,0 @@
-(self.webpackChunklambda_log_site=self.webpackChunklambda_log_site||[]).push([[808],{9644:function(e,t,n){"use strict";n.r(t);var u=n(5444);t.default=function(){return"undefined"!=typeof window&&(0,u.c4)("/docs/getting-started/"),null}}}]);
-//# sourceMappingURL=component---src-pages-docs-index-js-40ebb058bf467333b350.js.map
