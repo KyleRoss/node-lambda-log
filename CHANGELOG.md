@@ -1,3 +1,12 @@
+# [3.2.0](https://github.com/KyleRoss/node-lambda-log/compare/v3.1.0...v3.2.0) (2021-11-17)
+
+
+### Features
+
+* change minimum support to node v12+ ([726a209](https://github.com/KyleRoss/node-lambda-log/commit/726a209040eb6aac5e64e7155ba40b1fedd8249b))
+* rewrite into typescript ([2800655](https://github.com/KyleRoss/node-lambda-log/commit/280065579846369ac241142f6c1dd71196af9b56))
+* support esm and cjs ([0e8f0ac](https://github.com/KyleRoss/node-lambda-log/commit/0e8f0ac907be771290627d3aac25b507b955c529))
+
 # [3.1.0](https://github.com/KyleRoss/node-lambda-log/compare/v3.0.2...v3.1.0) (2021-10-14)
 
 
