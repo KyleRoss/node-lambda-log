@@ -95,9 +95,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@master
         with:
-          node-version: 14
+          node-version: 16
       - name: Install Dependencies
         run: npm i
+      - name: Build Package
+        run: npm run build
       - name: Publish to NPM
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
