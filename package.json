@@ -3,6 +3,22 @@
   "version": "3.1.0",
   "description": "Lightweight logging library for any Node 10+ applications",
   "main": "index.js",
+  "main": "dist/cjs/index.js",
+  "types": "dist/cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./LambdaLog": {
+      "import": "./dist/esm/LambdaLog.js",
+      "require": "./dist/cjs/LambdaLog.js"
+    },
+    "./LogMessage": {
+      "import": "./dist/esm/LogMessage.js",
+      "require": "./dist/cjs/LogMessage.js"
+    }
+  },
   "scripts": {
     "test": "jest",
     "prepare": "is-ci || husky install",
