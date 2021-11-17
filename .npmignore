@@ -4,8 +4,10 @@
 gh-pages
 site
 .eslintrc.yml
-.releaserc
+release.config.js
 commitlint.config.js
+tsconfig.json
+tsconfig.eslint.json
 *.test.js
 jest.config.js
 .all-contributorsrc
@@ -13,3 +15,4 @@ jest.config.js
 babel.config.js
 CHANGELOG.md
 README.md
+src
