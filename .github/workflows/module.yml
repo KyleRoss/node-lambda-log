@@ -32,32 +32,9 @@ jobs:
         run: npm i
       - name: Run Tests
         run: npm test
-
-  coverage:
-    name: Code Coverage
-    needs: [ test ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@master
-      - name: Setup Node
-        uses: actions/setup-node@master
-        with:
-          node-version: 14
-      - name: Install Dependencies
-        run: npm i
-      - name: Run Tests
-        if: ${{ github.event_name == 'pull_request' }}
-        run: npm test
-      - name: Comment Coverage on PR
-        if: ${{ github.event_name == 'pull_request' }}
-        uses: artiomtr/jest-coverage-report-action@fdabb5bd42fa8a55bcfdfb55d855122cabfb7911
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          threshold: 100
       - name: Upload Coverage to Code Climate
-        uses: paambaati/codeclimate-action@v2.7.2
-        if: ${{ github.event_name == 'push' && github.branch == 'master' }}
+        uses: paambaati/codeclimate-action@v3.0.0
+        if: ${{ matrix.node == '16' }}
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
@@ -75,7 +52,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@master
         with:
-          node-version: 14
+          node-version: 16
       - name: Install Dependencies
         run: npm i
       - name: Delete expired artifacts
