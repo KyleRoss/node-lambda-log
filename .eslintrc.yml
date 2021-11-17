@@ -1,6 +1,11 @@
 ---
 root: true
 
+ignorePatterns:
+  - 'node_modules/**/*'
+  - 'dist'
+  - 'site'
+
 env:
   node: true
   es6: true
