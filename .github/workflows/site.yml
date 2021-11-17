@@ -5,6 +5,8 @@ on:
       - master
     tags:
       - '!*'
+    paths:
+      - 'gh-pages/**'
 
 jobs:
   build:
