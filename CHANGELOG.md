@@ -1,3 +1,15 @@
+# [4.0.0-beta.1](https://github.com/KyleRoss/node-lambda-log/compare/v3.2.0...v4.0.0-beta.1) (2021-11-17)
+
+
+### Features
+
+* 4.0.0-beta ([fe34fe6](https://github.com/KyleRoss/node-lambda-log/commit/fe34fe6cb26f05c966d5879c6a87baa1681d0c57))
+
+
+### BREAKING CHANGES
+
+* This is the beta version for the next major release of LambdaLog. Do not use in production yet! Please report any issues you may find!
+
 # [3.1.0](https://github.com/KyleRoss/node-lambda-log/compare/v3.0.2...v3.1.0) (2021-10-14)
 
 
