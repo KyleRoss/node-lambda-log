@@ -53,7 +53,7 @@ jobs:
           threshold: 100
       - name: Upload Coverage to Code Climate
         uses: paambaati/codeclimate-action@v2.7.2
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' && github.branch == 'master' }}
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
