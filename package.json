@@ -19,7 +19,8 @@
     }
   },
   "scripts": {
-    "test": "jest",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --watchAll",
     "prepare": "is-ci || husky install",
     "build": "npm run clean && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc --module es6 --outDir dist/esm --moduleResolution node",
@@ -73,6 +74,7 @@
     "@types/jest": "^27.0.2",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.23.0",
     "eslint-config-xo-space": "^0.30.0",
     "eslint-config-xo-typescript": "^0.45.2",
