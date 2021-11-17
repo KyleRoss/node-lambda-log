@@ -68,7 +68,7 @@ jobs:
   release:
     name: Release
     if: ${{ github.event_name == 'push' }}
-    needs: [ test, coverage ]
+    needs: [ test ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
