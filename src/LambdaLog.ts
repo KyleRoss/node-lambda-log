@@ -1,7 +1,7 @@
 import EventEmitter from 'events';
-import { LambdaLogOptions, Message, GenericRecord, LogLevels, LogObject, Tag, ConsoleObject } from './typings';
-import LogMessage from './LogMessage';
-import { toBool } from './utils';
+import { LambdaLogOptions, Message, GenericRecord, LogLevels, LogObject, Tag, ConsoleObject } from './typings.js';
+import LogMessage from './LogMessage.js';
+import { toBool } from './utils.js';
 
 
 const levels = [{

@@ -1,4 +1,4 @@
-import LogMessage from './LogMessage';
+import LogMessage from './LogMessage.js';
 import stringify from 'fast-safe-stringify';
 
 export type GenericRecord<K extends string | number = string | number, V = unknown> = Record<K, V>;

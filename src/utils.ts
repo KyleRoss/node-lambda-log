@@ -1,4 +1,4 @@
-import { GenericRecord, StubbedError } from './typings';
+import { GenericRecord, StubbedError } from './typings.js';
 
 /**
  * Checks if value is an Error or Error-like object

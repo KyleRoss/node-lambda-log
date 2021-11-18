@@ -1,6 +1,6 @@
 import stringify from 'fast-safe-stringify';
-import { LambdaLogOptions, Message, LogObject, Tag, GenericRecord, Formatter, StubbedError, Empty } from './typings';
-import { isError, stubError } from './utils';
+import { LambdaLogOptions, Message, LogObject, Tag, GenericRecord, Formatter, StubbedError, Empty } from './typings.js';
+import { isError, stubError } from './utils.js';
 
 export interface ILogMessage {
   readonly __opts: LambdaLogOptions;
