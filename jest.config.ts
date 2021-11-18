@@ -13,6 +13,7 @@ const config: Config.InitialOptions = {
     '^.+\\.ts$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'json', 'node'],
+  moduleDirectories: ['node_modules', 'src'],
   watchPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/', '<rootDir>/site/']
 };
 
