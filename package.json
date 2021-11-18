@@ -16,8 +16,8 @@
     "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --watchAll",
     "prepare": "is-ci || husky install",
     "build": "npm run clean && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc --module es6 --outDir dist/esm --moduleResolution node",
-    "build:cjs": "tsc --module commonjs --outDir dist/cjs --moduleResolution node",
+    "build:esm": "tsc --module ES2020 --outDir dist/esm",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "lint": "eslint \"src/*.ts\"",
     "clean": "rimraf dist"
   },
