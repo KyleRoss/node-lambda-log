@@ -8,14 +8,6 @@
   "exports": {
     ".": {
       "import": "./dist/esm/index.js",
-    },
-    "./LambdaLog": {
-      "import": "./dist/esm/LambdaLog.js",
-      "require": "./dist/cjs/LambdaLog.js"
-    },
-    "./LogMessage": {
-      "import": "./dist/esm/LogMessage.js",
-      "require": "./dist/cjs/LogMessage.js"
       "require": "./index.js"
     }
   },
