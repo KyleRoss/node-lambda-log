@@ -4,14 +4,15 @@
   ],
   "compilerOptions": {
     "lib": ["es2019", "es2020.promise", "es2020.bigint", "es2020.string"],
-    "module": "commonjs",
     "target": "es2019",
+    "module": "commonjs",
+    "moduleResolution": "node",
 
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "suppressImplicitAnyIndexErrors": true,
-    "declaration": true,
-    "outDir": "dist"
+    "declaration": false,
+    "outDir": "./dist"
   }
 }
