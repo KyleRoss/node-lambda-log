@@ -15,9 +15,10 @@
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
     "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --watchAll",
     "prepare": "is-ci || husky install",
-    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:declaration",
     "build:esm": "tsc --module ES2020 --outDir dist/esm",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "build:declaration": "tsc --module system --declaration --emitDeclarationOnly --outFile dist/types/index.d.ts",
     "lint": "eslint \"src/*.ts\"",
     "clean": "rimraf dist"
   },
