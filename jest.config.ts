@@ -3,6 +3,7 @@ import type { Config } from '@jest/types';
 const config: Config.InitialOptions = {
   testEnvironment: 'node',
   testRegex: '\\.test\\.ts$',
+  resolver: 'jest-ts-webcompat-resolver',
   collectCoverage: true,
   coverageReporters: [['json', { file: 'report.json' }], 'lcov', 'text', 'text-summary', 'html'],
   collectCoverageFrom: ['src/**/*.ts'],
