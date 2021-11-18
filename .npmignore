@@ -10,6 +10,7 @@ tsconfig.json
 tsconfig.eslint.json
 *.test.js
 jest.config.js
+jest.config.ts
 .all-contributorsrc
 .codeclimate.yml
 babel.config.js
