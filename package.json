@@ -2,12 +2,11 @@
   "name": "lambda-log",
   "version": "4.0.0-beta.1",
   "description": "Lightweight logging library for any Node 12+ applications",
-  "main": "dist/cjs/index.js",
+  "main": "index.js",
   "types": "dist/cjs/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
     },
     "./LambdaLog": {
       "import": "./dist/esm/LambdaLog.js",
@@ -16,6 +15,7 @@
     "./LogMessage": {
       "import": "./dist/esm/LogMessage.js",
       "require": "./dist/cjs/LogMessage.js"
+      "require": "./index.js"
     }
   },
   "scripts": {
