@@ -22,9 +22,9 @@
     "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --watchAll",
     "prepare": "is-ci || husky install",
     "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:declaration",
-    "build:esm": "tsc --module ES2020 --outDir dist/esm",
-    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "build:declaration": "tsc --module system --declaration --emitDeclarationOnly --outFile dist/types/index.d.ts",
+    "build:esm": "tsc --module ES2020 --outDir dist/esm && echo \"{\n  \\\"type\\\": \\\"module\\\"\n}\" > ./dist/esm/package.json",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs && echo \"{\n  \\\"type\\\": \\\"commonjs\\\"\n}\" > ./dist/cjs/package.json",
+    "build:declaration": "tsc --module none --declaration --emitDeclarationOnly --outFile dist/types/index.d.ts",
     "lint": "eslint \"src/*.ts\"",
     "clean": "rimraf dist"
   },
