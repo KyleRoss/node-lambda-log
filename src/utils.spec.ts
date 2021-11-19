@@ -59,6 +59,13 @@ describe('utils', () => {
       const error = stubError(e);
       expect(error.toJSON!.toString()).toBe(noop.toString());
     });
+
+    it('should skip over keys that are not on the Error instance', () => {
+      const e = new Error('test');
+      delete e.stack;
+      const err = stubError(e);
+      expect(err).not.toHaveProperty('stack');
+    });
   });
 
   describe('toBool()', () => {

@@ -134,16 +134,16 @@ describe('LogMessage', () => {
         }
       });
 
-      expect(msg.meta).toBeEmptyObject();
+      expect(msg.meta).toHaveProperty('dynamic', 'meta');
     });
 
     it('"meta" should skip dynamicMeta if function does not return an object', () => {
       const msg = new LogMessage({ ...logData.info }, {
         ...defaultOpts,
-        dynamicMeta: false
+        dynamicMeta: () => false
       });
 
-      expect(msg.meta).toHaveProperty('dynamic', 'meta');
+      expect(msg.meta).toBeEmptyObject();
     });
 
     it('"meta" should convert errors in metadata to object', () => {
@@ -156,17 +156,15 @@ describe('LogMessage', () => {
         }
       });
 
-      expect(typeof msg.meta.prop).toBe('object');
+      expect(msg.meta.prop).toBeInstanceOf(Error);
       expect(msg.meta.foo).toBe('bar');
-      expect(typeof msg.meta.obj).toBe('object');
+      expect(msg.meta.obj).toBeObject();
     });
 
     it('"tags" should return tags array', () => {
       const msg = new LogMessage({ ...logData.withTags }, defaultOpts);
 
-      expect(Array.isArray(msg.tags)).toBe(true);
-      expect(msg.tags).toHaveLength(1);
-      expect(msg.tags).toContain('test');
+      expect(msg.tags).toBeArrayIncludingOnly(['test']);
     });
 
     it('"tags" should combine all tags', () => {
@@ -176,8 +174,7 @@ describe('LogMessage', () => {
       });
 
       expect(msg.tags).toHaveLength(2);
-      expect(msg.tags).toContain('test');
-      expect(msg.tags).toContain('global');
+      expect(msg.tags).toBeArrayIncludingOnly(['test', 'global']);
     });
 
     it('"tags" should execute functions', () => {
@@ -185,7 +182,7 @@ describe('LogMessage', () => {
         ...defaultOpts,
         tags: [function (this: typeof LogMessage, props) {
           expect(this).toBeInstanceOf(LogMessage);
-          expect(typeof props).toBe('object');
+          expect(props).toBeObject();
           expect(props).toHaveProperty('level', 'info');
           expect(props).toHaveProperty('meta', {});
           expect(props).toHaveProperty('options');
@@ -200,6 +197,19 @@ describe('LogMessage', () => {
       expect(tags).toContain('dynamic');
     });
 
+    it('"tags" should skip values that are falsy', () => {
+      const msg = new LogMessage({ ...logData.info }, {
+        ...defaultOpts,
+        tags: [function () {
+          return false;
+        }]
+      });
+
+      const { tags } = msg;
+
+      expect(tags).toHaveLength(0);
+    });
+
     it('"tags" should replace <<level>> variable with log level', () => {
       const msg = new LogMessage({ ...logData.info }, {
         ...defaultOpts,
@@ -209,9 +219,16 @@ describe('LogMessage', () => {
       const { tags } = msg;
 
       expect(tags).toHaveLength(3);
-      expect(tags).toContain('<notAVariable>');
-      expect(tags).toContain('info');
-      expect(tags).toContain('<<variable>>');
+      expect(tags).toBeArrayIncludingOnly(['<notAVariable>', 'info', '<<variable>>']);
+    });
+
+    it('"tags" should not combine global tags if not an array', () => {
+      const msg = new LogMessage({ ...logData.withTags }, {
+        ...defaultOpts,
+        tags: 'invalid' as any
+      });
+
+      expect(msg.tags).toBeArrayIncludingOnly(['test']);
     });
 
     it('"value" should return log object', () => {
@@ -390,8 +407,7 @@ describe('LogMessage', () => {
       msg.tags = ['another-tag'];
 
       expect(msg.tags).toHaveLength(2);
-      expect(msg.tags).toContain('test');
-      expect(msg.tags).toContain('another-tag');
+      expect(msg.tags).toBeArrayIncludingOnly(['another-tag', 'test']);
     });
   });
 
@@ -412,8 +428,7 @@ describe('LogMessage', () => {
       });
 
       it('should return log in JSON format', () => {
-        expect(typeof msg.toJSON()).toBe('string');
-        expect(msg.toJSON()).toMatch(/^\{.*\}$/);
+        expect(msg.toJSON()).toBeJsonString();
       });
 
       it('should run replacer function', () => {
@@ -438,7 +453,7 @@ describe('LogMessage', () => {
       it('should return log in string format', () => {
         const msg = new LogMessage({ ...logData.info }, defaultOpts);
 
-        expect(typeof msg.toString()).toBe('string');
+        expect(msg.toString()).toBeString();
       });
 
       it('should format as json with onFormat set to `json`', () => {
@@ -447,7 +462,7 @@ describe('LogMessage', () => {
           onFormat: 'json'
         });
 
-        expect(msg.toString()).toMatch(/^\{.*\}$/);
+        expect(msg.toString()).toBeJsonString();
       });
 
       it('should format with "clean" template with onFormat set to `clean`', () => {
