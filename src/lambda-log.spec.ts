@@ -1,4 +1,4 @@
-import log from '.';
+import log from './lambda-log';
 import LambdaLog from './LambdaLog';
 import LogMessage from './LogMessage';
 
