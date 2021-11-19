@@ -8,7 +8,9 @@ release.config.js
 commitlint.config.js
 tsconfig.json
 tsconfig.eslint.json
+tsconfig.spec.json
 *.test.js
+*.spec.js
 jest.config.js
 jest.config.ts
 .all-contributorsrc

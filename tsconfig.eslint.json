@@ -3,7 +3,7 @@
   "include": [
     "*.ts",
     "*.js",
-    "src/*.test.ts"
+    "src/**/*.ts"
   ],
   "compilerOptions": {
     "types": ["jest", "node"]

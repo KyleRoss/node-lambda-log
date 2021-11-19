@@ -34,7 +34,9 @@ rules:
 overrides:
   - files: ['*.ts']
     parserOptions:
-      project: './tsconfig.eslint.json'
+      project:
+        - './tsconfig.eslint.json'
+        - './tsconfig.spec.json'
     extends:
       - 'xo-typescript/space'
     rules:
