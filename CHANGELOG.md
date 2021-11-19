@@ -1,3 +1,18 @@
+# [4.0.0-beta.2](https://github.com/KyleRoss/node-lambda-log/compare/v4.0.0-beta.1...v4.0.0-beta.2) (2021-11-18)
+
+
+### Bug Fixes
+
+* add `.js` file extensions on imports to support node ESM ([2fcf770](https://github.com/KyleRoss/node-lambda-log/commit/2fcf7707528c7a07c7d0e02ab4e1ecf1b699363d))
+* add `module` field to point to esm ([1323bf4](https://github.com/KyleRoss/node-lambda-log/commit/1323bf4866ba14fb1c86b6daae4e0daad2bcfcba))
+* add `src` as a module directory to jest ([d268e91](https://github.com/KyleRoss/node-lambda-log/commit/d268e91f8d2f4e26e1ddf0d798635a87c13c6a7d))
+* add `ts-node` as a dev dependency for jest ([433cb70](https://github.com/KyleRoss/node-lambda-log/commit/433cb70287352dd9e16b9b51f3ce5b31c4f8f098))
+* add build:declaration script and run it during build ([c43deef](https://github.com/KyleRoss/node-lambda-log/commit/c43deef9aa2080637055e48a93851f5fc537bc20))
+* add root index file to alleviate the need to call `.default` in cjs ([62da1ec](https://github.com/KyleRoss/node-lambda-log/commit/62da1ec8d119bbcdee783db75545252e90755310))
+* ignore jest.config.ts when publishing to npm ([1c6376c](https://github.com/KyleRoss/node-lambda-log/commit/1c6376c027014473e31123cdd39d61c260e36bad))
+* point `types` to separate declaration file ([c65fd52](https://github.com/KyleRoss/node-lambda-log/commit/c65fd52cbcf6cf5d08dc6cde4f221f70dd4e92a3))
+* update `main` to point to root index.js file for cjs usage ([39a9f43](https://github.com/KyleRoss/node-lambda-log/commit/39a9f437637a3ec3443fef79e79cd93d641d876f))
+
 # [4.0.0-beta.1](https://github.com/KyleRoss/node-lambda-log/compare/v3.2.0...v4.0.0-beta.1) (2021-11-17)
 
 
