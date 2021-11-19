@@ -1,5 +1,3 @@
-import LambdaLog from './LambdaLog.js';
-import LogMessage from './LogMessage.js';
+import lambdaLog from './lambda-log.js';
 
-export default new LambdaLog();
-export { LambdaLog, LogMessage };
+export default lambdaLog;
