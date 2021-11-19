@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import 'expect-more-jest';
 import LogMessage from './LogMessage';
 import { StubbedError } from './typings';
 
@@ -131,6 +132,15 @@ describe('LogMessage', () => {
           expect(typeof opts).toBe('object');
           return { dynamic: 'meta' };
         }
+      });
+
+      expect(msg.meta).toBeEmptyObject();
+    });
+
+    it('"meta" should skip dynamicMeta if function does not return an object', () => {
+      const msg = new LogMessage({ ...logData.info }, {
+        ...defaultOpts,
+        dynamicMeta: false
       });
 
       expect(msg.meta).toHaveProperty('dynamic', 'meta');
@@ -328,6 +338,19 @@ describe('LogMessage', () => {
       expect(msg.tags).toContain('custom');
       expect(msg.__error).toBeInstanceOf(Error);
       expect((msg.__error!).message).toBe('custom error');
+    });
+
+    it('set "msg" should skip `onParse` if the custom function does not return an object', () => {
+      const msg = new LogMessage({ ...logData.info }, {
+        ...defaultOpts,
+        onParse() {
+          return false;
+        }
+      });
+
+      expect(msg.msg).toBe('info test');
+      expect(msg.tags).toHaveLength(0);
+      expect(msg.__error).toBe(null);
     });
 
     it('set "msg" should json stringify a message that is an object', () => {
