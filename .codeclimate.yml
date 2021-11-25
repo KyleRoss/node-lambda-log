@@ -52,3 +52,5 @@ exclude_patterns:
   - "**/*.d.ts"
   - "**/*.test.ts"
   - "**/*.test.js"
+  - "**/*.spec.ts"
+  - "**/*.spec.js"
