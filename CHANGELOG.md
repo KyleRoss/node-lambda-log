@@ -1,3 +1,18 @@
+# [4.0.0-beta.3](https://github.com/KyleRoss/node-lambda-log/compare/v4.0.0-beta.2...v4.0.0-beta.3) (2021-11-19)
+
+
+### Bug Fixes
+
+* add entrypoint file for advanced usage ([d7861de](https://github.com/KyleRoss/node-lambda-log/commit/d7861de9269532ab31631e559ec8da7a77c2870a))
+* add package.json to esm and cjs directories after build ([6c77c79](https://github.com/KyleRoss/node-lambda-log/commit/6c77c7971def43eb8b3f5e66a071f8b87d8b6bb8))
+* change legacy cjs file to require `lambda-log.js` instead ([89db707](https://github.com/KyleRoss/node-lambda-log/commit/89db70742c011405534c6ce1a3c8916190d85a66))
+* rename index to `lambda-log` to ensure the types are generated properly ([467c9e4](https://github.com/KyleRoss/node-lambda-log/commit/467c9e42628ed05a6ba28bb2cea79f4129d6a2f5))
+
+
+### Features
+
+* add support for direct entrypoint ([50dd03d](https://github.com/KyleRoss/node-lambda-log/commit/50dd03d8651799ea4f865fcadae5b3d5abcfe121))
+
 # [4.0.0-beta.2](https://github.com/KyleRoss/node-lambda-log/compare/v4.0.0-beta.1...v4.0.0-beta.2) (2021-11-18)
 
 
