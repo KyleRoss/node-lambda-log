@@ -1,4 +1,4 @@
-import EventEmitter from 'events';
+import { EventEmitter } from 'events';
 import { LambdaLogOptions, Message, GenericRecord, LogLevels, LogObject, Tag, ConsoleObject } from './typings.js';
 import LogMessage from './LogMessage.js';
 import { toBool } from './utils.js';
