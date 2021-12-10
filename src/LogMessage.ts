@@ -1,6 +1,7 @@
 import stringify from 'fast-safe-stringify';
 import { LambdaLogOptions, Message, LogObject, Tag, GenericRecord, Formatter, StubbedError, Empty } from './typings.js';
 import { isError, stubError } from './utils.js';
+import jsonFormatter from './formatters/json.js';
 
 export interface ILogMessage {
   readonly __opts: LambdaLogOptions;
@@ -250,34 +251,17 @@ export default class LogMessage implements ILogMessage {
   /**
    * Converts the log to a string using a specific/custom formatter.
    * @protected
-   * @param {Formatter} [formatter] The formatter to use or custom formatter function.
+   * @param {FormatPlugin} [formatter] The formatter to use or custom formatter function.
    * @returns {string} The formatted log as a string.
    */
-  protected formatMessage(formatter?: Formatter) {
+  protected formatMessage(formatter?: FormatPlugin): string {
     const { __opts } = this;
 
-    if(typeof formatter === 'function') {
-      return formatter.call(this, this, __opts, stringify);
+    if(!formatter || typeof formatter !== 'function') {
+      formatter = jsonFormatter();
     }
 
-    switch (formatter) {
-      // Clean Formatter
-      case 'clean':
-        return [
-          `${this.level.toUpperCase()}\t${this.msg}`,
-          this.tags.length ? `\t├→ ${this.tags.join(', ')}` : null,
-          Object.keys(this.meta).length ? `\t└→ ${stringify(this.meta, undefined, 4).replace(/\n/g, '\n\t┊   ')}` : null
-        ].filter(v => Boolean(v)).join('\n');
-
-      // Minimal Formatter
-      case 'minimal':
-        return `${this.level.toUpperCase()}\t${this.msg}`;
-
-      // JSON Formatter (default)
-      case 'json':
-      default:
-        return this.toJSON(__opts.dev);
-    }
+    return formatter.call(this, this, __opts, stringify);
   }
 
   /**
