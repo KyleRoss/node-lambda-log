@@ -2,7 +2,7 @@ import LogMessage from './LogMessage.js';
 import stringify from 'fast-safe-stringify';
 
 export type GenericRecord<K extends string | number = string | number, V = unknown> = Record<K, V>;
-export type Message<T = string | number | Error> = T;
+export type Message = string | number | Error;
 export type Empty = false | null | undefined;
 
 type TagFnObject = {
