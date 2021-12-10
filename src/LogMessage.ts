@@ -23,8 +23,6 @@ export interface ILogMessage {
   get value(): GenericRecord;
   get log(): GenericRecord;
   get throw(): void;
-
-  toJSON(format: boolean): string;
 }
 
 /**
