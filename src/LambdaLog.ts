@@ -123,11 +123,11 @@ export default class LambdaLog extends EventEmitter {
    * @template T The type of the message to log.
    * @param  {string}   level Log level (`info`, `debug`, `warn`, `error`, or `fatal`)
    * @param  {T}        msg   Message to log. Can be any type, but string or `Error` is reccommended.
-   * @param  {object}   [meta={}]  Optional meta data to attach to the log.
+   * @param  {object|string|number}   [meta={}]  Optional meta data to attach to the log.
    * @param  {string[]} [tags=[]]  Additional tags to append to this log.
-   * @returns {LogMessage|false}  Returns instance of LogMessage or `false` if the level of the log exceeds to the maximum set log level.
+   * @returns {LogMessage}  Returns instance of LogMessage.
    */
-  log<T extends Message>(level: LogLevels, msg: T, meta: GenericRecord = {}, tags: Tag[] = []) {
+  _log<T extends Message = Message>(level: LogLevels, msg: T, meta?: Metadata, tags?: Tag[]): LogMessage {
     const lvl = this.getLevel(level);
     if(!lvl) {
       throw new Error(`"${level}" is not a valid log level`);
