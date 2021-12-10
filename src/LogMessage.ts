@@ -231,16 +231,6 @@ export default class LogMessage implements ILogMessage {
   }
 
   /**
-   * Returns the compiled log object converted into JSON. This method utilizes `options.replacer` for the replacer function. It also uses
-   * [fast-safe-stringify](https://www.npmjs.com/package/fast-safe-stringify) to prevent circular reference issues.
-   * @param {boolean} format Whether to format the log object with line breaks and indentation.
-   * @returns {string} The JSON string.
-   */
-  toJSON(format?: boolean) {
-    return stringify(this.value, this.__opts.replacer ?? undefined, format ? 2 : 0);
-  }
-
-  /**
    * Converts the log to a string using a specific/custom formatter.
    * @returns {string} The formatted log as a string.
    */
