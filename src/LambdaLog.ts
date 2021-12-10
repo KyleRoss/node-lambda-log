@@ -164,36 +164,38 @@ export default class LambdaLog extends EventEmitter {
    * Logs a message at the `trace` log level.
    * @template T The type of the message to log.
    * @param {T} msg Message to log. Can be any type, but string or `Error` is reccommended.
-   * @param {GenericRecord} [meta] Optional meta data to attach to the log.
+   * @param {Metadata} [meta] Optional meta data to attach to the log.
    * @param {Tag[]} [tags] Additional tags to append to this log.
-   * @returns {LogMessage|false} Returns instance of LogMessage or `false` if the level of the log exceeds to the maximum set log level.
+   * @returns {LogMessage} Returns instance of LogMessage.
    */
-  trace<T extends Message>(msg: T, meta?: GenericRecord, tags?: Tag[]) {
-    return this.log('trace', msg, meta, tags);
+  trace<T extends Message = Message>(msg: T, meta?: Metadata, tags?: Tag[]): LogMessage {
+    return this._log<T>('trace', msg, meta, tags);
   }
 
   /**
    * Logs a message at the `debug` log level.
    * @template T The type of the message to log.
    * @param {T} msg Message to log. Can be any type, but string or `Error` is reccommended.
-   * @param {GenericRecord} [meta] Optional meta data to attach to the log.
+   * @param {Metadata} [meta] Optional meta data to attach to the log.
    * @param {Tag[]} [tags] Additional tags to append to this log.
-   * @returns {LogMessage|false} Returns instance of LogMessage or `false` if the level of the log exceeds to the maximum set log level.
+   * @returns {LogMessage} Returns instance of LogMessage.
    */
-  debug<T extends Message>(msg: T, meta?: GenericRecord, tags?: Tag[]) {
-    return this.log('debug', msg, meta, tags);
+  debug<T extends Message = Message>(msg: T, meta?: Metadata, tags?: Tag[]): LogMessage {
+    return this._log<T>('debug', msg, meta, tags);
   }
 
   /**
    * Logs a message at the `info` log level.
    * @template T The type of the message to log.
    * @param {T} msg Message to log. Can be any type, but string or `Error` is reccommended.
-   * @param {GenericRecord} [meta] Optional meta data to attach to the log.
+   * @param {Metadata} [meta] Optional meta data to attach to the log.
    * @param {Tag[]} [tags] Additional tags to append to this log.
-   * @returns {LogMessage|false} Returns instance of LogMessage or `false` if the level of the log exceeds to the maximum set log level.
+   * @returns {LogMessage} Returns instance of LogMessage.
    */
-  info<T extends Message>(msg: T, meta?: GenericRecord, tags?: Tag[]) {
-    return this.log('info', msg, meta, tags);
+  info<T extends Message = Message>(msg: T, meta?: Metadata, tags?: Tag[]): LogMessage {
+    return this._log<T>('info', msg, meta, tags);
+  }
+
   /**
    * Alias for `info`.
    * @template T The type of the message to log.
@@ -210,42 +212,41 @@ export default class LambdaLog extends EventEmitter {
    * Logs a message at the `warn` log level.
    * @template T The type of the message to log.
    * @param {T} msg Message to log. Can be any type, but string or `Error` is reccommended.
-   * @param {GenericRecord} [meta] Optional meta data to attach to the log.
+   * @param {Metadata} [meta] Optional meta data to attach to the log.
    * @param {Tag[]} [tags] Additional tags to append to this log.
-   * @returns {LogMessage|false} Returns instance of LogMessage or `false` if the level of the log exceeds to the maximum set log level.
+   * @returns {LogMessage} Returns instance of LogMessage.
    */
-  warn<T extends Message>(msg: T, meta?: GenericRecord, tags?: Tag[]) {
-    return this.log('warn', msg, meta, tags);
+  warn<T extends Message = Message>(msg: T, meta?: Metadata, tags?: Tag[]): LogMessage {
+    return this._log<T>('warn', msg, meta, tags);
   }
 
   /**
    * Logs a message at the `error` log level.
    * @template T The type of the message to log.
    * @param {T} msg Message to log. Can be any type, but string or `Error` is reccommended.
-   * @param {GenericRecord} [meta] Optional meta data to attach to the log.
+   * @param {Metadata} [meta] Optional meta data to attach to the log.
    * @param {Tag[]} [tags] Additional tags to append to this log.
-   * @returns {LogMessage|false} Returns instance of LogMessage or `false` if the level of the log exceeds to the maximum set log level.
+   * @returns {LogMessage} Returns instance of LogMessage.
    */
-  error<T extends Message>(msg: T, meta?: GenericRecord, tags?: Tag[]) {
-    return this.log('error', msg, meta, tags);
+  error<T extends Message = Message>(msg: T, meta?: Metadata, tags?: Tag[]): LogMessage {
+    return this._log<T>('error', msg, meta, tags);
   }
 
   /**
    * Logs a message at the `error` log level.
    * @template T The type of the message to log.
    * @param {T} msg Message to log. Can be any type, but string or `Error` is reccommended.
-   * @param {GenericRecord} [meta] Optional meta data to attach to the log.
+   * @param {Metadata} [meta] Optional meta data to attach to the log.
    * @param {Tag[]} [tags] Additional tags to append to this log.
-   * @returns {LogMessage|false} Returns instance of LogMessage or `false` if the level of the log exceeds to the maximum set log level.
+   * @returns {LogMessage} Returns instance of LogMessage.
    */
-  fatal<T extends Message>(msg: T, meta?: GenericRecord, tags?: Tag[]) {
-    return this.log('fatal', msg, meta, tags);
+  fatal<T extends Message = Message>(msg: T, meta?: Metadata, tags?: Tag[]): LogMessage {
+    return this._log<T>('fatal', msg, meta, tags);
   }
 
   /**
    * Generates a log message if `test` is a falsy value. If `test` is truthy, the log message is skipped and returns `false`. Allows creating log messages without the need to
    * wrap them in an if statement. The log level will be `error`.
-   * @since 1.4.0
    * @template T The type of the message to log.
    * @param  {*}        test  Value to test for a falsy value.
    * @param  {T}        msg   Message to log. Can be any type, but string or `Error` is reccommended.
@@ -253,27 +254,26 @@ export default class LambdaLog extends EventEmitter {
    * @param  {string[]} [tags=[]]  Additional tags to append to this log.
    * @returns {LogMessage|false} The generated log message or `false` if assertion passed.
    */
-  assert<T extends Message>(test: unknown, msg: T, meta?: GenericRecord, tags?: Tag[]) {
+  assert<T extends Message = Message>(test: unknown, msg: T, meta?: Metadata, tags?: Tag[]): LogMessage | false {
     if(test) return false;
-    return this.log('error', msg, meta, tags);
+    return this._log<T>('error', msg, meta, tags);
   }
 
   /**
    * Generates a log message with the result or error provided by a promise. Useful for debugging and testing.
-   * @since 2.3.0
    * @param  {Promise<*>} promise  Promise to log the results of.
    * @param  {object}   [meta={}]  Optional meta data to attach to the log.
    * @param  {string[]} [tags=[]]  Additional tags to append to this log.
-   * @returns {Promise<LogMessage | false>} A Promise that resolves with the log message.
+   * @returns {Promise<LogMessage>} A Promise that resolves with the log message.
    */
-  async result(promise: Promise<unknown>, meta?: GenericRecord, tags?: Tag[]) {
-    const wrapper = new Promise<LogMessage | false>(resolve => {
+  async result(promise: Promise<unknown>, meta?: Metadata, tags?: Tag[]): Promise<LogMessage> {
+    const wrapper = new Promise<LogMessage>(resolve => {
       promise
         .then(value => {
-          resolve(this.log('info', value as string, meta, tags));
+          resolve(this._log<any>('info', value, meta, tags));
         })
         .catch(err => {
-          resolve(this.log('error', err as Error, meta, tags));
+          resolve(this._log('error', err as Error, meta, tags));
         });
     });
 
