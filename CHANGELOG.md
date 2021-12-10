@@ -1,3 +1,10 @@
+# [4.0.0-beta.4](https://github.com/KyleRoss/node-lambda-log/compare/v4.0.0-beta.3...v4.0.0-beta.4) (2021-11-25)
+
+
+### Bug Fixes
+
+* destructure import of EventEmitter to support TS projects ([9fc1857](https://github.com/KyleRoss/node-lambda-log/commit/9fc18573373e62a09c46f71a3517f862b74aac77))
+
 # [4.0.0-beta.3](https://github.com/KyleRoss/node-lambda-log/compare/v4.0.0-beta.2...v4.0.0-beta.3) (2021-11-19)
 
 
