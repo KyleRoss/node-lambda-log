@@ -16,13 +16,6 @@ export type Tag = string | number | ((data: TagFnObject) => string | Empty) | Em
 
 type StringifyType = typeof stringify;
 
-export type Formatter =
-  'json' |
-  'clean' |
-  'minimal' |
-  ((ctx: LogMessage, options: LambdaLogOptions, stringify: StringifyType) => string);
-
-export type LogObject = {
 export type LogObject<T extends Message = Message> = {
   level: string;
   msg: T;
@@ -31,6 +24,13 @@ export type LogObject<T extends Message = Message> = {
 };
 
 export type LogLevels = 'fatal' | 'error' | 'warn' | 'info' | 'debug' | 'trace';
+
+export type ParsePlugin = (msg: Message, options: LambdaLogOptions) => { msg: string; meta?: GenericRecord; error?: Error; tags?: Tag[] } | Empty;
+export type CompilePlugin = (level?: string, msg?: Message, meta?: GenericRecord, tags?: Tag[], options?: LambdaLogOptions) => GenericRecord;
+export type FormatPlugin = {
+  (ctx: LogMessage, options: LambdaLogOptions, stringify: StringifyType): string;
+  _cfg?: Record<string, unknown>;
+};
 
 export type LambdaLogOptions = {
   [key: string]: any;
