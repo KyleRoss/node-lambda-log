@@ -1,3 +1,23 @@
+# [4.0.0-beta.5](https://github.com/KyleRoss/node-lambda-log/compare/v4.0.0-beta.4...v4.0.0-beta.5) (2021-12-10)
+
+
+### Bug Fixes
+
+* add generic support to LogMessage class for specifying the message type ([6e6775a](https://github.com/KyleRoss/node-lambda-log/commit/6e6775a44bf881d3d7d64d9ce2f40ff2bce858da))
+* add generic to LogObject type to specify type of Message ([cd1c746](https://github.com/KyleRoss/node-lambda-log/commit/cd1c74697a99840a48f29d49509ad3409e145de5))
+* explicitly set type to `string[]` for compiled tags returned from LogMessage ([fd873e3](https://github.com/KyleRoss/node-lambda-log/commit/fd873e3a2da24f3b90985708771adeb2901ce39c))
+* remove generic from Message type ([cc10311](https://github.com/KyleRoss/node-lambda-log/commit/cc10311b3e0580e840792e452d11dcc43e911544))
+* remove toJSON() method from LogMessage since it's been moved to a formatter ([36fbdaa](https://github.com/KyleRoss/node-lambda-log/commit/36fbdaa738fb1fa0daf046dc71eb84adc18ae55c))
+* rename the `log` method to `_log` ([7317bf5](https://github.com/KyleRoss/node-lambda-log/commit/7317bf52418af6fed65db8066b94d8c2dbe21023))
+* still generate the log message just don't log it when verbosity is set ([6e13564](https://github.com/KyleRoss/node-lambda-log/commit/6e13564da87fe5b189a2b9262d8e3613a3f138e5))
+* ts generics and typings on shortcut methods ([7e48904](https://github.com/KyleRoss/node-lambda-log/commit/7e48904076802adf571385f73ac83294c0d4f875))
+
+
+### Features
+
+* add `log` shortcut method as an alias for `info` to match the `console` pattern ([a3c1f16](https://github.com/KyleRoss/node-lambda-log/commit/a3c1f163976de3f68c49e05f3a84ab7c1791c0e5))
+* separate built-in formatters into separate files ([f8ecac7](https://github.com/KyleRoss/node-lambda-log/commit/f8ecac7ed12b25495c634a904f489857a7413f80))
+
 # [4.0.0-beta.4](https://github.com/KyleRoss/node-lambda-log/compare/v4.0.0-beta.3...v4.0.0-beta.4) (2021-11-25)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "lambda-log",
-  "version": "4.0.0-beta.4",
+  "version": "4.0.0-beta.5",
   "description": "Lightweight logging library for any Node 12+ applications",
   "main": "./index.js",
   "module": "./dist/esm/lambda-log.js",
