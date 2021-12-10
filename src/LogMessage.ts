@@ -18,7 +18,7 @@ export interface ILogMessage {
   set message(msg: Message);
   get meta(): GenericRecord;
   set meta(obj: GenericRecord);
-  get tags(): Tag[];
+  get tags(): string[];
   set tags(tags: Tag[]);
   get value(): GenericRecord;
   get log(): GenericRecord;
@@ -150,9 +150,9 @@ export default class LogMessage implements ILogMessage {
    * Array of tags attached to this log. Includes global tags.
    * @returns {Tag[]} The tags attached to this log.
    */
-  get tags() {
+  get tags(): string[] {
     const { __opts, __tags } = this;
-    let tags: Tag[] = [...__tags];
+    let tags = [...__tags];
 
     if(Array.isArray(__opts.tags)) {
       tags = [...__opts.tags, ...tags];
@@ -177,7 +177,7 @@ export default class LogMessage implements ILogMessage {
       }
 
       return tag;
-    }).filter(tag => typeof tag === 'string' && tag);
+    }).filter(tag => typeof tag === 'string' && tag) as string[];
   }
 
   /**
