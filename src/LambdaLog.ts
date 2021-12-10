@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import { LambdaLogOptions, Message, GenericRecord, LogLevels, LogObject, Tag, ConsoleObject } from './typings.js';
+import { LambdaLogOptions, Message, Metadata, LogLevels, LogObject, Tag, ConsoleObject } from './typings.js';
 import LogMessage from './LogMessage.js';
 import * as logFormatters from './formatters/index.js';
 import { toBool } from './utils.js';
@@ -53,18 +53,15 @@ export default class LambdaLog extends EventEmitter {
   /**
    * Access to the uninstantiated LambdaLog class.
    * @readonly
-   * @type {LambdaLog}
    */
   readonly LambdaLog = LambdaLog;
   /**
    * Access to the uninstantiated LogMessage class.
-   * @type {LogMessage}
    */
   LogMessage = LogMessage;
 
   /**
    * The options object for this instance of LambdaLog.
-   * @type {LambdaLogOptions}
    */
   options: LambdaLogOptions;
 
@@ -76,7 +73,6 @@ export default class LambdaLog extends EventEmitter {
 
   /**
    * Returns the console object to use for logging.
-   * @readonly
    * @private
    * @returns {ConsoleObject} The configured console object or `console` if none is provided.
    */
@@ -286,7 +282,7 @@ export default class LambdaLog extends EventEmitter {
    * @param {string} level The provided log level string.
    * @returns {object} Returns the configuration for the provided log level.
    */
-  private getLevel(level: string) {
+  private getLevel(level: string): { idx: number; name: string; method: string } | false {
     if(!level) return false;
     const lvl = levels.findIndex(l => l.name === level.toLowerCase());
     if(lvl === -1) return false;
@@ -299,11 +295,10 @@ export default class LambdaLog extends EventEmitter {
 
   /**
    * Returns the index of the configured maximum log level.
-   * @readonly
    * @private
    * @returns {number} The index of the configured maximum log level.
    */
-  private get maxLevelIdx() {
+  private get maxLevelIdx(): number {
     if(!this.options.level || this.options.silent) return -1;
     return levels.findIndex(l => l.name === this.options.level);
   }
