@@ -23,9 +23,10 @@ export type Formatter =
   ((ctx: LogMessage, options: LambdaLogOptions, stringify: StringifyType) => string);
 
 export type LogObject = {
+export type LogObject<T extends Message = Message> = {
   level: string;
-  msg: Message;
-  meta?: GenericRecord;
+  msg: T;
+  meta?: Metadata;
   tags?: Tag[];
 };
 
