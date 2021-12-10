@@ -3,6 +3,7 @@ import stringify from 'fast-safe-stringify';
 
 export type GenericRecord<K extends string | number = string | number, V = unknown> = Record<K, V>;
 export type Message = string | number | Error;
+export type Metadata = GenericRecord | string | number | null | undefined;
 export type Empty = false | null | undefined;
 
 type TagFnObject = {
