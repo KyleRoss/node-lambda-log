@@ -30,7 +30,7 @@ export interface ILogMessage {
  * Having a seperate class and instance for each log allows chaining and the ability to further customize this module in the future without major breaking changes. The documentation
  * provided here is what is available to you for each log message.
  */
-export default class LogMessage implements ILogMessage {
+export default class LogMessage<MT extends Message = Message> implements ILogMessage {
   readonly __opts: LambdaLogOptions = {};
   __level: string;
   __msg = '';
@@ -45,7 +45,7 @@ export default class LogMessage implements ILogMessage {
    * @param {LambdaLogOptions} opts The options for LambdaLog.
    * @class
    */
-  constructor(log: LogObject, opts: LambdaLogOptions) {
+  constructor(log: LogObject<MT>, opts: LambdaLogOptions) {
     // LambdaLog options
     this.__opts = opts;
     // Log level
