@@ -133,29 +133,30 @@ export default class LambdaLog extends EventEmitter {
       throw new Error(`"${level}" is not a valid log level`);
     }
 
-    // Check if we can log this level
-    if(lvl.idx > this.maxLevelIdx) return false;
-
     // Generate the log message instance
     const message = new this.LogMessage({
       level,
       msg,
       meta,
       tags
-    } as LogObject, this.options);
+    } as LogObject<T>, this.options);
 
-    const consoleObj = this.console;
-    // Log the message to the console
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    consoleObj[lvl.method](message.toString());
+    // Check if we can log this level
+    if(lvl.idx <= this.maxLevelIdx) {
+      const consoleObj = this.console;
+      // Log the message to the console
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+      consoleObj[lvl.method](message.toString());
 
-    /**
-     * The log event is emitted (using EventEmitter) for every log generated. This allows for custom integrations, such as logging to a thrid-party service.
-     * This event is emitted with the [LogMessage](#logmessage) instance for the log. You may control events using all the methods of EventEmitter.
-     * @event LambdaLog#log
-     * @type {LogMessage}
-     */
-    this.emit('log', message);
+      /**
+       * The log event is emitted (using EventEmitter) for every log generated. This allows for custom integrations, such as logging to a thrid-party service.
+       * This event is emitted with the [LogMessage](#logmessage) instance for the log. You may control events using all the methods of EventEmitter.
+       * @event LambdaLog#log
+       * @type {LogMessage}
+       */
+      this.emit('log', message);
+    }
+
     return message;
   }
 
