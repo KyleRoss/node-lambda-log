@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import 'expect-more-jest';
 import LogMessage from './LogMessage';
+import * as formatters from './formatters';
 import { StubbedError } from './typings';
 
 const logData = {
@@ -412,43 +413,6 @@ describe('LogMessage', () => {
   });
 
   describe('Methods', () => {
-    describe('toJSON()', () => {
-      const msg = new LogMessage({ ...logData.info }, {
-        ...defaultOpts,
-        meta: { ssn: '444-55-6666' },
-        replacer(key, value) {
-          if(key === 'ssn') {
-            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-call
-            return `${value.substr(0, 3)}-**-****`;
-          }
-
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-          return value;
-        }
-      });
-
-      it('should return log in JSON format', () => {
-        expect(msg.toJSON()).toBeJsonString();
-      });
-
-      it('should run replacer function', () => {
-        expect(JSON.parse(msg.toJSON()).ssn).toBe('444-**-****');
-      });
-
-      it('should not run replacer function when not defined', () => {
-        const msg = new LogMessage({ ...logData.info }, {
-          ...defaultOpts,
-          meta: { ssn: '444-55-6666' }
-        });
-
-        expect(JSON.parse(msg.toJSON()).ssn).toBe('444-55-6666');
-      });
-
-      it('should pretty print JSON when format is "true"', () => {
-        expect(/\n/g.test(msg.toJSON(true))).toBe(true);
-      });
-    });
-
     describe('toString()', () => {
       it('should return log in string format', () => {
         const msg = new LogMessage({ ...logData.info }, defaultOpts);
@@ -459,37 +423,37 @@ describe('LogMessage', () => {
       it('should format as json with onFormat set to `json`', () => {
         const msg = new LogMessage({ ...logData.info }, {
           ...defaultOpts,
-          onFormat: 'json'
+          onFormat: formatters.json()
         });
 
         expect(msg.toString()).toBeJsonString();
       });
 
-      it('should format with "clean" template with onFormat set to `clean`', () => {
+      it('should format with "full" template with onFormat set to `full`', () => {
         const msg = new LogMessage({ ...logData.info, tags: ['test'] }, {
           ...defaultOpts,
-          onFormat: 'clean'
+          onFormat: formatters.full()
         });
 
-        expect(msg.toString()).toMatch(/^INFO\tinfo test\n\t├→ test/);
+        expect(msg.toString()).toMatch(/^\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z)\tINFO\tinfo test\n→ test/);
       });
 
-      it('should not add tags when none are set in `clean` formatter', () => {
+      it('should not add tags when none are set in `full` formatter', () => {
         const msg = new LogMessage({ ...logData.info, meta: { test: 123 } }, {
           ...defaultOpts,
-          onFormat: 'clean'
+          onFormat: formatters.full()
         });
 
-        expect(msg.toString()).toMatch(/^INFO\tinfo test\n\t└→ \{/);
+        expect(msg.toString()).toMatch(/^\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z)\tINFO\tinfo test\n→ \{/);
       });
 
       it('should format with "minimal" template with onFormat set to `minimal`', () => {
         const msg = new LogMessage({ ...logData.info }, {
           ...defaultOpts,
-          onFormat: 'minimal'
+          onFormat: formatters.minimal()
         });
 
-        expect(msg.toString()).toMatch(/^INFO\tinfo test$/);
+        expect(msg.toString()).toMatch(/^INFO | info test$/);
       });
 
       it('should format with a custom `onFormat` function', () => {
