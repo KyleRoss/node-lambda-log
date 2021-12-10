@@ -193,6 +193,16 @@ export default class LambdaLog extends EventEmitter {
    */
   info<T extends Message>(msg: T, meta?: GenericRecord, tags?: Tag[]) {
     return this.log('info', msg, meta, tags);
+  /**
+   * Alias for `info`.
+   * @template T The type of the message to log.
+   * @param {T} msg Message to log. Can be any type, but string or `Error` is reccommended.
+   * @param {Metadata} [meta] Optional meta data to attach to the log.
+   * @param {Tag[]} [tags] Additional tags to append to this log.
+   * @returns {LogMessage} Returns instance of LogMessage.
+   */
+  log<T extends Message = Message>(msg: T, meta?: Metadata, tags?: Tag[]): LogMessage {
+    return this._log<T>('info', msg, meta, tags);
   }
 
   /**
