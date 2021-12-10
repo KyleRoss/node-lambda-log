@@ -31,7 +31,7 @@ export function stubError(error: Error) {
       'stack'
     ].concat(Object.keys(err));
 
-    return keys.reduce((obj: GenericRecord, key) => {
+    return keys.reduce((obj: GenericRecord, key: string) => {
       /* istanbul ignore next */
       if(key in err) {
         const val: unknown = err[key];
