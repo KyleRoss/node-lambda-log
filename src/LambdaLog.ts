@@ -39,7 +39,8 @@ export const defaultOptions: LambdaLogOptions = {
   logHandler: console,
   levelKey: '__level',
   messageKey: 'msg',
-  tagsKey: '__tags'
+  tagsKey: '__tags',
+  onFormat: logFormatters.json()
 };
 
 export const formatters = logFormatters;
