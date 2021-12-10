@@ -1,5 +1,5 @@
 import stringify from 'fast-safe-stringify';
-import { LambdaLogOptions, Message, LogObject, Tag, GenericRecord, Formatter, StubbedError, Empty } from './typings.js';
+import { LambdaLogOptions, Message, LogObject, Tag, GenericRecord, StubbedError, Empty, FormatPlugin } from './typings.js';
 import { isError, stubError } from './utils.js';
 import jsonFormatter from './formatters/json.js';
 
@@ -93,7 +93,7 @@ export default class LogMessage<MT extends Message = Message> implements ILogMes
    * Alias for `this.msg`.
    * @returns {string} The message for the log.
    */
-  get message() {
+  get message(): string {
     return this.msg;
   }
 
@@ -101,7 +101,7 @@ export default class LogMessage<MT extends Message = Message> implements ILogMes
    * Alias for `this.msg = 'New message';`
    * @param {Message} msg The new message for this log.
    */
-  set message(msg) {
+  set message(msg: Message) {
     this.msg = msg;
   }
 
@@ -189,7 +189,7 @@ export default class LogMessage<MT extends Message = Message> implements ILogMes
   }
 
   /**
-   * The full log object. This is the object used in logMessage.toJSON() and when the log is written to the console.
+   * The log represented as an object that is useful for stringifying or pulling data from.
    * @returns {GenericRecord} The compiled log object.
    */
   get value() {
@@ -232,7 +232,7 @@ export default class LogMessage<MT extends Message = Message> implements ILogMes
    * Converts the log to a string using a specific/custom formatter.
    * @returns {string} The formatted log as a string.
    */
-  toString() {
+  toString(): string {
     return this.formatMessage(this.__opts.onFormat);
   }
 
