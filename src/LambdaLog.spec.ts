@@ -128,32 +128,33 @@ describe('LambdaLog', () => {
       mockConsole.debug.mockClear();
     });
 
-    describe('log()', () => {
+    describe('_log()', () => {
       it('should throw error for invalid log level', () => {
         const log = new LambdaLog();
-        expect(() => log.log('foo' as any, 'test')).toThrowError(/^"foo" is not a valid log level$/);
+        expect(() => log._log('foo' as any, 'test')).toThrowError(/^"foo" is not a valid log level$/);
       });
 
       it('should throw error for no log level', () => {
         const log = new LambdaLog();
-        expect(() => log.log(null as any, 'test')).toThrowError(/is not a valid log level$/);
+        expect(() => log._log(null as any, 'test')).toThrowError(/is not a valid log level$/);
       });
 
-      it('should return false for a disabled log level', () => {
+      it('should not log for a disabled log level', () => {
         const log = new LambdaLog({ level: 'fatal' });
-        const result = log.log('debug', 'test');
-        expect(result).toBe(false);
+        const result = log._log('debug', 'test');
+        expect(result).toBeInstanceOf(LogMessage);
+        expect(mockConsole.debug).not.toHaveBeenCalled();
       });
 
       it('should return log message instance', () => {
         const log = new LambdaLog();
-        const result = log.log('info', 'test');
+        const result = log._log('info', 'test');
         expect(result).toBeInstanceOf(LogMessage);
       });
 
       it('should not log message when silent is enabled', () => {
         const log = new LambdaLog({ silent: true });
-        log.log('info', 'test');
+        log._log('info', 'test');
         expect(mockConsole.info).toBeCalledTimes(0);
       });
 
@@ -165,7 +166,7 @@ describe('LambdaLog', () => {
           done();
         });
 
-        const res = log.log('error', 'test');
+        const res = log._log('error', 'test');
         expect(res).toBeInstanceOf(LogMessage);
       });
 
@@ -175,7 +176,7 @@ describe('LambdaLog', () => {
         });
 
         const info = jest.spyOn(console, 'info');
-        log.log('info', 'test');
+        log._log('info', 'test');
         expect(info).toBeCalled();
         info.mockRestore();
       });
@@ -206,11 +207,9 @@ describe('LambdaLog', () => {
 
         promise.then(msg => {
           expect(msg).toBeInstanceOf(LogMessage);
-          if(msg !== false) {
-            expect(msg.level).toBe('info');
-            expect(msg.msg).toBe('Success!');
-            done();
-          }
+          expect(msg.level).toBe('info');
+          expect(msg.msg).toBe('Success!');
+          done();
         });
       });
 
@@ -220,11 +219,9 @@ describe('LambdaLog', () => {
 
         promise.then(msg => {
           expect(msg).toBeInstanceOf(LogMessage);
-          if(msg !== false) {
-            expect(msg.level).toBe('error');
-            expect(msg.msg).toBe('Failed!');
-            done();
-          }
+          expect(msg.level).toBe('error');
+          expect(msg.msg).toBe('Failed!');
+          done();
         });
       });
     });
@@ -245,6 +242,12 @@ describe('LambdaLog', () => {
       it('should log info message', () => {
         const log = new LambdaLog({ level: 'info' });
         log.info('test');
+        expect(mockConsole.info).toBeCalledTimes(1);
+      });
+
+      it('should log info message (log)', () => {
+        const log = new LambdaLog({ level: 'info' });
+        log.log('test');
         expect(mockConsole.info).toBeCalledTimes(1);
       });
 
