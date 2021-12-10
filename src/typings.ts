@@ -45,9 +45,9 @@ export type LambdaLogOptions = {
   levelKey?: string | false;
   messageKey?: string;
   tagsKey?: string | false;
-  onParse?: (msg: Message, options: LambdaLogOptions) => { msg: string; meta?: GenericRecord; error?: Error; tags?: Tag[] } | Empty;
-  onCompile?: (level?: string, msg?: Message, meta?: GenericRecord, tags?: Tag[], options?: LambdaLogOptions) => GenericRecord;
-  onFormat?: Formatter;
+  onParse?: ParsePlugin;
+  onCompile?: CompilePlugin;
+  onFormat?: FormatPlugin;
 };
 
 export interface ConsoleObject extends Console {
