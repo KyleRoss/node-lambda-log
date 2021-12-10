@@ -1,6 +1,7 @@
 import { EventEmitter } from 'events';
 import { LambdaLogOptions, Message, GenericRecord, LogLevels, LogObject, Tag, ConsoleObject } from './typings.js';
 import LogMessage from './LogMessage.js';
+import * as logFormatters from './formatters/index.js';
 import { toBool } from './utils.js';
 
 
@@ -41,8 +42,12 @@ export const defaultOptions: LambdaLogOptions = {
   tagsKey: '__tags'
 };
 
+export const formatters = logFormatters;
+
 
 export default class LambdaLog extends EventEmitter {
+  static formatters = formatters;
+
   /**
    * Access to the uninstantiated LambdaLog class.
    * @readonly
