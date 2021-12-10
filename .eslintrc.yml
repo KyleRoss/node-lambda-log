@@ -1,8 +1,10 @@
 ---
 root: true
 
-parserOptions:
-  ecmaVersion: 2019
+ignorePatterns:
+  - 'node_modules/**/*'
+  - 'dist'
+  - 'site'
 
 env:
   node: true
@@ -11,12 +13,11 @@ env:
 
 plugins:
   - 'jsdoc'
-  - 'node'
+  - '@typescript-eslint/eslint-plugin'
 
 extends:
   - 'xo-space'
   - 'plugin:jsdoc/recommended'
-  - 'plugin:node/recommended'
 
 rules:
   array-element-newline: off
@@ -29,5 +30,17 @@ rules:
   no-negated-condition: off
   keyword-spacing: ['error', { overrides: { if: { after: false }, for: { after: false }, while: { after: false }, catch: { after: false } } }]
   jsdoc/newline-after-description: off
-  node/no-unsupported-features/es-syntax: ['error', { version: '>=10.0.0' }]
-  node/no-missing-require: off
+
+overrides:
+  - files: ['*.ts']
+    parserOptions:
+      project:
+        - './tsconfig.eslint.json'
+        - './tsconfig.spec.json'
+    extends:
+      - 'xo-typescript/space'
+    rules:
+      '@typescript-eslint/keyword-spacing': ['error', { overrides: { if: { after: false }, for: { after: false }, while: { after: false }, catch: { after: false } } }]
+      '@typescript-eslint/object-curly-spacing': ['error', 'always']
+      '@typescript-eslint/comma-dangle': ['error', 'never']
+      '@typescript-eslint/naming-convention': off

@@ -1,3 +1,72 @@
+# [4.0.0-beta.5](https://github.com/KyleRoss/node-lambda-log/compare/v4.0.0-beta.4...v4.0.0-beta.5) (2021-12-10)
+
+
+### Bug Fixes
+
+* add generic support to LogMessage class for specifying the message type ([6e6775a](https://github.com/KyleRoss/node-lambda-log/commit/6e6775a44bf881d3d7d64d9ce2f40ff2bce858da))
+* add generic to LogObject type to specify type of Message ([cd1c746](https://github.com/KyleRoss/node-lambda-log/commit/cd1c74697a99840a48f29d49509ad3409e145de5))
+* explicitly set type to `string[]` for compiled tags returned from LogMessage ([fd873e3](https://github.com/KyleRoss/node-lambda-log/commit/fd873e3a2da24f3b90985708771adeb2901ce39c))
+* remove generic from Message type ([cc10311](https://github.com/KyleRoss/node-lambda-log/commit/cc10311b3e0580e840792e452d11dcc43e911544))
+* remove toJSON() method from LogMessage since it's been moved to a formatter ([36fbdaa](https://github.com/KyleRoss/node-lambda-log/commit/36fbdaa738fb1fa0daf046dc71eb84adc18ae55c))
+* rename the `log` method to `_log` ([7317bf5](https://github.com/KyleRoss/node-lambda-log/commit/7317bf52418af6fed65db8066b94d8c2dbe21023))
+* still generate the log message just don't log it when verbosity is set ([6e13564](https://github.com/KyleRoss/node-lambda-log/commit/6e13564da87fe5b189a2b9262d8e3613a3f138e5))
+* ts generics and typings on shortcut methods ([7e48904](https://github.com/KyleRoss/node-lambda-log/commit/7e48904076802adf571385f73ac83294c0d4f875))
+
+
+### Features
+
+* add `log` shortcut method as an alias for `info` to match the `console` pattern ([a3c1f16](https://github.com/KyleRoss/node-lambda-log/commit/a3c1f163976de3f68c49e05f3a84ab7c1791c0e5))
+* separate built-in formatters into separate files ([f8ecac7](https://github.com/KyleRoss/node-lambda-log/commit/f8ecac7ed12b25495c634a904f489857a7413f80))
+
+# [4.0.0-beta.4](https://github.com/KyleRoss/node-lambda-log/compare/v4.0.0-beta.3...v4.0.0-beta.4) (2021-11-25)
+
+
+### Bug Fixes
+
+* destructure import of EventEmitter to support TS projects ([9fc1857](https://github.com/KyleRoss/node-lambda-log/commit/9fc18573373e62a09c46f71a3517f862b74aac77))
+
+# [4.0.0-beta.3](https://github.com/KyleRoss/node-lambda-log/compare/v4.0.0-beta.2...v4.0.0-beta.3) (2021-11-19)
+
+
+### Bug Fixes
+
+* add entrypoint file for advanced usage ([d7861de](https://github.com/KyleRoss/node-lambda-log/commit/d7861de9269532ab31631e559ec8da7a77c2870a))
+* add package.json to esm and cjs directories after build ([6c77c79](https://github.com/KyleRoss/node-lambda-log/commit/6c77c7971def43eb8b3f5e66a071f8b87d8b6bb8))
+* change legacy cjs file to require `lambda-log.js` instead ([89db707](https://github.com/KyleRoss/node-lambda-log/commit/89db70742c011405534c6ce1a3c8916190d85a66))
+* rename index to `lambda-log` to ensure the types are generated properly ([467c9e4](https://github.com/KyleRoss/node-lambda-log/commit/467c9e42628ed05a6ba28bb2cea79f4129d6a2f5))
+
+
+### Features
+
+* add support for direct entrypoint ([50dd03d](https://github.com/KyleRoss/node-lambda-log/commit/50dd03d8651799ea4f865fcadae5b3d5abcfe121))
+
+# [4.0.0-beta.2](https://github.com/KyleRoss/node-lambda-log/compare/v4.0.0-beta.1...v4.0.0-beta.2) (2021-11-18)
+
+
+### Bug Fixes
+
+* add `.js` file extensions on imports to support node ESM ([2fcf770](https://github.com/KyleRoss/node-lambda-log/commit/2fcf7707528c7a07c7d0e02ab4e1ecf1b699363d))
+* add `module` field to point to esm ([1323bf4](https://github.com/KyleRoss/node-lambda-log/commit/1323bf4866ba14fb1c86b6daae4e0daad2bcfcba))
+* add `src` as a module directory to jest ([d268e91](https://github.com/KyleRoss/node-lambda-log/commit/d268e91f8d2f4e26e1ddf0d798635a87c13c6a7d))
+* add `ts-node` as a dev dependency for jest ([433cb70](https://github.com/KyleRoss/node-lambda-log/commit/433cb70287352dd9e16b9b51f3ce5b31c4f8f098))
+* add build:declaration script and run it during build ([c43deef](https://github.com/KyleRoss/node-lambda-log/commit/c43deef9aa2080637055e48a93851f5fc537bc20))
+* add root index file to alleviate the need to call `.default` in cjs ([62da1ec](https://github.com/KyleRoss/node-lambda-log/commit/62da1ec8d119bbcdee783db75545252e90755310))
+* ignore jest.config.ts when publishing to npm ([1c6376c](https://github.com/KyleRoss/node-lambda-log/commit/1c6376c027014473e31123cdd39d61c260e36bad))
+* point `types` to separate declaration file ([c65fd52](https://github.com/KyleRoss/node-lambda-log/commit/c65fd52cbcf6cf5d08dc6cde4f221f70dd4e92a3))
+* update `main` to point to root index.js file for cjs usage ([39a9f43](https://github.com/KyleRoss/node-lambda-log/commit/39a9f437637a3ec3443fef79e79cd93d641d876f))
+
+# [4.0.0-beta.1](https://github.com/KyleRoss/node-lambda-log/compare/v3.2.0...v4.0.0-beta.1) (2021-11-17)
+
+
+### Features
+
+* 4.0.0-beta ([fe34fe6](https://github.com/KyleRoss/node-lambda-log/commit/fe34fe6cb26f05c966d5879c6a87baa1681d0c57))
+
+
+### BREAKING CHANGES
+
+* This is the beta version for the next major release of LambdaLog. Do not use in production yet! Please report any issues you may find!
+
 # [3.1.0](https://github.com/KyleRoss/node-lambda-log/compare/v3.0.2...v3.1.0) (2021-10-14)
 
 

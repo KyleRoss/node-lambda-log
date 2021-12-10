@@ -15,7 +15,14 @@
       "changeProcessCWD": true
     }
   ],
+  "eslint.validate": [
+    "mdx",
+    "javascript",
+    "javascriptreact",
+    "typescript"
+  ],
   "[mdx]": {
     "editor.wordWrap": "on"
-  }
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

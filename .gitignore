@@ -32,4 +32,5 @@ package-lock.json
 # DS_Store file
 .DS_Store
 
+dist
 res

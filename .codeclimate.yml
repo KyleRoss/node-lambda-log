@@ -11,7 +11,7 @@ checks:
   file-lines:
     enabled: true
     config:
-      threshold: 350
+      threshold: 500
   method-complexity:
     enabled: true
     config:
@@ -50,4 +50,7 @@ exclude_patterns:
   - "**/node_modules/"
   - "site/"
   - "**/*.d.ts"
+  - "**/*.test.ts"
   - "**/*.test.js"
+  - "**/*.spec.ts"
+  - "**/*.spec.js"
