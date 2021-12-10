@@ -47,6 +47,7 @@ export const formatters = logFormatters;
 
 
 export default class LambdaLog extends EventEmitter {
+  static defaultOptions = defaultOptions;
   static formatters = formatters;
 
   /**
