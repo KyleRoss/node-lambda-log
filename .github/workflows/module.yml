@@ -42,12 +42,12 @@ jobs:
       - name: Run Tests
         if: ${{ github.event_name == 'pull_request' }}
         run: npm test
-      - name: Comment Coverage on PR
+      - name: Run codacy-coverage-reporter
         if: ${{ github.event_name == 'pull_request' }}
-        uses: artiomtr/jest-coverage-report-action@fdabb5bd42fa8a55bcfdfb55d855122cabfb7911
+        uses: codacy/codacy-coverage-reporter-action@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          threshold: 100
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: ./coverage/lcov.info
       - name: Upload Coverage to Code Climate
         uses: paambaati/codeclimate-action@v2.7.2
         if: ${{ github.event_name == 'push' }}
