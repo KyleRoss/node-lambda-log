@@ -36,7 +36,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@master
         with:
-          node-version: 14
+          node-version: 18
       - name: Install Dependencies
         run: npm i
       - name: Run Tests
@@ -68,7 +68,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@master
         with:
-          node-version: 14
+          node-version: 18
       - name: Install Dependencies
         run: npm i
       - name: Delete expired artifacts
@@ -92,7 +92,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@master
         with:
-          node-version: 14
+          node-version: 18
       - name: Install Dependencies
         run: npm i
       - name: Publish to NPM
